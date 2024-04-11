@@ -10,7 +10,7 @@ namespace StupidTemplate.Mods
     {
         public static void ForestTP()
         {
-            GorillaLocomotion.Player.Instance.transform.position= new Vector3(-62.6543f ,0.87f - 67.8922f);
+            GorillaLocomotion.Player.Instance.transform.position= new Vector3(-62.6543f, 0.87f, -67.8922f);
         }
 
     }

@@ -1,5 +1,4 @@
 ﻿using Photon.Pun;
-using StupidTemplate.Notifications;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -48,7 +47,7 @@ namespace StupidTemplate.Mods
             {
                 if (!GorillaTagger.Instance.offlineVRRig.mainSkin.material.name.Contains("fected"))
                 {
-                    NotifiLib.SendNotification("<color=grey>[</color><color=red>ERROR</color><color=grey>]</color> <color=white>You must be tagged.</color>");
+                    //NotifiLib.SendNotification("<color=grey>[</color><color=red>ERROR</color><color=grey>]</color> <color=white>You must be tagged.</color>");
                 }
                 else
                 {
@@ -78,7 +77,7 @@ namespace StupidTemplate.Mods
                     }
                     else
                     {
-                        NotifiLib.SendNotification("<color=grey>[</color><color=purple>SUCCESS</color><color=grey>]</color> <color=white>Everyone is tagged!</color>");
+                        //NotifiLib.SendNotification("<color=grey>[</color><color=purple>SUCCESS</color><color=grey>]</color> <color=white>Everyone is tagged!</color>");
                         GorillaTagger.Instance.offlineVRRig.enabled = true;
                     }
                 }
@@ -249,7 +248,7 @@ namespace StupidTemplate.Mods
             {
                 if (!GorillaTagger.Instance.offlineVRRig.mainSkin.material.name.Contains("fected"))
                 {
-                    NotifiLib.SendNotification("<color=grey>[</color><color=red>ERROR</color><color=grey>]</color> <color=white>You must be tagged.</color>");
+                    //NotifiLib.SendNotification("<color=grey>[</color><color=red>ERROR</color><color=grey>]</color> <color=white>You must be tagged.</color>");
                 }
                 else
                 {
@@ -279,7 +278,7 @@ namespace StupidTemplate.Mods
                     }
                     else
                     {
-                        NotifiLib.SendNotification("<color=grey>[</color><color=purple>SUCCESS</color><color=grey>]</color> <color=white>Everyone is tagged!</color>");
+                        //NotifiLib.SendNotification("<color=grey>[</color><color=purple>SUCCESS</color><color=grey>]</color> <color=white>Everyone is tagged!</color>");
                         GorillaTagger.Instance.offlineVRRig.enabled = true;
                     }
                 }

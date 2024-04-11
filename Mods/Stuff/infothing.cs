@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
-using static Fusion.NetworkCharacterController;
 
 namespace StupidTemplate.Mods.Stuff
 {

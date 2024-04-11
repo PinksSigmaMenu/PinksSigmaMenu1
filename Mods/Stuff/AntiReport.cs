@@ -1,6 +1,5 @@
 ﻿using Photon.Pun;
 using StupidTemplate.Menu;
-using StupidTemplate.Notifications;
 using StupidTemplate.Patches;
 using UnityEngine;
 using UnityEngine.UI;
@@ -49,7 +48,7 @@ namespace StupidTemplate.Mods.Stuff
                                             {
                                                 PhotonNetwork.Disconnect();
                                                 Main.RPCProtection1();
-                                                NotifiLib.SendNotification("<color=grey>[</color><color=purple>ANTI-REPORT</color><color=grey>]</color> <color=white>Someone attempted to report you, you have been disconnected.</color>");
+                                                //NotifiLib.SendNotification("<color=grey>[</color><color=purple>ANTI-REPORT</color><color=grey>]</color> <color=white>Someone attempted to report you, you have been disconnected.</color>");
                                             }
                                         }
                                     }
