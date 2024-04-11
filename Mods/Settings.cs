@@ -30,6 +30,11 @@ namespace StupidTemplate.Mods
             buttonsType = 5;
         }
 
+        public static void TPStuff()
+        {
+            buttonsType = 6;
+        }
+
         public static void RightHand()
         {
             rightHanded = true;
