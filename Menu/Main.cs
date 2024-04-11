@@ -623,6 +623,7 @@ namespace StupidTemplate.Menu
         public static float projDebounceType = 0.1f;
         public static float projDebounce = 0f;
         public static bool hasRemovedThisFrame = false;
+        
 
         // Important
 

@@ -5,6 +5,7 @@ using StupidTemplate.Patches;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Linq.Expressions;
 using System.Text;
 using UnityEngine;
 using static StupidTemplate.Menu.Main;
@@ -292,28 +293,28 @@ namespace StupidTemplate.Mods
         public static void InsaneMonkey()
         {
             GorillaTagger.Instance.offlineVRRig.head.rigTarget.eulerAngles = new Vector3(
-                (float)UnityEngine.Random.Range(0, 360), 
+                (float)UnityEngine.Random.Range(0, 360),
                 (float)UnityEngine.Random.Range(0, 360),
                 (float)UnityEngine.Random.Range(0, 360));
             GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.eulerAngles = new Vector3(
-                (float)UnityEngine.Random.Range(0, 360), 
-                (float)UnityEngine.Random.Range(0, 360), 
+                (float)UnityEngine.Random.Range(0, 360),
+                (float)UnityEngine.Random.Range(0, 360),
                 (float)UnityEngine.Random.Range(0, 360));
             GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.eulerAngles = new Vector3(
-                (float)UnityEngine.Random.Range(0, 360), 
-                (float)UnityEngine.Random.Range(0, 360), 
+                (float)UnityEngine.Random.Range(0, 360),
+                (float)UnityEngine.Random.Range(0, 360),
                 (float)UnityEngine.Random.Range(0, 360));
             GorillaTagger.Instance.offlineVRRig.head.rigTarget.eulerAngles = new Vector3(
-                (float)UnityEngine.Random.Range(0, 360), 
-                (float)UnityEngine.Random.Range(0, 180), 
+                (float)UnityEngine.Random.Range(0, 360),
+                (float)UnityEngine.Random.Range(0, 180),
                 (float)UnityEngine.Random.Range(0, 180));
             GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.eulerAngles = new Vector3(
-                (float)UnityEngine.Random.Range(0, 360), 
-                (float)UnityEngine.Random.Range(0, 180), 
+                (float)UnityEngine.Random.Range(0, 360),
+                (float)UnityEngine.Random.Range(0, 180),
                 (float)UnityEngine.Random.Range(0, 180));
             GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.eulerAngles = new Vector3(
-                (float)UnityEngine.Random.Range(0, 360), 
-                (float)UnityEngine.Random.Range(0, 180), 
+                (float)UnityEngine.Random.Range(0, 360),
+                (float)UnityEngine.Random.Range(0, 180),
                 (float)UnityEngine.Random.Range(0, 180));
         }
 
@@ -352,32 +353,18 @@ namespace StupidTemplate.Mods
                 Player.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
         }
-        public static void TagGun() 
-        {
-            if (ControllerInputPoller.instance.rightControllerSecondaryButton) 
-            {
-                RaycastHit raycastHit;
-                Physics.Raycast(Player.Instance.rightControllerTransform.transform.position, Player.Instance.headCollider.transform.forward, out raycastHit);
-                GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                Main.pointer.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-                Main.pointer.transform.position = raycastHit.point;
-                Main.pointer.GetComponent<Renderer>().material.color = Color.magenta;
-                UnityEngine.Object.Destroy(Main.pointer.GetComponent<BoxCollider>());
-                UnityEngine.Object.Destroy(Main.pointer.GetComponent<Rigidbody>());
-                UnityEngine.Object.Destroy(Main.pointer.GetComponent<Collider>());
-                UnityEngine.Object.Destroy(Main.pointer, Time.deltaTime);
-                if (ControllerInputPoller.instance.rightGrab)
-                {
-                    Player.Instance.rightControllerTransform.position = Main.pointer.transform.position;
-                }
-                else
-                {
-                    UnityEngine.Object.Destroy(gameObject, Time.deltaTime);
-                }
-            }
-        }
     }
 }
+
+
+
+
+    
+
+
+
+
+
 
 
 

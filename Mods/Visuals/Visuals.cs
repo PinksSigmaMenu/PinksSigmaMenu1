@@ -1,4 +1,5 @@
-﻿using GorillaLocomotion;
+﻿using ExitGames.Client.Photon.StructWrapping;
+using GorillaLocomotion;
 using Oculus.Interaction;
 using Photon.Pun;
 using System;
@@ -302,14 +303,6 @@ namespace StupidTemplate.Mods.Visuals
                     }
                 }
             }
-        }
-        public static void BoneESP()
-        {
-            GameObject HeadBoner = GameObject.Find("head");
-
-
-
-
         }
     }
 }
