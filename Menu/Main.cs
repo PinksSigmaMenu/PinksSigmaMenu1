@@ -671,6 +671,7 @@ namespace StupidTemplate.Menu
                     public static bool Invisible = true;
                     public static bool AllowedToInvis = true;
                     private static bool rigPositionSet = false;
+                    public static float flysped;
 
         // Data
         public static int pageNumber = 0;

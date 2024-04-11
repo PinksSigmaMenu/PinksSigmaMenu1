@@ -1,4 +1,6 @@
-﻿using Photon.Pun;
+﻿using GorillaLocomotion;
+using Photon.Pun;
+using StupidTemplate.Menu;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -337,6 +339,14 @@ namespace StupidTemplate.Mods
             {
 
                 GorillaTagger.Instance.offlineVRRig.headBodyOffset = Vector3.zero;
+            }
+        }
+        public static void FlyMode()
+        {
+            if (ControllerInputPoller.instance.rightControllerPrimaryButton)
+            {
+                Player.Instance.transform.position += GorillaTagger.Instance.headCollider.transform.forward * Time.deltaTime * Main.flysped;
+                Player.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
         }
     }
