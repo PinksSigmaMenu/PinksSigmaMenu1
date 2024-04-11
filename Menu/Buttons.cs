@@ -48,7 +48,7 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "UpAndDown", method =() => Movement.UpAndDownsyndrome(), isTogglable = true, toolTip = "Makes you go up and down with right and left grip"},
                 new ButtonInfo { buttonText = "InvisMonke", method =() => Movement.InvisMonke(), isTogglable = true, toolTip = "makes you invisable bitch"},
                 new ButtonInfo { buttonText = "Spazzy Monkey", method =() => Movement.InsaneMonkey(), isTogglable = true, toolTip = "makes you invisable bitch"},
-                new ButtonInfo { buttonText = "Fly", method =() => Movement.InsaneMonkey(), isTogglable = true, toolTip = "Makes you flyy!!"},
+                new ButtonInfo { buttonText = "Fly", method =() => Movement.FlyMode(), isTogglable = true, toolTip = "Makes you flyy!!"},
 
             },
 

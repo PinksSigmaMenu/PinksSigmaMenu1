@@ -1,10 +1,13 @@
 ﻿using GorillaLocomotion;
 using Photon.Pun;
 using StupidTemplate.Menu;
+using StupidTemplate.Patches;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Text;
 using UnityEngine;
+using static StupidTemplate.Menu.Main;
 
 namespace StupidTemplate.Mods
 {
@@ -347,6 +350,30 @@ namespace StupidTemplate.Mods
             {
                 Player.Instance.transform.position += GorillaTagger.Instance.headCollider.transform.forward * Time.deltaTime * Main.flysped;
                 Player.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            }
+        }
+        public static void TagGun() 
+        {
+            if (ControllerInputPoller.instance.rightControllerSecondaryButton) 
+            {
+                RaycastHit raycastHit;
+                Physics.Raycast(Player.Instance.rightControllerTransform.transform.position, Player.Instance.headCollider.transform.forward, out raycastHit);
+                GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                Main.pointer.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                Main.pointer.transform.position = raycastHit.point;
+                Main.pointer.GetComponent<Renderer>().material.color = Color.magenta;
+                UnityEngine.Object.Destroy(Main.pointer.GetComponent<BoxCollider>());
+                UnityEngine.Object.Destroy(Main.pointer.GetComponent<Rigidbody>());
+                UnityEngine.Object.Destroy(Main.pointer.GetComponent<Collider>());
+                UnityEngine.Object.Destroy(Main.pointer, Time.deltaTime);
+                if (ControllerInputPoller.instance.rightGrab)
+                {
+                    Player.Instance.rightControllerTransform.position = Main.pointer.transform.position;
+                }
+                else
+                {
+                    UnityEngine.Object.Destroy(gameObject, Time.deltaTime);
+                }
             }
         }
     }
