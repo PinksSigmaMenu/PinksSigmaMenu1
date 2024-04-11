@@ -73,13 +73,13 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "Sigma rizz", method =() => Visuals.Sigma(), isTogglable = true, toolTip = "its sigma esp dude!"},
                 new ButtonInfo { buttonText = "Tracers", method =() => Visuals.Tracers(), isTogglable = true, toolTip = "Puts tracers on your body"},
                 new ButtonInfo { buttonText = "Hand Tracers", method =() => Visuals.HandTracers(), isTogglable = true, toolTip = "Puts tracers on your hands"},
-                 new ButtonInfo { buttonText = "Hand Tracers", method =() => Visuals.HandTracers(), isTogglable = true, toolTip = "Puts tracers on your hands"},
+                 new ButtonInfo { buttonText = "Bone ESP", method =() => Visuals.BoneESP(), isTogglable = true, toolTip = "Bone ESP"},
             },
 
            new ButtonInfo[] { //Visual shit
                
-           new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
-           new ButtonInfo { buttonText = "TP to for", method =() => TPShit.ForestTP(), isTogglable = false, toolTip = "Spams Food!"},
+               new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+               new ButtonInfo { buttonText = "TP to for", method =() => TPShit.ForestTP(), isTogglable = false, toolTip = "Spams Food!"},
 
             },
 

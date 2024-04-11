@@ -441,7 +441,11 @@ namespace StupidTemplate.Menu
                 {
                     TPC = GameObject.Find("Player Objects/Third Person Camera/Shoulder Camera").GetComponent<Camera>();
                 }
-                catch { }
+                catch
+                {
+                    TPC = GameObject.Find("Shoulder Camera").GetComponent<Camera>();
+                }
+
                 if (TPC != null)
                 {
                     TPC.transform.position = new Vector3(-999f, -999f, -999f);
@@ -453,7 +457,7 @@ namespace StupidTemplate.Menu
                     GameObject.Destroy(bg, Time.deltaTime);
                     menu.transform.parent = TPC.transform;
                     menu.transform.position = (TPC.transform.position + (Vector3.Scale(TPC.transform.forward, new Vector3(0.5f, 0.5f, 0.5f)))) + (Vector3.Scale(TPC.transform.up, new Vector3(-0.02f, -0.02f, -0.02f)));
-                    Vector3 rot = TPC.transform.rotation.eulerAngles;
+                    Vector3 rot = Quaternion.identity.eulerAngles;
                     rot = new Vector3(rot.x - 90, rot.y + 90, rot.z);
                     menu.transform.rotation = Quaternion.Euler(rot);
 

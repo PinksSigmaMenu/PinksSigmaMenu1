@@ -1,6 +1,7 @@
 ﻿using GorillaLocomotion;
 using Oculus.Interaction;
 using Photon.Pun;
+using Steamworks;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -305,11 +306,24 @@ namespace StupidTemplate.Mods.Visuals
         }
         public static void BoneESP()
         {
-            GameObject HeadBoner = GameObject.Find("head");
+            //GameObject HeadBoner = GameObject.Find("head");
 
+            //foreach (VRRig PlayerRig in GorillaParent.instance.vrrigs)
+            //{
+                VRRig PlayerRig = GorillaTagger.Instance.offlineVRRig;
+                LineRenderer LineRend = PlayerRig.GetComponent<LineRenderer>();
+                if (LineRend == null)
+                {
+                    LineRend = PlayerRig.AddComponent<LineRenderer>();
+                }
+                LineRend.SetPositions(new Vector3[] { });
+                for (int i = 0; i < PlayerRig.mainSkin.bones.Length; i++)
+                {
+                    Transform Bone = PlayerRig.mainSkin.bones[i];
+                    LineRend.SetPosition(i, Bone.position);
 
-
-
+                }
+            //}
         }
     }
 }
