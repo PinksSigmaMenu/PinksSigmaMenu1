@@ -70,6 +70,7 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "Sigma rizz", method =() => Visuals.Sigma(), isTogglable = true, toolTip = "its sigma esp dude!"},
                 new ButtonInfo { buttonText = "Tracers", method =() => Visuals.Tracers(), isTogglable = true, toolTip = "Puts tracers on your body"},
                 new ButtonInfo { buttonText = "Hand Tracers", method =() => Visuals.HandTracers(), isTogglable = true, toolTip = "Puts tracers on your hands"},
+                new ButtonInfo { buttonText = "Hand Tracers", method =() => Visuals.HandTracers(), isTogglable = true, toolTip = "Puts tracers on your hands"},
             },
 
 
