@@ -10,7 +10,7 @@ namespace StupidTemplate.Mods
     {
         public static void ForestTP()
         {
-            GorillaTagger.Instance.offlineVRRig.transform.position = new UnityEngine.Vector3(-63.9905f, 1.0616f, -69.2698f);
+            GorillaLocomotion.Player.Instance.transform.position= new Vector3(-62.6543f ,0.87f - 67.8922f);
         }
 
     }

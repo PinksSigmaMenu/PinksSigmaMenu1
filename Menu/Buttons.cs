@@ -77,7 +77,7 @@ namespace StupidTemplate.Menu
                         new ButtonInfo[] { //Visual shit
                
                             new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
-                            new ButtonInfo { buttonText = "TP to for", method =() => TPShit.ForestTP(), isTogglable = true, toolTip = "Spams Food!"},
+                            new ButtonInfo { buttonText = "TP to for", method =() => TPShit.ForestTP(), isTogglable = false, toolTip = "Spams Food!"},
 
 
 
