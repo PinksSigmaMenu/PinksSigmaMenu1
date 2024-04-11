@@ -662,6 +662,7 @@ namespace StupidTemplate.Menu
                     public static GameObject menuBackground;   
                     public static GameObject reference;
                     public static GameObject canvasObject;
+                    public static GameObject pointer;
 
                     public static SphereCollider buttonCollider;
                     public static Camera TPC;
@@ -671,7 +672,8 @@ namespace StupidTemplate.Menu
                     public static bool Invisible = true;
                     public static bool AllowedToInvis = true;
                     private static bool rigPositionSet = false;
-                    public static float flysped;
+                    public static float flysped
+            ;
 
         // Data
         public static int pageNumber = 0;
