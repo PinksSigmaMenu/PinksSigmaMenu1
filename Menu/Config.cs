@@ -4,7 +4,7 @@ using static StupidTemplate.Menu.Main;
 
 namespace StupidTemplate
 {
-    internal class Settings
+    internal class Config
     {
         public static ExtGradient backgroundColor = new ExtGradient {isRainbow = false};
 

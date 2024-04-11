@@ -1,5 +1,5 @@
 ﻿using static StupidTemplate.Menu.Main;
-using static StupidTemplate.Settings;
+using static StupidTemplate.Config;
 
 namespace StupidTemplate.Mods
 {

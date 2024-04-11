@@ -9,9 +9,10 @@ using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 using static StupidTemplate.Menu.Buttons;
-using static StupidTemplate.Settings;
+using static StupidTemplate.Config;
 
 namespace StupidTemplate.Menu
 {
@@ -538,67 +539,58 @@ namespace StupidTemplate.Menu
         }
 
 
-
+        public static float ClampMin(float value, float min, float def)
+        {
+            if (value < min)
+                return def;
+            return value;
+        }
+        public static float ClampMax(float value, float max, float def)
+        {
+            if (value > max)
+                return def;
+            return value;
+        }
 
         public static void Toggle(string buttonText)
         {
-            int lastPage = ((buttons[buttonsType].Length + buttonsPerPage - 1) / buttonsPerPage) - 1;
-            if (buttonText == "PreviousPage")
+            if (buttonText.Contains("Page"))
             {
-                pageNumber--;
-                if (pageNumber < 0)
+                int lastPage = ((buttons[buttonsType].Length + buttonsPerPage - 1) / buttonsPerPage) - 1;
+                if (buttonText == "PreviousPage")
                 {
-                    pageNumber = lastPage;
+                    pageNumber--;
+                    pageNumber = (int)ClampMin(pageNumber, 0, lastPage);
                 }
-            } else
-            {
-                if (buttonText == "NextPage")
+                else if (buttonText == "NextPage")
                 {
                     pageNumber++;
-                    if (pageNumber > lastPage)
-                    {
-                        pageNumber = 0;
-                    }
-                } else
-                {
-                    ButtonInfo target = GetIndex(buttonText);
-                    if (target != null)
-                    {
-                        if (target.isTogglable)
-                        {
-                            target.enabled = !target.enabled;
-                            if (target.enabled)
-                            {
-                                //NotifiLib.SendNotification("<color=grey>[</color><color=green>ENABLE</color><color=grey>]</color> " + target.toolTip);
-                                if (target.enableMethod != null)
-                                {
-                                    try { target.enableMethod.Invoke(); } catch { }
-                                }
-                            }
-                            else
-                            {
-                                //NotifiLib.SendNotification("<color=grey>[</color><color=red>DISABLE</color><color=grey>]</color> " + target.toolTip);
-                                if (target.disableMethod != null)
-                                {
-                                    try { target.disableMethod.Invoke(); } catch { }
-                                }
-                            }
-                        }
-                        else
-                        {
-                            //NotifiLib.SendNotification("<color=grey>[</color><color=green>ENABLE</color><color=grey>]</color> " + target.toolTip);
-                            if (target.method != null)
-                            {
-                                try { target.method.Invoke(); } catch { }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        UnityEngine.Debug.LogError(buttonText + " does not exist");
-                    }
+                    pageNumber = (int)ClampMax(pageNumber, lastPage, 0);
                 }
+                RecreateMenu();
+                return;
             }
+            ButtonInfo target = GetIndex(buttonText);
+            if (target == null)
+            {
+                UnityEngine.Debug.LogError(buttonText + " does not exist");
+                return;
+            }
+
+            if (target.isTogglable)
+            {
+                target.enabled = !target.enabled;
+
+                if (target.enableMethod != null && target.enabled)
+                try {target.enableMethod.Invoke();} catch { }
+
+                if (target.disableMethod != null && !target.enabled)
+                    try {target.disableMethod.Invoke();} catch { }
+            }
+
+            if (target.method != null)
+                try {target.method.Invoke();} catch { }
+
             RecreateMenu();
         }
 
@@ -627,7 +619,6 @@ namespace StupidTemplate.Menu
         public static float projDebounceType = 0.1f;
         public static float projDebounce = 0f;
         public static bool hasRemovedThisFrame = false;
-        
 
         // Important
 

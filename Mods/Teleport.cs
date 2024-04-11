@@ -6,7 +6,7 @@ using Vector3 = UnityEngine.Vector3;
 
 namespace StupidTemplate.Mods
 {
-    internal class TPShit
+    internal class Teleport
     {
         public static void ForestTP()
         {
