@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Text;
+using Vector3 = UnityEngine.Vector3;
 
 namespace StupidTemplate.Mods
 {
@@ -8,7 +10,7 @@ namespace StupidTemplate.Mods
     {
         public static void ForestTP()
         {
-            GorillaTagger.Instance.offlineVRRig.transform.position = new UnityEngine.Vector3 (-63.9905 1.0616 - 69.2698);
+            GorillaTagger.Instance.offlineVRRig.transform.position = new UnityEngine.Vector3(-63.9905f, 1.0616f, -69.2698f);
         }
 
     }

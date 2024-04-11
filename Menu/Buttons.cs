@@ -26,7 +26,7 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "Movement", method =() => SettingsMods.MovementSettings(), isTogglable = false, toolTip = "Opens the movement settings for the menu."},
                 new ButtonInfo { buttonText = "Projectile", method =() => SettingsMods.ProjectileSettings(), isTogglable = false, toolTip = "Opens the projectile settings for the menu."},
                 new ButtonInfo { buttonText = "Visuals", method =() => SettingsMods.VisuaSettings(), isTogglable = false, toolTip = "visual mods"},
-                new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.TPStuff(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+                new ButtonInfo { buttonText = "TPS", method =() => SettingsMods.TPStuff(), isTogglable = false, toolTip = "Opens the settings for the menu."},
             },
 
             new ButtonInfo[] { // Menu Settings
