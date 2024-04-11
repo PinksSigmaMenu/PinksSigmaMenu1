@@ -49,6 +49,7 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "InvisMonke", method =() => Movement.InvisMonke(), isTogglable = true, toolTip = "makes you invisable bitch"},
                 new ButtonInfo { buttonText = "Spazzy Monkey", method =() => Movement.InsaneMonkey(), isTogglable = true, toolTip = "makes you invisable bitch"},
                 new ButtonInfo { buttonText = "Fly", method =() => Movement.FlyMode(), isTogglable = true, toolTip = "Makes you flyy!!"},
+                
 
             },
 
@@ -76,7 +77,7 @@ namespace StupidTemplate.Menu
                  new ButtonInfo { buttonText = "Bone ESP", method =() => Visuals.BoneESP(), isTogglable = true, toolTip = "Bone ESP"},
             },
 
-           new ButtonInfo[] { //Visual shit
+           new ButtonInfo[] { //tp stuff
                
                new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
                new ButtonInfo { buttonText = "TP to for", method =() => TPShit.ForestTP(), isTogglable = false, toolTip = "Spams Food!"},
