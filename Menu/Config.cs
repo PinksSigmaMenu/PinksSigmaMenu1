@@ -1,5 +1,4 @@
-﻿using Fusion;
-using StupidTemplate.Classes;
+﻿using StupidTemplate.Classes;
 using UnityEngine;
 using static StupidTemplate.Menu.Main;
 
@@ -11,17 +10,16 @@ namespace StupidTemplate
 
         public static ExtGradient[] buttonColors = new ExtGradient[]
         {
-            new ExtGradient{ colors = GetSolidGradient(darkGrey) }, // Disabled
+            new ExtGradient{colors = GetSolidGradient(Color.gray)}, // Disabled
             new ExtGradient{isRainbow = false} // Enabled
         };
-
         public static Color[] textColors = new Color[]
         {
-            Color.magenta, //Disabled
+            Color.white, // Disabled
             Color.yellow // Enabled
         };
-        
 
+        
 
         public static Font currentFont = (Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font);
 
