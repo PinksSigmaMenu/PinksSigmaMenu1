@@ -1,5 +1,6 @@
 ﻿using static StupidTemplate.Menu.Main;
 using static StupidTemplate.Config;
+using GTAG_NotificationLib;
 
 namespace StupidTemplate.Mods
 {
@@ -37,7 +38,9 @@ namespace StupidTemplate.Mods
 
         public static void OPStuff()
         {
-            buttonsType = 7;
+            buttonsType = 7;            
+            
+            NotifiLib.SendNotification("almost all mod need master");                      
         }
 
         public static void RightHand()

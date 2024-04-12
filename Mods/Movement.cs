@@ -16,6 +16,27 @@ using UnityEngine.Animations.Rigging;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.Playables;
 using Valve.VR.InteractionSystem;
+using BepInEx;
+using ExitGames.Client.Photon;
+using Fusion;
+using g3;
+using GorillaNetworking;
+using GorillaTag;
+using HarmonyLib;
+using Meta.WitAi.Events;
+using PlayFab;
+using POpusCodec.Enums;
+using System.Diagnostics.Contracts;
+using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
+using Unity.Mathematics;
+using UnityEngine.InputSystem;
+using UnityEngine.SocialPlatforms;
+using UnityEngine.UIElements;
+using Valve.Newtonsoft.Json.Converters;
+using Valve.VR;
+using static Unity.Burst.Intrinsics.Arm;
 using static StupidTemplate.Menu.Main;
 
 namespace StupidTemplate.Mods
@@ -128,6 +149,117 @@ namespace StupidTemplate.Mods
                 }
             }
         }
+        public static void nofingermovment()
+        {
+
+            ControllerInputPoller.instance.leftControllerGripFloat = 0f;
+            ControllerInputPoller.instance.rightControllerGripFloat = 0f;
+            ControllerInputPoller.instance.leftControllerIndexFloat = 0f;
+            ControllerInputPoller.instance.rightControllerIndexFloat = 0f;
+            ControllerInputPoller.instance.leftControllerPrimaryButton = false;
+            ControllerInputPoller.instance.leftControllerSecondaryButton = false;
+            ControllerInputPoller.instance.rightControllerPrimaryButton = false;
+            ControllerInputPoller.instance.rightControllerSecondaryButton = false;
+        }
+        public static bool fakeoculusmenu()
+        {
+            if (ControllerInputPoller.instance.rightControllerPrimaryButton)
+            {
+                Movement.nofingermovment();
+            }
+            {
+                System.Type type = GorillaLocomotion.Player.Instance.GetType();
+                FieldInfo feildInfo = type.GetField("leftHandHolding", BindingFlags.NonPublic | BindingFlags.Instance);
+                feildInfo.SetValue(GorillaLocomotion.Player.Instance, ControllerInputPoller.instance.leftControllerPrimaryButton);
+                type = GorillaLocomotion.Player.Instance.GetType();
+                feildInfo = type.GetField("rightHandHolding", BindingFlags.NonPublic | BindingFlags.Instance);
+                feildInfo.SetValue(GorillaLocomotion.Player.Instance, ControllerInputPoller.instance.leftControllerPrimaryButton);
+                GorillaLocomotion.Player.Instance.InReportMenu = ControllerInputPoller.instance.leftControllerPrimaryButton;
+                GameObject.Find("Player Objects/Player VR Controller/GorillaPlayer/TurnParent/LeftHand Controller").SetActive(!ControllerInputPoller.instance.leftControllerPrimaryButton);
+                GameObject.Find("Player Objects/Player VR Controller/GorillaPlayer/TurnParent/LeftHand Controller").SetActive(!ControllerInputPoller.instance.leftControllerPrimaryButton);
+            }
+
+            return false;
+        }
+        
+        public static void RpcFlush()
+        {
+            GorillaNot.instance.rpcErrorMax = int.MaxValue;
+            GorillaNot.instance.rpcCallLimit = int.MaxValue;
+            GorillaNot.instance.logErrorMax = int.MaxValue;
+
+            PhotonNetwork.RemoveRPCs(PhotonNetwork.LocalPlayer);
+            PhotonNetwork.OpCleanRpcBuffer(GorillaTagger.Instance.myVRRig);
+            PhotonNetwork.RemoveBufferedRPCs(GorillaTagger.Instance.myVRRig.ViewID, null, null);
+            PhotonNetwork.RemoveRPCsInGroup(int.MaxValue);
+            PhotonNetwork.SendAllOutgoingCommands();
+            GorillaNot.instance.OnPlayerLeftRoom(PhotonNetwork.LocalPlayer);
+        }
+        public static bool isMaster()
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static bool inModded()
+        {
+            if (PhotonNetwork.CurrentRoom.CustomProperties["gameMode"].ToString().Contains("MODDED"))
+            {
+                return true;
+            }
+            return false;
+        }
+        
+        public static void SigmaFlingGun()
+        {
+            if (ControllerInputPoller.instance.rightGrab)
+            {
+                RaycastHit raycastHit;
+                if (Physics.Raycast(GorillaLocomotion.Player.Instance.rightControllerTransform.position - GorillaLocomotion.Player.Instance.rightControllerTransform.up, -GorillaLocomotion.Player.Instance.rightControllerTransform.up, out raycastHit) && GunThingie == null)
+                {
+                    GunThingie = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                    UnityEngine.Object.Destroy(GunThingie.GetComponent<Rigidbody>());
+                    UnityEngine.Object.Destroy(GunThingie.GetComponent<SphereCollider>());
+                    GunThingie.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+
+                    ColorChanger colorChanger = GunThingie.AddComponent<ColorChanger>();
+                    GunThingie.GetComponent<Renderer>().material.color = Color.magenta;
+                    colorChanger.Start();
+                }
+                GunThingie.transform.position = raycastHit.point;
+                if (ControllerInputPoller.instance.rightControllerIndexFloat > 0f)
+                {
+                    VRRig possibly = raycastHit.collider.GetComponentInParent<VRRig>();
+                    if (possibly && possibly != GorillaTagger.Instance.offlineVRRig)
+                    
+                        foreach (GliderHoldable glider in GetGliders())
+                    {
+                        FieldInfo SyncedStateField = typeof(GliderHoldable).GetField("syncedState", BindingFlags.NonPublic | BindingFlags.Instance);
+                        object SyncedStateValue = SyncedStateField.GetValue(glider);
+
+                        FieldInfo RiderIdField = SyncedStateValue.GetType().GetField("riderId", BindingFlags.Public | BindingFlags.Instance);
+                        RiderIdField.SetValue(SyncedStateValue, RigShit.GetPlayerFromVRRig(possibly).ActorNumber);
+
+                        SyncedStateField.SetValue(glider, SyncedStateValue);
+
+                        FieldInfo RigidField = typeof(GliderHoldable).GetField("rb", BindingFlags.NonPublic | BindingFlags.Instance);
+                        Rigidbody rb = (Rigidbody)RigidField.GetValue(glider);
+
+                        rb.isKinematic = false;
+                        rb.velocity = new Vector3(0f, 100f, 0f);
+
+                        RpcFlush();
+                    }
+                }
+                else
+                {
+                    GameObject.Destroy(GunThingie);
+                }
+            }
+        }
         public static void Platformss()
         {
             {
@@ -169,6 +301,7 @@ namespace StupidTemplate.Mods
                 UnityEngine.Object.Destroy(LPlat, Time.deltaTime);
             }
         }
+
         public static void UpAndDownsyndrome()
         {
             if (ControllerInputPoller.instance != null)
@@ -629,17 +762,7 @@ namespace StupidTemplate.Mods
                     GunThingie = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                     UnityEngine.Object.Destroy(GunThingie.GetComponent<Rigidbody>());
                     UnityEngine.Object.Destroy(GunThingie.GetComponent<SphereCollider>());
-                    GunThingie.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-                    GameObject Line = new GameObject("Line");
-                    LineRenderer liner = Line.AddComponent<LineRenderer>();
-                    liner.material.shader = Shader.Find("GUI/Text Shader");
-                    liner.startColor = Color.magenta;
-                    liner.endColor = Color.magenta;
-                    liner.startWidth = 0.025f;
-                    liner.endWidth = 0.025f;
-                    liner.positionCount = 2;
-                    liner.useWorldSpace = true;
-                    liner.SetPosition(0, GorillaTagger.Instance.rightHandTransform.position);                   
+                    GunThingie.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);                  
 
                     ColorChanger colorChanger = GunThingie.AddComponent<ColorChanger>();
                     GunThingie.GetComponent<Renderer>().material.color = Color.magenta;

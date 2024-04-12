@@ -1,2 +1,51 @@
 V1
 2:setMaster,D
+2:SigmaFlingGun,P
+2:raycastHit,R
+2:colorChanger,w
+2:glider,T
+2:SyncedStateField,N
+2:SyncedStateValue,E
+2:RiderIdField,R0
+2:RigidField,h
+2:rb,b
+2:Mods,n
+2:StupidTemplate,I
+2:s2142883118,w6
+2:t2142883118,H
+1:1,StupidTemplate,I_.n_,w6_,H_
+3:1,1,"fected"
+3:1,2,"leftHandHolding"
+3:1,3,"rightHandHolding"
+3:1,4,"Player Objects/Player VR Controller/GorillaPlayer/TurnParent/LeftHand Controller"
+3:1,5,"gameMode"
+3:1,6,"MODDED"
+3:1,7,"syncedState"
+3:1,8,"riderId"
+3:1,9,"rb"
+3:1,10,"GUI/Text Shader"
+3:1,11,"Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional/GliderHoldable"
+3:1,12,"Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (1)/GliderHoldable"
+3:1,13,"Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (4)/GliderHoldable"
+3:1,14,"Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (5)/GliderHoldable"
+3:1,15,"Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (6)/GliderHoldable"
+3:1,16,"Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (7)/GliderHoldable"
+3:1,17,"Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (8)/GliderHoldable"
+3:1,18,"Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (9)/GliderHoldable"
+3:1,19,"Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (10)/GliderHoldable"
+3:1,20,"Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (11)/GliderHoldable"
+3:1,21,"Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (12)/GliderHoldable"
+3:1,22,"Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (17)/GliderHoldable"
+3:1,23,"Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (18)/GliderHoldable"
+3:1,24,"Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (19)/GliderHoldable"
+3:1,25,"Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (20)/GliderHoldable"
+3:1,26,"Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (21)/GliderHoldable"
+3:1,27,"Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (23)/GliderHoldable"
+3:1,28,"Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (24)/GliderHoldable"
+3:1,29,"Cave Bat Holdable"
+3:1,30,"BeachBall"
+3:1,31,"Floating Bug Holdable"
+3:1,32,"Some none sigam tryed to report your sigma actions"
+2:i1553588922,J
+2:a1553588922,p
+2:ms1553588922,pR
