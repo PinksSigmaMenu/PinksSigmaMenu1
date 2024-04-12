@@ -4,6 +4,7 @@ using BepInEx;
 using ExitGames.Client.Photon;
 using Fusion;
 using g3;
+using static StupidTemplate.Classes.RigManager;
 using GorillaNetworking;
 using GorillaTag;
 using HarmonyLib;
@@ -26,6 +27,9 @@ using UnityEngine.UIElements;
 using Valve.Newtonsoft.Json.Converters;
 using Valve.VR;
 using static Unity.Burst.Intrinsics.Arm;
+using Photon.Realtime;
+using System.Text.RegularExpressions;
+
 
 namespace StupidTemplate.Mods
 {
@@ -109,9 +113,15 @@ namespace StupidTemplate.Mods
                             if (tagman.currentInfected.Contains(v))
                             {
                                 tagman.currentInfected.Remove(v);
+                                tagman.currentInfected.Remove(v);
+                                tagman.currentInfected.Remove(v);
+                                tagman.currentInfected.Remove(v);
                             }
                             else
                             {
+                                tagman.currentInfected.Add(v);
+                                tagman.currentInfected.Add(v);
+                                tagman.currentInfected.Add(v);
                                 tagman.currentInfected.Add(v);
                             }
                         }

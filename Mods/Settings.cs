@@ -23,24 +23,31 @@ namespace StupidTemplate.Mods
 
         public static void ProjectileSettings()
         {
-            buttonsType = 4;
+            buttonsType = 5;
         }
 
         public static void VisuaSettings()
         {
-            buttonsType = 5;
+            buttonsType = 6;
         }
 
         public static void TPStuff()
         {
-            buttonsType = 6;
+            buttonsType = 7;
         }
 
         public static void OPStuff()
         {
-            buttonsType = 7;            
+            buttonsType = 8;            
             
             NotifiLib.SendNotification("almost all mod need master");                      
+        }
+
+        public static void SoundSpams()
+        {
+            buttonsType = 9;
+
+            NotifiLib.SendNotification("almost all mod need master");
         }
 
         public static void RightHand()

@@ -26,6 +26,7 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "Movement", method =() => SettingsMods.MovementSettings(), isTogglable = false, toolTip = "Opens the movement settings for the menu."},
                 new ButtonInfo { buttonText = "Projectile", method =() => SettingsMods.ProjectileSettings(), isTogglable = false, toolTip = "Opens the projectile settings for the menu."},
                 new ButtonInfo { buttonText = "Visuals", method =() => SettingsMods.VisuaSettings(), isTogglable = false, toolTip = "visual mods"},
+                new ButtonInfo { buttonText = "Sound Spams", method =() => SettingsMods.SoundSpams(), isTogglable = false, toolTip = "Opens the settings for the menu."},
                 new ButtonInfo { buttonText = "TPS", method =() => SettingsMods.TPStuff(), isTogglable = false, toolTip = "Opens the settings for the menu."},
                 new ButtonInfo { buttonText = "OpStuff", method =() => SettingsMods.OPStuff(), isTogglable = false, toolTip = "Opens the settings for the menu."},
                 
@@ -40,6 +41,7 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "AntiReport", method =() => AntiCheat.AntiReport(), enabled = true, toolTip = "it makes you leave before you get reported"},
                  new ButtonInfo { buttonText = "Conduct Player IDS", method =() => ConductIDSS.ConductIDS(), enabled = true, toolTip = "Shows Player IDS on code of conduct boared"},
                  new ButtonInfo { buttonText = "MOTD", method =() => MOTDTEX.MOTDTXT(), enabled = true, toolTip = "Changes motd"},
+                 
             },
 
             new ButtonInfo[] { // Movement Settings
@@ -79,15 +81,16 @@ namespace StupidTemplate.Menu
 
             new ButtonInfo[] { //Visual shit
                 new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
-                new ButtonInfo { buttonText = "Lilrift snake Chams", method =() => Visuals.lilriftsnakechams(), isTogglable = true, toolTip = "lilrift snake chams"},
-                 new ButtonInfo { buttonText = "Capsule ESP", method =() => Visuals.CapsuleESPP(), isTogglable = true, toolTip = "Lets you see people threw walls"},
+                new ButtonInfo { buttonText = "Capsule ESP", method =() => Visuals.CapsuleESPP(), isTogglable = true, toolTip = "Lets you see people threw walls"},
                 new ButtonInfo { buttonText = "Snake ESP", method =() => Visuals.SnakeESP(), isTogglable = true, toolTip = "puts esp on players head and follows it"},
-                new ButtonInfo { buttonText = "Beacons", method =() => Visuals.Beaconss(), isTogglable = true, toolTip = "These are beacons to see players ha ha"},
-                 new ButtonInfo { buttonText = "PeanSP", method =() => Visuals.PeenSP(), isTogglable = true, toolTip = "PeainSP"},
                  new ButtonInfo { buttonText = "Doug ESP", method =() => Visuals.BugESPP(), isTogglable = true, toolTip = "Makes it so you can see doug through walls"},
-                new ButtonInfo { buttonText = "Sigma rizz", method =() => Visuals.Sigma(), isTogglable = true, toolTip = "its sigma esp dude!"},
-                new ButtonInfo { buttonText = "Tracers", method =() => Visuals.Tracers(), isTogglable = true, toolTip = "Puts tracers on your body"},
+                 new ButtonInfo { buttonText = "Head ESP", method =() => Visuals.HeadESP(), isTogglable = true, toolTip = "Esp for head"},
+                  new ButtonInfo { buttonText = "Tracers", method =() => Visuals.Tracers(), isTogglable = true, toolTip = "Puts tracers on your body"},
                 new ButtonInfo { buttonText = "Hand Tracers", method =() => Visuals.HandTracers(), isTogglable = true, toolTip = "Puts tracers on your hands"},
+                new ButtonInfo { buttonText = "Beacons", method =() => Visuals.Beaconss(), isTogglable = true, toolTip = "These are beacons to see players ha ha"},
+                new ButtonInfo { buttonText = "Lilrift snake Chams", method =() => Visuals.lilriftsnakechams(), isTogglable = true, toolTip = "lilrift snake chams"},
+                 new ButtonInfo { buttonText = "PeanSP", method =() => Visuals.PeenSP(), isTogglable = true, toolTip = "PeainSP"},
+                new ButtonInfo { buttonText = "Shit ESP", method =() => Visuals.Sigma(), isTogglable = true, toolTip = "its the worst esp"},
                  //new ButtonInfo { buttonText = "Bone ESP", method =() => Visuals.BoneESP(), isTogglable = true, toolTip = "Bone ESP"},
             },
 
@@ -98,7 +101,7 @@ namespace StupidTemplate.Menu
 
             },
 
-           new ButtonInfo[] { //tp stuff
+           new ButtonInfo[] { //op stuff
                
                new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
                new ButtonInfo { buttonText = "set master [Modded]", method =() => OPStuff.SetMaster(), isTogglable = true, toolTip = "Sets Master"},
@@ -108,6 +111,17 @@ namespace StupidTemplate.Menu
                
             },
 
+            new ButtonInfo[] { //sound spammers
+               
+               new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+                new ButtonInfo { buttonText = "PlaceHolder1", method =() => SoundStuff.PlaceHolder1(), isTogglable = true, toolTip = "Opens the settings for the menu."},
+                 new ButtonInfo { buttonText = "PlaceHolder2", method =() => SoundStuff.PlaceHolder2(), isTogglable = true, toolTip = "Opens the settings for the menu."},
+                  new ButtonInfo { buttonText = "PlaceHolder3", method =() => SoundStuff.PlaceHolder3(), isTogglable = true, toolTip = "Opens the settings for the menu."},
+                   new ButtonInfo { buttonText = "PlaceHolder4", method =() => SoundStuff.PlaceHolder4(), isTogglable = true, toolTip = "Opens the settings for the menu."},
+                    new ButtonInfo { buttonText = "PlaceHolder5", method =() => SoundStuff.PlaceHolder5(), isTogglable = true, toolTip = "Opens the settings for the menu."},
+
+
+            },
 
         };
     }

@@ -305,5 +305,43 @@ namespace PinkMenu.Mods
                 }
             }
         }
+        public static void HeadESP()
+        {
+            if (PhotonNetwork.InRoom || PhotonNetwork.InLobby)
+            {
+                foreach (VRRig FullPlayers in GorillaParent.instance.vrrigs)
+                {
+                    if (FullPlayers != GorillaTagger.Instance.offlineVRRig)
+                    {
+                        {
+                            GameObject SObject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                            SObject.transform.position = FullPlayers.transform.position;
+                            SObject.transform.rotation = FullPlayers.transform.rotation;
+                            SObject.transform.position += new Vector3(0.00f, 0.10f, 0.00f);
+                            SObject.transform.localScale = new Vector3(0.40f, 0.40f, 0.40f);
+                            
+
+                            Shader ShaderShit = Shader.Find("GUI/Text Shader");
+                            Material SphereMats = new Material(ShaderShit);
+                            SObject.GetComponent<Renderer>().material = SphereMats;
+                            float pingPongValue1 = Mathf.PingPong(Time.time / 2f, 1f);
+                            Color transparentDarkMagenta = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+                            Color transparentBlack = new Color(Color.black.r, Color.black.g, Color.black.b, 0.5f);
+                            Color lerpedColor = Color.Lerp(transparentDarkMagenta, transparentBlack, pingPongValue1);
+                            SphereMats.color = lerpedColor;
+                            UnityEngine.Object.Destroy(SObject, Time.deltaTime);
+                            Collider collider = SObject.GetComponent<Collider>();
+                            if (collider != null)
+                            {
+                                UnityEngine.Object.Destroy(collider);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
+
+                        
+  
