@@ -107,7 +107,6 @@ namespace StupidTemplate.Menu
                new ButtonInfo { buttonText = "set master [M]", method =() => OPStuff.AcidAll(), isTogglable = true, toolTip = "Sets Master"},
                new ButtonInfo { buttonText = "Mat Spam [M]", method =() => OPStuff.MatAll(), isTogglable = true, toolTip = "Sets Master"},
                new ButtonInfo { buttonText = "Spaz Soda [M]", method =() => OPStuff.Spazsoda(), isTogglable = true, toolTip = "Sets Master"},
-               
             },
            new ButtonInfo[] {
                
@@ -116,17 +115,9 @@ namespace StupidTemplate.Menu
 
             },
 
-            new ButtonInfo[] { //sound spammers
-               
-               new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
-                new ButtonInfo { buttonText = "PlaceHolder1", method =() => SoundStuff.PlaceHolder1(), isTogglable = true, toolTip = "Opens the settings for the menu."},
-                 new ButtonInfo { buttonText = "PlaceHolder2", method =() => SoundStuff.PlaceHolder2(), isTogglable = true, toolTip = "Opens the settings for the menu."},
-                  new ButtonInfo { buttonText = "PlaceHolder3", method =() => SoundStuff.PlaceHolder3(), isTogglable = true, toolTip = "Opens the settings for the menu."},
-                   new ButtonInfo { buttonText = "PlaceHolder4", method =() => SoundStuff.PlaceHolder4(), isTogglable = true, toolTip = "Opens the settings for the menu."},
-                    new ButtonInfo { buttonText = "PlaceHolder5", method =() => SoundStuff.PlaceHolder5(), isTogglable = true, toolTip = "Opens the settings for the menu."},
+           
 
 
-            },
 
         };
     }
