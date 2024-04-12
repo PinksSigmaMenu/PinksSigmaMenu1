@@ -12,6 +12,7 @@ using System.ComponentModel.Design;
 using System.Linq.Expressions;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.Playables;
 using Valve.VR.InteractionSystem;
@@ -93,6 +94,37 @@ namespace StupidTemplate.Mods
                         //NotifiLib.SendNotification("<color=grey>[</color><color=purple>SUCCESS</color><color=grey>]</color> <color=white>Everyone is tagged!</color>");
                         GorillaTagger.Instance.offlineVRRig.enabled = true;
                     }
+                }
+            }
+        }
+        public static void HuntBreadcrumbs()
+        {
+            GorillaHuntManager sillyComputer = GorillaGameManager.instance.gameObject.GetComponent<GorillaHuntManager>();
+            Photon.Realtime.Player target = sillyComputer.GetTargetOf(PhotonNetwork.LocalPlayer);
+            foreach (Photon.Realtime.Player player in PhotonNetwork.PlayerList)
+            {
+                VRRig vrrig = RigManager.GetVRRigFromPlayer(player);
+                if (player == target)
+                {
+                    UnityEngine.Color thecolor = vrrig.playerColor;
+
+                    GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                    UnityEngine.Object.Destroy(sphere.GetComponent<SphereCollider>());
+                    sphere.GetComponent<Renderer>().material.color = thecolor;
+                    sphere.transform.position = vrrig.transform.position;
+                    sphere.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                    UnityEngine.Object.Destroy(sphere, 20f);
+                }
+                if (sillyComputer.GetTargetOf(player) == PhotonNetwork.LocalPlayer)
+                {
+                    UnityEngine.Color thecolor = Color.magenta;
+                    GameObject box = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                    UnityEngine.Object.Destroy(sphere.GetComponent<SphereCollider>());
+                    sphere.GetComponent<Renderer>().material.color = thecolor;
+                    sphere.transform.position = vrrig.transform.position;
+                    sphere.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                    UnityEngine.Object.Destroy(sphere, 20f);
                 }
             }
         }
@@ -232,6 +264,28 @@ namespace StupidTemplate.Mods
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
             }
         }
+        public static string[] Gliders = new string[]
+   {
+            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional/GliderHoldable",
+            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (1)/GliderHoldable",
+            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (4)/GliderHoldable",
+            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (5)/GliderHoldable",
+            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (6)/GliderHoldable",
+            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (7)/GliderHoldable",
+            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (8)/GliderHoldable",
+            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (9)/GliderHoldable",
+            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (10)/GliderHoldable",
+            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (11)/GliderHoldable",
+            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (12)/GliderHoldable",
+            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (17)/GliderHoldable",
+            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (18)/GliderHoldable",
+            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (19)/GliderHoldable",
+            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (20)/GliderHoldable",
+            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (21)/GliderHoldable",
+            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (23)/GliderHoldable",
+            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (24)/GliderHoldable",
+   };
+
         public static void BatHalo()
         {
             float offset = 360f / 3f;

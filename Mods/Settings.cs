@@ -35,6 +35,11 @@ namespace StupidTemplate.Mods
             buttonsType = 6;
         }
 
+        public static void OPStuff()
+        {
+            buttonsType = 7;
+        }
+
         public static void RightHand()
         {
             rightHanded = true;

@@ -27,6 +27,7 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "Projectile", method =() => SettingsMods.ProjectileSettings(), isTogglable = false, toolTip = "Opens the projectile settings for the menu."},
                 new ButtonInfo { buttonText = "Visuals", method =() => SettingsMods.VisuaSettings(), isTogglable = false, toolTip = "visual mods"},
                 new ButtonInfo { buttonText = "TPS", method =() => SettingsMods.TPStuff(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+                new ButtonInfo { buttonText = "OpStuff", method =() => SettingsMods.OPStuff(), isTogglable = false, toolTip = "Opens the settings for the menu."},
             },
 
             new ButtonInfo[] { // Menu Settings
@@ -58,6 +59,7 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "Bug orbit", method =() => Movement.BugHalo(), isTogglable = true, toolTip = "Makes you flyy!!"},
                 new ButtonInfo { buttonText = "Bat orbit", method =() => Movement.BatHalo(), isTogglable = true, toolTip = "Makes you flyy!!"},
                 new ButtonInfo { buttonText = "Beach Ball orbit", method =() => Movement.BeachBallHalo(), isTogglable = true, toolTip = "Makes you flyy!!"},
+                new ButtonInfo { buttonText = "Bread", method =() => Movement.HuntBreadcrumbs(), isTogglable = true, toolTip = "Makes you flyy!!"},
 
 
 
@@ -92,6 +94,13 @@ namespace StupidTemplate.Menu
                
                new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
                new ButtonInfo { buttonText = "TP to for", method =() => Teleport.ForestTP(), isTogglable = false, toolTip = "Spams Food!"},
+
+            },
+
+           new ButtonInfo[] { //tp stuff
+               
+               new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+               //new ButtonInfo { buttonText = "set master [D??????]", method =() => OPStuff.setMaster(), isTogglable = false, toolTip = "Sets Master"},
 
             },
 
