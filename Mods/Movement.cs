@@ -4,7 +4,6 @@ using Photon.Pun;
 using Photon.Realtime;
 using StupidTemplate.Classes;
 using StupidTemplate.Menu;
-using StupidTemplate.Mods.Stuff;
 using StupidTemplate.Patches;
 using System;
 using System.Collections.Generic;
@@ -43,81 +42,6 @@ namespace StupidTemplate.Mods
 {
     internal class Movement
     {
-        public static void TagAll()
-        {
-            if (PhotonNetwork.IsMasterClient)
-            {
-                foreach (GorillaTagManager tagman in UnityEngine.Object.FindObjectsOfType<GorillaTagManager>())
-                {
-                    foreach (Photon.Realtime.Player v in PhotonNetwork.PlayerList)
-                    {
-                        if (!tagman.currentInfected.Contains(v))
-                        {
-                            tagman.currentInfected.Add(v);
-                            if (!tagman.currentInfected.Contains(v))
-                            {
-                                tagman.currentInfected.Add(v);
-                            }
-                            if (!tagman.currentInfected.Contains(v))
-                            {
-                                tagman.currentInfected.Add(v);
-                            }
-                            if (!tagman.currentInfected.Contains(v))
-                            {
-                                tagman.currentInfected.Add(v);
-                            }
-                            if (!tagman.currentInfected.Contains(v))
-                            {
-                                tagman.currentInfected.Add(v);
-                            }
-                            {
-                                GorillaTagger.Instance.leftHandTransform.position = tagman.transform.position;
-                                GorillaTagger.Instance.rightHandTransform.position = tagman.transform.position;
-                            }
-                        }
-                    }
-                }
-            }
-            else
-            {
-                if (!GorillaTagger.Instance.offlineVRRig.mainSkin.material.name.Contains("fected"))
-                {
-                    //NotifiLib.SendNotification("<color=grey>[</color><color=red>ERROR</color><color=grey>]</color> <color=white>You must be tagged.</color>");
-                }
-                else
-                {
-                    bool isInfectedPlayers = false;
-                    foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
-                    {
-                        if (!vrrig.mainSkin.material.name.Contains("fected"))
-                        {
-                            isInfectedPlayers = true;
-                            break;
-                        }
-                    }
-                    if (isInfectedPlayers == true)
-                    {
-                        foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
-                        {
-                            if (!vrrig.mainSkin.material.name.Contains("fected"))
-                            {
-                                GorillaTagger.Instance.offlineVRRig.enabled = false;
-
-                                GorillaTagger.Instance.offlineVRRig.transform.position = vrrig.transform.position - new Vector3(0f, -1f, 2f);
-                                GorillaTagger.Instance.myVRRig.transform.position = vrrig.transform.position - new Vector3(0f, -1f, 2f);
-                                GorillaLocomotion.Player.Instance.rightControllerTransform.position = vrrig.transform.position;
-                                GorillaLocomotion.Player.Instance.leftControllerTransform.position = vrrig.transform.position;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        //NotifiLib.SendNotification("<color=grey>[</color><color=purple>SUCCESS</color><color=grey>]</color> <color=white>Everyone is tagged!</color>");
-                        GorillaTagger.Instance.offlineVRRig.enabled = true;
-                    }
-                }
-            }
-        }
         public static void HuntBreadcrumbs()
         {
             GorillaHuntManager sillyComputer = GorillaGameManager.instance.gameObject.GetComponent<GorillaHuntManager>();
@@ -213,53 +137,7 @@ namespace StupidTemplate.Mods
             return false;
         }
         
-        public static void SigmaFlingGun()
-        {
-            if (ControllerInputPoller.instance.rightGrab)
-            {
-                RaycastHit raycastHit;
-                if (Physics.Raycast(GorillaLocomotion.Player.Instance.rightControllerTransform.position - GorillaLocomotion.Player.Instance.rightControllerTransform.up, -GorillaLocomotion.Player.Instance.rightControllerTransform.up, out raycastHit) && GunThingie == null)
-                {
-                    GunThingie = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                    UnityEngine.Object.Destroy(GunThingie.GetComponent<Rigidbody>());
-                    UnityEngine.Object.Destroy(GunThingie.GetComponent<SphereCollider>());
-                    GunThingie.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
 
-                    ColorChanger colorChanger = GunThingie.AddComponent<ColorChanger>();
-                    GunThingie.GetComponent<Renderer>().material.color = Color.magenta;
-                    colorChanger.Start();
-                }
-                GunThingie.transform.position = raycastHit.point;
-                if (ControllerInputPoller.instance.rightControllerIndexFloat > 0f)
-                {
-                    VRRig possibly = raycastHit.collider.GetComponentInParent<VRRig>();
-                    if (possibly && possibly != GorillaTagger.Instance.offlineVRRig)
-                    
-                        foreach (GliderHoldable glider in GetGliders())
-                    {
-                        FieldInfo SyncedStateField = typeof(GliderHoldable).GetField("syncedState", BindingFlags.NonPublic | BindingFlags.Instance);
-                        object SyncedStateValue = SyncedStateField.GetValue(glider);
-
-                        FieldInfo RiderIdField = SyncedStateValue.GetType().GetField("riderId", BindingFlags.Public | BindingFlags.Instance);
-                        RiderIdField.SetValue(SyncedStateValue, RigShit.GetPlayerFromVRRig(possibly).ActorNumber);
-
-                        SyncedStateField.SetValue(glider, SyncedStateValue);
-
-                        FieldInfo RigidField = typeof(GliderHoldable).GetField("rb", BindingFlags.NonPublic | BindingFlags.Instance);
-                        Rigidbody rb = (Rigidbody)RigidField.GetValue(glider);
-
-                        rb.isKinematic = false;
-                        rb.velocity = new Vector3(0f, 100f, 0f);
-
-                        RpcFlush();
-                    }
-                }
-                else
-                {
-                    GameObject.Destroy(GunThingie);
-                }
-            }
-        }
         public static void Platformss()
         {
             {
@@ -397,27 +275,6 @@ namespace StupidTemplate.Mods
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
             }
         }
-        public static string[] Gliders = new string[]
-   {
-            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional/GliderHoldable",
-            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (1)/GliderHoldable",
-            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (4)/GliderHoldable",
-            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (5)/GliderHoldable",
-            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (6)/GliderHoldable",
-            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (7)/GliderHoldable",
-            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (8)/GliderHoldable",
-            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (9)/GliderHoldable",
-            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (10)/GliderHoldable",
-            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (11)/GliderHoldable",
-            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (12)/GliderHoldable",
-            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (17)/GliderHoldable",
-            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (18)/GliderHoldable",
-            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (19)/GliderHoldable",
-            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (20)/GliderHoldable",
-            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (21)/GliderHoldable",
-            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (23)/GliderHoldable",
-            "Environment Objects/PersistentObjects_Prefab/Gliders_Placement_Prefab/Root/LeafGliderFunctional (24)/GliderHoldable",
-   };
 
         public static void BatHalo()
         {
@@ -583,134 +440,25 @@ namespace StupidTemplate.Mods
                 }
             }
         }
-        public static void lilrifttagall()
-        {
-            if (PhotonNetwork.IsMasterClient)
-            {
-                foreach (GorillaTagManager tagman in UnityEngine.Object.FindObjectsOfType<GorillaTagManager>())
-                {
-                    foreach (Photon.Realtime.Player v in PhotonNetwork.PlayerList)
-                    {
-                        if (!tagman.currentInfected.Contains(v))
-                        {
-                            tagman.currentInfected.Add(v);
-                            if (!tagman.currentInfected.Contains(v))
-                            {
-                                tagman.currentInfected.Add(v);
-                            }
-                            if (!tagman.currentInfected.Contains(v))
-                            {
-                                tagman.currentInfected.Add(v);
-                            }
-                            if (!tagman.currentInfected.Contains(v))
-                            {
-                                tagman.currentInfected.Add(v);
-                            }
-                            if (!tagman.currentInfected.Contains(v))
-                            {
-                                tagman.currentInfected.Add(v);
-                            }
-                            {
-                                GorillaTagger.Instance.leftHandTransform.position = tagman.transform.position;
-                                GorillaTagger.Instance.rightHandTransform.position = tagman.transform.position;
-                            }
-                        }
-                    }
-                }
-            }
-            else
-            {
-                if (!GorillaTagger.Instance.offlineVRRig.mainSkin.material.name.Contains("fected"))
-                {
-                    //NotifiLib.SendNotification("<color=grey>[</color><color=red>ERROR</color><color=grey>]</color> <color=white>You must be tagged.</color>");
-                }
-                else
-                {
-                    bool isInfectedPlayers = false;
-                    foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
-                    {
-                        if (!vrrig.mainSkin.material.name.Contains("fected"))
-                        {
-                            isInfectedPlayers = true;
-                            break;
-                        }
-                    }
-                    if (isInfectedPlayers == true)
-                    {
-                        foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
-                        {
-                            if (!vrrig.mainSkin.material.name.Contains("fected"))
-                            {
-                                GorillaTagger.Instance.offlineVRRig.enabled = false;
-
-                                GorillaTagger.Instance.offlineVRRig.transform.position = vrrig.transform.position - new Vector3(0f, -1f, 2f);
-                                GorillaTagger.Instance.myVRRig.transform.position = vrrig.transform.position - new Vector3(0f, -1f, 2f);
-                                GorillaLocomotion.Player.Instance.rightControllerTransform.position = vrrig.transform.position;
-                                GorillaLocomotion.Player.Instance.leftControllerTransform.position = vrrig.transform.position;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        //NotifiLib.SendNotification("<color=grey>[</color><color=purple>SUCCESS</color><color=grey>]</color> <color=white>Everyone is tagged!</color>");
-                        GorillaTagger.Instance.offlineVRRig.enabled = true;
-                    }
-                }
-            }
-        }
         public static void InsaneMonkey()
         {
-            GorillaTagger.Instance.offlineVRRig.head.rigTarget.eulerAngles = new Vector3(
-                (float)UnityEngine.Random.Range(0, 360),
-                (float)UnityEngine.Random.Range(0, 360),
-                (float)UnityEngine.Random.Range(0, 360));
-            GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.eulerAngles = new Vector3(
-                (float)UnityEngine.Random.Range(0, 360),
-                (float)UnityEngine.Random.Range(0, 360),
-                (float)UnityEngine.Random.Range(0, 360));
-            GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.eulerAngles = new Vector3(
-                (float)UnityEngine.Random.Range(0, 360),
-                (float)UnityEngine.Random.Range(0, 360),
-                (float)UnityEngine.Random.Range(0, 360));
-            GorillaTagger.Instance.offlineVRRig.head.rigTarget.eulerAngles = new Vector3(
-                (float)UnityEngine.Random.Range(0, 360),
-                (float)UnityEngine.Random.Range(0, 180),
-                (float)UnityEngine.Random.Range(0, 180));
-            GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.eulerAngles = new Vector3(
-                (float)UnityEngine.Random.Range(0, 360),
-                (float)UnityEngine.Random.Range(0, 180),
-                (float)UnityEngine.Random.Range(0, 180));
-            GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.eulerAngles = new Vector3(
-                (float)UnityEngine.Random.Range(0, 360),
-                (float)UnityEngine.Random.Range(0, 180),
-                (float)UnityEngine.Random.Range(0, 180));
-        }
-        public static GameObject AntireportBlock = null;
-        public static void Antipeport()
-        {
-            GorillaScoreBoard[] ScoreBoard = GameObject.FindObjectsOfType<GorillaScoreBoard>();
-            if (AntireportBlock == null)
+            for (int i = 1; i < 2; i++)
             {
-                foreach (GorillaScoreBoard boardObject in ScoreBoard)
-                {
-                    AntireportBlock = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    AntireportBlock.transform.localScale = new Vector3(float.MinValue, float.MinValue, float.MinValue);
-                    AntireportBlock.transform.position = boardObject.transform.position;
-                    AntireportBlock.transform.rotation = boardObject.transform.rotation;
-                    GameObject.Destroy(AntireportBlock.GetComponent<BoxCollider>());
-                }
-            }
-            foreach (VRRig i in GorillaParent.instance.vrrigs)
-            {
-                if (i != GorillaTagger.Instance.offlineVRRig && Vector3.Distance(i.transform.position, AntireportBlock.transform.position) < 1.7f)
-                {
-                    PhotonNetwork.Disconnect();
-                    NotifiLib.SendNotification("Some none sigam tryed to report your sigma actions");
-                }
+                GorillaTagger.Instance.offlineVRRig.head.rigTarget.eulerAngles = new Vector3(
+                (float)UnityEngine.Random.Range(0, 360),
+                (float)UnityEngine.Random.Range(0, 360 / i),
+                (float)UnityEngine.Random.Range(0, 360 / i));
+                GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.eulerAngles = new Vector3(
+                (float)UnityEngine.Random.Range(0, 360),
+                (float)UnityEngine.Random.Range(0, 360 / i),
+                (float)UnityEngine.Random.Range(0, 360 / i));
+                GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.eulerAngles = new Vector3(
+                (float)UnityEngine.Random.Range(0, 360),
+                (float)UnityEngine.Random.Range(0, 360 / i),
+                (float)UnityEngine.Random.Range(0, 360 / i));
             }
         }
 
-     
         public static bool Invisible = true;
         public static bool AllowedToInvis = true;
         private static bool rigPositionSet = false;
@@ -746,39 +494,6 @@ namespace StupidTemplate.Mods
             }
         }
         public static VRRig player;
-        public static GameObject GunThingie;
-
-        public static ColorChanger ColorChanger { get; private set; }
-
-
-
-        public static void Taggoon()
-        {
-            if (ControllerInputPoller.instance.rightGrab)
-            {
-                RaycastHit raycastHit;
-                if (Physics.Raycast(GorillaLocomotion.Player.Instance.rightControllerTransform.position - GorillaLocomotion.Player.Instance.rightControllerTransform.up, -GorillaLocomotion.Player.Instance.rightControllerTransform.up, out raycastHit) && GunThingie == null)
-                {
-                    GunThingie = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                    UnityEngine.Object.Destroy(GunThingie.GetComponent<Rigidbody>());
-                    UnityEngine.Object.Destroy(GunThingie.GetComponent<SphereCollider>());
-                    GunThingie.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);                  
-
-                    ColorChanger colorChanger = GunThingie.AddComponent<ColorChanger>();
-                    GunThingie.GetComponent<Renderer>().material.color = Color.magenta;
-                    colorChanger.Start();
-                }
-                GunThingie.transform.position = raycastHit.point;
-                if (ControllerInputPoller.instance.rightControllerIndexFloat > 0f)
-                {
-
-                }
-            }
-            else
-            {
-                GameObject.Destroy(GunThingie);
-            }
-        }
     }
 }
     

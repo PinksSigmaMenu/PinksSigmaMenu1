@@ -13,6 +13,7 @@ using UnityEngine.Rendering;
 using UnityEngine.UI;
 using static StupidTemplate.Menu.Buttons;
 using static StupidTemplate.Config;
+using Steamworks;
 
 namespace StupidTemplate.Menu
 {
@@ -24,6 +25,7 @@ namespace StupidTemplate.Menu
         public static void Prefix()
         {
             // Initialize Menu
+            //Debug.Log(PhotonNetwork.PhotonServerSettings.AppSettings.AppVersion);
                 try
                 {
                     bool toOpen = (!rightHanded && ControllerInputPoller.instance.leftControllerSecondaryButton) || (rightHanded && ControllerInputPoller.instance.rightControllerSecondaryButton);
@@ -493,13 +495,10 @@ namespace StupidTemplate.Menu
         {
             reference = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             if (isRightHanded)
-            {
                 reference.transform.parent = GorillaTagger.Instance.leftHandTransform;
-            }
             else
-            {
                 reference.transform.parent = GorillaTagger.Instance.rightHandTransform;
-            }
+
             reference.GetComponent<Renderer>().material.color = backgroundColor.colors[0].color;
             reference.transform.localPosition = new Vector3(0f, -0.1f, 0f);
             reference.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
@@ -508,36 +507,6 @@ namespace StupidTemplate.Menu
             ColorChanger colorChanger = reference.AddComponent<ColorChanger>();
             colorChanger.colorInfo = backgroundColor;
             colorChanger.Start();
-        }
-
-        public static void RPCProtection1()
-        {
-            if (hasRemovedThisFrame == false)
-            {
-                hasRemovedThisFrame = true;
-                if (GetIndex("Experimental RPC Protection").enabled)
-                {
-                    RaiseEventOptions options = new RaiseEventOptions();
-                    options.CachingOption = EventCaching.RemoveFromRoomCache;
-                    options.TargetActors = new int[1] { PhotonNetwork.LocalPlayer.ActorNumber };
-                    RaiseEventOptions optionsdos = options;
-                    PhotonNetwork.NetworkingClient.OpRaiseEvent(200, null, optionsdos, SendOptions.SendReliable);
-                }
-                else
-                {
-                    GorillaNot.instance.rpcErrorMax = int.MaxValue;
-                    GorillaNot.instance.rpcCallLimit = int.MaxValue;
-                    GorillaNot.instance.logErrorMax = int.MaxValue;
-                    // GorillaGameManager.instance.maxProjectilesToKeepTrackOfPerPlayer = int.MaxValue;
-
-                    PhotonNetwork.RemoveRPCs(PhotonNetwork.LocalPlayer);
-                    PhotonNetwork.OpCleanRpcBuffer(GorillaTagger.Instance.myVRRig);
-                    PhotonNetwork.RemoveBufferedRPCs(GorillaTagger.Instance.myVRRig.ViewID, null, null);
-                    PhotonNetwork.RemoveRPCsInGroup(int.MaxValue);
-                    PhotonNetwork.SendAllOutgoingCommands();
-                    GorillaNot.instance.OnPlayerLeftRoom(PhotonNetwork.LocalPlayer);
-                }
-            }
         }
 
 
