@@ -10,8 +10,8 @@ namespace StupidTemplate
 
         public static ExtGradient[] buttonColors = new ExtGradient[]
         {
-            new ExtGradient{colors = GetSolidGradient(Color.gray)}, // Disabled
-            new ExtGradient{isRainbow = false} // Enabled
+            new ExtGradient{colors = GetSolidGradient(Color.magenta)}, // Disabled
+            new ExtGradient{colors = GetSolidGradient(Color.red)} // Enabled
         };
         public static Color[] textColors = new Color[]
         {
