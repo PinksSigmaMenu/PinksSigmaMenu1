@@ -109,7 +109,12 @@ namespace StupidTemplate.Menu
                
             },
 
-           
+           new ButtonInfo[] {//sound shit
+
+               new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+              
+
+            },
 
 
             

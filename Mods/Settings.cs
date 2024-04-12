@@ -42,6 +42,16 @@ namespace StupidTemplate.Mods
             
             NotifiLib.SendNotification("almost all mod need master");                      
         }
+        public static void GunSettings()
+        {
+            buttonsType = 8;
+        }
+        public static void SoundSpams()
+        {
+            buttonsType = 9;
+
+            NotifiLib.SendNotification("almost all mod need master");
+        }
 
         public static void RightHand()
         {
