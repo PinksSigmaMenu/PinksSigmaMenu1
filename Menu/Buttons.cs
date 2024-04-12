@@ -28,6 +28,7 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "Visuals", method =() => SettingsMods.VisuaSettings(), isTogglable = false, toolTip = "visual mods"},
                 new ButtonInfo { buttonText = "TPS", method =() => SettingsMods.TPStuff(), isTogglable = false, toolTip = "Opens the settings for the menu."},
                 new ButtonInfo { buttonText = "OpStuff", method =() => SettingsMods.OPStuff(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+                
             },
 
             new ButtonInfo[] { // Menu Settings
@@ -36,7 +37,7 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "Notifications", enableMethod =() => SettingsMods.EnableNotifications(), disableMethod =() => SettingsMods.DisableNotifications(), enabled = !disableNotifications, toolTip = "Toggles the notifications."},
                 new ButtonInfo { buttonText = "FPS Counter", enableMethod =() => SettingsMods.EnableFPSCounter(), disableMethod =() => SettingsMods.DisableFPSCounter(), enabled = fpsCounter, toolTip = "Toggles the FPS counter."},
                 new ButtonInfo { buttonText = "Disconnect Button", enableMethod =() => SettingsMods.EnableDisconnectButton(), disableMethod =() => SettingsMods.DisableDisconnectButton(), enabled = disconnectButton, toolTip = "Toggles the disconnect button."},
-                new ButtonInfo { buttonText = "AntiReport", method =() => istolefromf3.Antipoop(), enabled = true, toolTip = "it makes you leave before you get reported"},
+                new ButtonInfo { buttonText = "AntiReport", method =() => AntiCheat.AntiReport(), enabled = true, toolTip = "it makes you leave before you get reported"},
                  new ButtonInfo { buttonText = "Conduct Player IDS", method =() => ConductIDSS.ConductIDS(), enabled = true, toolTip = "Shows Player IDS on code of conduct boared"},
                  new ButtonInfo { buttonText = "MOTD", method =() => MOTDTEX.MOTDTXT(), enabled = true, toolTip = "Changes motd"},
             },
