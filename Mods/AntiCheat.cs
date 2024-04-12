@@ -28,6 +28,7 @@ namespace PinkMenu.Mods
                         ReportButtons.Add(button);
                     }
                 }
+                ButtonCount = ReportButtons.Count;
             }
             float maxDistance = 0.35f;
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
