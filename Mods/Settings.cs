@@ -43,13 +43,6 @@ namespace StupidTemplate.Mods
             NotifiLib.SendNotification("almost all mod need master");                      
         }
 
-        public static void SoundSpams()
-        {
-            buttonsType = 8;
-
-            NotifiLib.SendNotification("almost all mod need master");
-        }
-
         public static void RightHand()
         {
             rightHanded = true;
