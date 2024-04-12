@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.Device;
 using UnityEngine.InputSystem;
 
-namespace StupidTemplate.Mods.Stuff
+namespace PinkMenu.Mods
 {
     internal class NetworkStuff
     {

@@ -1,6 +1,7 @@
 ﻿using static StupidTemplate.Menu.Main;
 using static StupidTemplate.Config;
 using GTAG_NotificationLib;
+using System;
 
 namespace StupidTemplate.Mods
 {
@@ -41,6 +42,10 @@ namespace StupidTemplate.Mods
             buttonsType = 8;            
             
             NotifiLib.SendNotification("almost all mod need master");                      
+        }
+        public static void GunSettings()
+        {
+            buttonsType = 8;
         }
 
         public static void SoundSpams()

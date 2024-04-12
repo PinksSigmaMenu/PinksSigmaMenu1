@@ -47,6 +47,10 @@ namespace StupidTemplate.Mods
                     {
                         PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
                     }
+                    else
+                    {
+                        NotifiLib.SendNotification("You are not in a modded room.");
+                    }
                 }
             }
             else

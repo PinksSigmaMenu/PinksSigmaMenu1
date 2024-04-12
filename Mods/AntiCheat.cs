@@ -14,7 +14,7 @@ namespace PinkMenu.Mods
         public static void onReported()
         {
             PhotonNetwork.Disconnect();
-            Main.RPCProtection1();
+            Main.RPCProtection();
         }
         public static void AntiReport()
         {
