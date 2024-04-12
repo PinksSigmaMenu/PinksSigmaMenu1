@@ -25,7 +25,7 @@ namespace StupidTemplate.Menu
         public static void Prefix()
         {
             // Initialize Menu
-            Debug.Log(PhotonNetwork.PhotonServerSettings.AppSettings.AppVersion);
+            //Debug.Log(PhotonNetwork.PhotonServerSettings.AppSettings.AppVersion);
                 try
                 {
                     bool toOpen = (!rightHanded && ControllerInputPoller.instance.leftControllerSecondaryButton) || (rightHanded && ControllerInputPoller.instance.rightControllerSecondaryButton);
