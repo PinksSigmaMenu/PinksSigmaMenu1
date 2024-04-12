@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PinkMenu.Helpers;
+using System;
 using UnityEngine;
 
 namespace StupidTemplate.Classes
@@ -7,9 +8,9 @@ namespace StupidTemplate.Classes
     {
         public GradientColorKey[] colors = new GradientColorKey[]
         {
-            new GradientColorKey(Color.magenta, 0f),
-            new GradientColorKey(Color.magenta, 0.5f),
-            new GradientColorKey(Color.magenta, 1f)
+            new GradientColorKey(SigmaColors.deepPink, 0f),
+            new GradientColorKey(SigmaColors.lightPink, 0.5f),
+            new GradientColorKey(SigmaColors.deepPink, 1f)
         };
 
         public bool isRainbow = false;

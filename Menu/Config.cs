@@ -1,4 +1,5 @@
-﻿using StupidTemplate.Classes;
+﻿using PinkMenu.Helpers;
+using StupidTemplate.Classes;
 using UnityEngine;
 using static StupidTemplate.Menu.Main;
 
@@ -10,7 +11,7 @@ namespace StupidTemplate
 
         public static ExtGradient[] buttonColors = new ExtGradient[]
         {
-            new ExtGradient{colors = GetSolidGradient(darkGrey)}, // Disabled
+            new ExtGradient{colors = GetSolidGradient(SigmaColors.darkGrey)}, // Disabled
             new ExtGradient{colors = GetSolidGradient(Color.black)} // Enabled
         };
         public static Color[] textColors = new Color[]
