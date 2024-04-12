@@ -12,12 +12,12 @@ namespace StupidTemplate
         public static ExtGradient[] buttonColors = new ExtGradient[]
         {
             new ExtGradient{colors = GetSolidGradient(SigmaColors.lightPink)}, // Disabled
-            new ExtGradient{colors = GetSolidGradient(SigmaColors.pink)} // Enabled
+            new ExtGradient{colors = GetSolidGradient(SigmaColors.deepPink)} // Enabled
         };
         public static Color[] textColors = new Color[]
         {
             Color.white, // Disabled
-            Color.yellow // Enabled
+            Color.green // Enabled
         };
 
         
