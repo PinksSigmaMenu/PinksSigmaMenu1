@@ -101,8 +101,11 @@ namespace StupidTemplate.Menu
            new ButtonInfo[] { //tp stuff
                
                new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
-               //new ButtonInfo { buttonText = "set master [D??????]", method =() => OPStuff.setMaster(), isTogglable = false, toolTip = "Sets Master"},
-
+               new ButtonInfo { buttonText = "set master [Modded]", method =() => OPStuff.SetMaster(), isTogglable = true, toolTip = "Sets Master"},
+               new ButtonInfo { buttonText = "set master [M]", method =() => OPStuff.AcidAll(), isTogglable = true, toolTip = "Sets Master"},
+               new ButtonInfo { buttonText = "Mat Spam [M]", method =() => OPStuff.MatAll(), isTogglable = true, toolTip = "Sets Master"},
+               new ButtonInfo { buttonText = "Spaz Soda [M]", method =() => OPStuff.Spazsoda(), isTogglable = true, toolTip = "Sets Master"},
+               
             },
 
 
