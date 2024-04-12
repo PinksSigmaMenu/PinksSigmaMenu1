@@ -12,6 +12,7 @@ namespace StupidTemplate.Mods
         {
             GorillaTagger.Instance.offlineVRRig.transform.position = new Vector3(-63.9905f, 1.0616f, -69.2698f);
         }
+       
 
     }
 }

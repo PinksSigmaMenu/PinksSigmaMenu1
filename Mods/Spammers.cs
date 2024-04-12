@@ -95,8 +95,25 @@ namespace StupidTemplate.Mods
                 Projectiles.SysFireProjectile("FishFood", "none", POS, velocity, snowballColor, 1f, 0f, 1f, false, false, false);
             }
         }
+        public static void Piss()
+        {
+            {
+                if (ControllerInputPoller.instance.rightGrab)
+                {
+                    Vector3 POS = GorillaTagger.Instance.bodyCollider.transform.position + new Vector3(0f, -0.45f, 0f);
+
+                    Vector3 velocity = GorillaTagger.Instance.bodyCollider.transform.forward * 8.33f;
+
+                    Color snowballColor = new Color(255f, 195f, 0f);
+
+                    Projectiles.SysFireProjectile("SnowBall", "none", POS, velocity, snowballColor, 1f, 0f, 1f, false, false, false);
+                }
+            }
+        }
     }
 }
+
+ 
 
 
 

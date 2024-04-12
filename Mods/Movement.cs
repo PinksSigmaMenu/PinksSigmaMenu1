@@ -1,6 +1,10 @@
 ﻿using GorillaLocomotion;
+using GTAG_NotificationLib;
 using Photon.Pun;
+using Photon.Realtime;
+using StupidTemplate.Classes;
 using StupidTemplate.Menu;
+using StupidTemplate.Mods.Stuff;
 using StupidTemplate.Patches;
 using System;
 using System.Collections.Generic;
@@ -8,6 +12,9 @@ using System.ComponentModel.Design;
 using System.Linq.Expressions;
 using System.Text;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
+using UnityEngine.Playables;
+using Valve.VR.InteractionSystem;
 using static StupidTemplate.Menu.Main;
 
 namespace StupidTemplate.Mods
@@ -144,7 +151,181 @@ namespace StupidTemplate.Mods
                 }
             }
         }
+        public static void OrbitGliders()
+        {
+            GliderHoldable[] them = GetGliders();
+            int index = 0;
+            foreach (GliderHoldable glider in them)
+            {
+                float offset = (360f / (float)them.Length) * index;
+                glider.gameObject.transform.position = GorillaTagger.Instance.headCollider.transform.position + new Vector3(MathF.Cos(offset + ((float)Time.frameCount / 30)) * 5f, 2, MathF.Sin(offset + ((float)Time.frameCount / 30)) * 5f);
+                index++;
+            }
+        }
+        public static GliderHoldable[] archiveholdables = null;
+        public static GliderHoldable[] GetGliders()
+        {
+            if (archiveholdables == null)
+            {
+                archiveholdables = UnityEngine.Object.FindObjectsOfType<GliderHoldable>();
+            }
+            return archiveholdables;
+        }
+        public static void FastGliders()
+        {
+            foreach (GliderHoldable glider in GetGliders())
+            {
+                glider.pullUpLiftBonus = 0.5f;
+                glider.dragVsSpeedDragFactor = 0.5f;
+            }
+        }
+        public static void fortnitemove()
+        {
+            if (ControllerInputPoller.instance.rightControllerPrimaryButton)
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = false;
 
+                GorillaTagger.Instance.offlineVRRig.transform.position = GorillaTagger.Instance.bodyCollider.transform.position + new Vector3(0f, 0.15f, 0f);
+                try
+                {
+                    GorillaTagger.Instance.myVRRig.transform.position = GorillaTagger.Instance.bodyCollider.transform.position + new Vector3(0f, 0.15f, 0f);
+                }
+                catch { }
+
+                GorillaTagger.Instance.offlineVRRig.transform.rotation = GorillaTagger.Instance.bodyCollider.transform.rotation;
+                try
+                {
+                    GorillaTagger.Instance.myVRRig.transform.rotation = GorillaTagger.Instance.bodyCollider.transform.rotation;
+                }
+                catch { }
+
+                GorillaTagger.Instance.offlineVRRig.head.rigTarget.transform.rotation = GorillaTagger.Instance.bodyCollider.transform.rotation;
+
+                GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.transform.position = GorillaTagger.Instance.offlineVRRig.transform.position + GorillaTagger.Instance.offlineVRRig.transform.right * -1f;
+                GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.transform.position = GorillaTagger.Instance.offlineVRRig.transform.position + GorillaTagger.Instance.offlineVRRig.transform.right * 1f;
+
+                GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.transform.rotation = GorillaTagger.Instance.offlineVRRig.transform.rotation;
+                GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.transform.rotation = GorillaTagger.Instance.offlineVRRig.transform.rotation;
+
+                GameObject l = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                UnityEngine.Object.Destroy(l.GetComponent<Rigidbody>());
+                UnityEngine.Object.Destroy(l.GetComponent<SphereCollider>());
+
+                l.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                l.transform.position = GorillaTagger.Instance.leftHandTransform.position;
+
+                GameObject r = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                UnityEngine.Object.Destroy(r.GetComponent<Rigidbody>());
+                UnityEngine.Object.Destroy(r.GetComponent<SphereCollider>());
+
+                r.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                r.transform.position = GorillaTagger.Instance.rightHandTransform.position;
+
+                l.GetComponent<Renderer>().material.color = Color.black;
+                r.GetComponent<Renderer>().material.color = Color.blue;
+
+                UnityEngine.Object.Destroy(l, Time.deltaTime);
+                UnityEngine.Object.Destroy(r, Time.deltaTime);
+            }
+            else
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = true;
+            }
+        }
+        public static void BatHalo()
+        {
+            float offset = 360f / 3f;
+            GameObject.Find("Cave Bat Holdable").GetComponent<ThrowableBug>().WorldShareableRequestOwnership();
+            GameObject.Find("Cave Bat Holdable").transform.position = GorillaTagger.Instance.headCollider.transform.position + new Vector3(MathF.Cos(offset + ((float)Time.frameCount / 30)), 2, MathF.Sin(offset + ((float)Time.frameCount / 30)));
+        }
+
+        public static void BeachBallHalo()
+        {
+            float offset = (360f / 3f) * 2f;
+            GameObject.Find("BeachBall").transform.position = GorillaTagger.Instance.headCollider.transform.position + new Vector3(MathF.Cos(offset + ((float)Time.frameCount / 30)), 2, MathF.Sin(offset + ((float)Time.frameCount / 30)));
+        }
+
+        public static void BugHalo()
+        {
+            float offset = 0;
+            GameObject.Find("Floating Bug Holdable").GetComponent<ThrowableBug>().WorldShareableRequestOwnership();
+            GameObject.Find("Floating Bug Holdable").transform.position = GorillaTagger.Instance.headCollider.transform.position + new Vector3(MathF.Cos(offset + ((float)Time.frameCount / 30)), 2, MathF.Sin(offset + ((float)Time.frameCount / 30)));
+        }
+        public static void instacrash()
+        {
+            Application.Quit();
+        }
+        public static void HitTheMeanestGriddy()
+        {
+            if (ControllerInputPoller.instance.rightControllerPrimaryButton)
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = false;
+
+                Vector3 bodyOffset = GorillaTagger.Instance.offlineVRRig.transform.forward * (5f * Time.deltaTime);
+                GorillaTagger.Instance.offlineVRRig.transform.position = GorillaTagger.Instance.offlineVRRig.transform.position + bodyOffset;
+                try
+                {
+                    GorillaTagger.Instance.myVRRig.transform.position = GorillaTagger.Instance.offlineVRRig.transform.position + bodyOffset;
+                }
+                catch { }
+
+                GorillaTagger.Instance.offlineVRRig.transform.rotation = GorillaTagger.Instance.bodyCollider.transform.rotation;
+                GorillaTagger.Instance.myVRRig.transform.rotation = GorillaTagger.Instance.bodyCollider.transform.rotation;
+
+                GorillaTagger.Instance.offlineVRRig.head.rigTarget.transform.rotation = GorillaTagger.Instance.offlineVRRig.transform.rotation;
+
+                GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.transform.position = GorillaTagger.Instance.offlineVRRig.transform.position + (GorillaTagger.Instance.offlineVRRig.transform.right * -0.33f) + (GorillaTagger.Instance.offlineVRRig.transform.forward * (0.5f * Mathf.Cos((float)Time.frameCount / 10f))) + (GorillaTagger.Instance.offlineVRRig.transform.up * (-0.5f * Mathf.Abs(Mathf.Sin((float)Time.frameCount / 10f))));
+                GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.transform.position = GorillaTagger.Instance.offlineVRRig.transform.position + (GorillaTagger.Instance.offlineVRRig.transform.right * 0.33f) + (GorillaTagger.Instance.offlineVRRig.transform.forward * (0.5f * Mathf.Cos((float)Time.frameCount / 10f))) + (GorillaTagger.Instance.offlineVRRig.transform.up * (-0.5f * Mathf.Abs(Mathf.Sin((float)Time.frameCount / 10f))));
+
+                GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.transform.rotation = GorillaTagger.Instance.offlineVRRig.transform.rotation;
+                GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.transform.rotation = GorillaTagger.Instance.offlineVRRig.transform.rotation;
+
+                GameObject l = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                UnityEngine.Object.Destroy(l.GetComponent<Rigidbody>());
+                UnityEngine.Object.Destroy(l.GetComponent<SphereCollider>());
+
+                l.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                l.transform.position = GorillaTagger.Instance.leftHandTransform.position;
+
+                GameObject r = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                UnityEngine.Object.Destroy(r.GetComponent<Rigidbody>());
+                UnityEngine.Object.Destroy(r.GetComponent<SphereCollider>());
+
+                r.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                r.transform.position = GorillaTagger.Instance.rightHandTransform.position;
+
+                l.GetComponent<Renderer>().material.color = Color.black;
+                r.GetComponent<Renderer>().material.color = Color.blue;
+
+                UnityEngine.Object.Destroy(l, Time.deltaTime);
+                UnityEngine.Object.Destroy(r, Time.deltaTime);
+            }
+            else
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = true;
+            }
+        }
+        public static void SlowGliders()
+        {
+            foreach (GliderHoldable glider in GetGliders())
+            {
+                glider.pullUpLiftBonus = 0.05f;
+                glider.dragVsSpeedDragFactor = 0.05f;
+            }
+        }
+
+        public static void FixGliderSpeed()
+        {
+            foreach (GliderHoldable glider in GetGliders())
+            {
+                glider.pullUpLiftBonus = 0.1f;
+                glider.dragVsSpeedDragFactor = 0.2f;
+            }
+        }
+
+
+        
+       
         public static GameObject leftPlatO;
         public static GameObject rightPlatO;
         public static GameObject rightPlat;
@@ -317,8 +498,32 @@ namespace StupidTemplate.Mods
                 (float)UnityEngine.Random.Range(0, 180),
                 (float)UnityEngine.Random.Range(0, 180));
         }
+        public static GameObject AntireportBlock = null;
+        public static void Antipeport()
+        {
+            GorillaScoreBoard[] ScoreBoard = GameObject.FindObjectsOfType<GorillaScoreBoard>();
+            if (AntireportBlock == null)
+            {
+                foreach (GorillaScoreBoard boardObject in ScoreBoard)
+                {
+                    AntireportBlock = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    AntireportBlock.transform.localScale = new Vector3(float.MinValue, float.MinValue, float.MinValue);
+                    AntireportBlock.transform.position = boardObject.transform.position;
+                    AntireportBlock.transform.rotation = boardObject.transform.rotation;
+                    GameObject.Destroy(AntireportBlock.GetComponent<BoxCollider>());
+                }
+            }
+            foreach (VRRig i in GorillaParent.instance.vrrigs)
+            {
+                if (i != GorillaTagger.Instance.offlineVRRig && Vector3.Distance(i.transform.position, AntireportBlock.transform.position) < 1.7f)
+                {
+                    PhotonNetwork.Disconnect();
+                    NotifiLib.SendNotification("Some none sigam tryed to report your sigma actions");
+                }
+            }
+        }
 
-
+     
         public static bool Invisible = true;
         public static bool AllowedToInvis = true;
         private static bool rigPositionSet = false;
@@ -349,12 +554,58 @@ namespace StupidTemplate.Mods
         {
             if (ControllerInputPoller.instance.rightControllerPrimaryButton)
             {
-                Player.Instance.transform.position += GorillaTagger.Instance.headCollider.transform.forward * Time.deltaTime * Main.flysped;
-                Player.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                GorillaLocomotion.Player.Instance.transform.position += GorillaTagger.Instance.headCollider.transform.forward * Time.deltaTime * Main.flysped;
+                GorillaLocomotion.Player.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            }
+        }
+        public static VRRig player;
+        public static GameObject GunThingie;
+
+        public static ColorChanger ColorChanger { get; private set; }
+
+
+
+        public static void Taggoon()
+        {
+            if (ControllerInputPoller.instance.rightGrab)
+            {
+                RaycastHit raycastHit;
+                if (Physics.Raycast(GorillaLocomotion.Player.Instance.rightControllerTransform.position - GorillaLocomotion.Player.Instance.rightControllerTransform.up, -GorillaLocomotion.Player.Instance.rightControllerTransform.up, out raycastHit) && GunThingie == null)
+                {
+                    GunThingie = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                    UnityEngine.Object.Destroy(GunThingie.GetComponent<Rigidbody>());
+                    UnityEngine.Object.Destroy(GunThingie.GetComponent<SphereCollider>());
+                    GunThingie.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                    GameObject Line = new GameObject("Line");
+                    LineRenderer liner = Line.AddComponent<LineRenderer>();
+                    liner.material.shader = Shader.Find("GUI/Text Shader");
+                    liner.startColor = Color.magenta;
+                    liner.endColor = Color.magenta;
+                    liner.startWidth = 0.025f;
+                    liner.endWidth = 0.025f;
+                    liner.positionCount = 2;
+                    liner.useWorldSpace = true;
+                    liner.SetPosition(0, GorillaTagger.Instance.rightHandTransform.position);                   
+
+                    ColorChanger colorChanger = GunThingie.AddComponent<ColorChanger>();
+                    GunThingie.GetComponent<Renderer>().material.color = Color.magenta;
+                    colorChanger.Start();
+                }
+                GunThingie.transform.position = raycastHit.point;
+                if (ControllerInputPoller.instance.rightControllerIndexFloat > 0f)
+                {
+
+                }
+            }
+            else
+            {
+                GameObject.Destroy(GunThingie);
             }
         }
     }
 }
+    
+
 
 
 
