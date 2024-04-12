@@ -651,6 +651,7 @@ namespace StupidTemplate.Menu
         // Data
         public static int pageNumber = 0;
             public static int buttonsType = 0;
+
     }
 
 }
