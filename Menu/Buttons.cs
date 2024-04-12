@@ -1,5 +1,6 @@
 ﻿using PinkMenu.Mods;
 using StupidTemplate.Classes;
+using StupidTemplate.Helpers;
 using StupidTemplate.Mods;
 using static StupidTemplate.Config;
 
@@ -23,6 +24,7 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "Return to Main", method =() => Global.ReturnHome(), isTogglable = false, toolTip = "Returns to the main page of the menu."},
                 new ButtonInfo { buttonText = "Menu", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
                 new ButtonInfo { buttonText = "Movement", method =() => SettingsMods.MovementSettings(), isTogglable = false, toolTip = "Opens the movement settings for the menu."},
+                new ButtonInfo { buttonText = "Guns", method =() => SettingsMods.GunSettings(), isTogglable = false, toolTip = "Opens the gun settings for the menu."},
                 new ButtonInfo { buttonText = "Projectile", method =() => SettingsMods.ProjectileSettings(), isTogglable = false, toolTip = "Opens the projectile settings for the menu."},
                 new ButtonInfo { buttonText = "Visuals", method =() => SettingsMods.VisuaSettings(), isTogglable = false, toolTip = "visual mods"},
                 new ButtonInfo { buttonText = "Sound Spams", method =() => SettingsMods.SoundSpams(), isTogglable = false, toolTip = "Opens the settings for the menu."},
@@ -40,13 +42,12 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "AntiReport", method =() => AntiCheat.AntiReport(), enabled = true, toolTip = "it makes you leave before you get reported"},
                  new ButtonInfo { buttonText = "Conduct Player IDS", method =() => Display.ConductIDS(), enabled = true, toolTip = "Shows Player IDS on code of conduct boared"},
                  new ButtonInfo { buttonText = "MOTD", method =() => Display.MOTDTXT(), enabled = true, toolTip = "Changes motd"},
-                 
             },
 
             new ButtonInfo[] { // Movement Settings
                 new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Returns to the main settings page for the menu."},
-                new ButtonInfo { buttonText = "Tag all", method =() => Guns.TagAll(), isTogglable = true, toolTip = "Tags everyone!"},
                 new ButtonInfo { buttonText = "Platforms", method =() => Movement.Platformss(), isTogglable = true, toolTip = "When you press grips it puts object so you can walk"},
+                new ButtonInfo { buttonText = "Tag All", method =() => Guns.TagAll(), isTogglable = true, toolTip = "Tag All if tagged"},
                 new ButtonInfo { buttonText = "Lilrift platforms", method =() => Movement.lilriftplats(), isTogglable = true, toolTip = "Its lil rifts platforms mod"},
                 new ButtonInfo { buttonText = "UpAndDown", method =() => Movement.UpAndDownsyndrome(), isTogglable = true, toolTip = "Makes you go up and down with right and left grip"},
                 new ButtonInfo { buttonText = "InvisMonke", method =() => Movement.InvisMonke(), isTogglable = true, toolTip = "makes you invisable bitch"},
@@ -106,7 +107,12 @@ namespace StupidTemplate.Menu
                new ButtonInfo { buttonText = "set master [M]", method =() => OPStuff.AcidAll(), isTogglable = true, toolTip = "Sets Master"},
                new ButtonInfo { buttonText = "Mat Spam [M]", method =() => OPStuff.MatAll(), isTogglable = true, toolTip = "Sets Master"},
                new ButtonInfo { buttonText = "Spaz Soda [M]", method =() => OPStuff.Spazsoda(), isTogglable = true, toolTip = "Sets Master"},
+            },
+           new ButtonInfo[] {
                
+               new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+               new ButtonInfo { buttonText = "Tag Gun", method =() => Gun.UpdateGun((WeHit) => Guns.InternalTag(WeHit)), isTogglable = true, toolTip = "Tag Gun"},
+
             },
 
            new ButtonInfo[] {//sound shit
@@ -117,7 +123,6 @@ namespace StupidTemplate.Menu
             },
 
 
-            
 
         };
     }
