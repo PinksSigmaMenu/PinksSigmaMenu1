@@ -45,12 +45,12 @@ namespace StupidTemplate.Mods
         }
         public static void GunSettings()
         {
-            buttonsType = 8;
+            buttonsType = 9;
         }
 
         public static void SoundSpams()
         {
-            buttonsType = 9;
+            buttonsType = 10;
 
             NotifiLib.SendNotification("almost all mod need master");
         }

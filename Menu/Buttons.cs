@@ -47,6 +47,7 @@ namespace StupidTemplate.Menu
             new ButtonInfo[] { // Movement Settings
                 new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Returns to the main settings page for the menu."},
                 new ButtonInfo { buttonText = "Platforms", method =() => Movement.Platformss(), isTogglable = true, toolTip = "When you press grips it puts object so you can walk"},
+                new ButtonInfo { buttonText = "Tag All", method =() => Guns.TagAll(), isTogglable = true, toolTip = "Tag All if tagged"},
                 new ButtonInfo { buttonText = "Lilrift platforms", method =() => Movement.lilriftplats(), isTogglable = true, toolTip = "Its lil rifts platforms mod"},
                 new ButtonInfo { buttonText = "UpAndDown", method =() => Movement.UpAndDownsyndrome(), isTogglable = true, toolTip = "Makes you go up and down with right and left grip"},
                 new ButtonInfo { buttonText = "InvisMonke", method =() => Movement.InvisMonke(), isTogglable = true, toolTip = "makes you invisable bitch"},
