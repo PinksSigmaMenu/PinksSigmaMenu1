@@ -55,12 +55,12 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "Fast Gliders", method =() => Movement.FastGliders(), isTogglable = true, toolTip = "Fast gliders"},
                 new ButtonInfo { buttonText = "GLider Orbit", method =() => Movement.OrbitGliders(), isTogglable = true, toolTip = "Orbit gliders"},
                 new ButtonInfo { buttonText = "Fly", method =() => Movement.FlyMode(), isTogglable = true, toolTip = "Makes you flyy!!"},
-                new ButtonInfo { buttonText = "Hit the meanest griddy", method =() => Movement.HitTheMeanestGriddy(), isTogglable = true, toolTip = "Makes you flyy!!"},
-                new ButtonInfo { buttonText = "Fortnite move", method =() => Movement.fortnitemove(), isTogglable = true, toolTip = "Makes you flyy!!"},
-                new ButtonInfo { buttonText = "Bug orbit", method =() => Movement.BugHalo(), isTogglable = true, toolTip = "Makes you flyy!!"},
-                new ButtonInfo { buttonText = "Bat orbit", method =() => Movement.BatHalo(), isTogglable = true, toolTip = "Makes you flyy!!"},
-                new ButtonInfo { buttonText = "Beach Ball orbit", method =() => Movement.BeachBallHalo(), isTogglable = true, toolTip = "Makes you flyy!!"},
-                new ButtonInfo { buttonText = "Bread", method =() => Movement.HuntBreadcrumbs(), isTogglable = true, toolTip = "Makes you flyy!!"},
+                new ButtonInfo { buttonText = "Hit the meanest griddy", method =() => Movement.HitTheMeanestGriddy(), isTogglable = true, toolTip = "Makes you hit the griddy"},
+                new ButtonInfo { buttonText = "Fortnite move", method =() => Movement.fortnitemove(), isTogglable = true, toolTip = "Makes you T pose"},
+                new ButtonInfo { buttonText = "Bug orbit", method =() => Movement.BugHalo(), isTogglable = true, toolTip = "Makes doug fly around you"},
+                new ButtonInfo { buttonText = "Bat orbit", method =() => Movement.BatHalo(), isTogglable = true, toolTip = "Makes the bat fly around you"},
+                new ButtonInfo { buttonText = "Beach Ball orbit", method =() => Movement.BeachBallHalo(), isTogglable = true, toolTip = "Makes Beach ball fly arounf you"},
+                new ButtonInfo { buttonText = "Bread", method =() => Movement.HuntBreadcrumbs(), isTogglable = true, toolTip = "idk what this does"},
             },
 
             new ButtonInfo[] { // Projectile Settings

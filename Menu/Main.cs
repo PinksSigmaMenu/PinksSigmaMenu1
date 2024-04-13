@@ -634,8 +634,18 @@ namespace StupidTemplate.Menu
                     public static GameObject reference;
                     public static GameObject canvasObject;
                     public static GameObject pointer;
+        public static GameObject leftPlatO;
+        public static GameObject rightPlatO;
+        public static GameObject rightPlat;
+        public static GameObject leftPlat;
+        public static bool rightPlatTrig = false;
+        public static bool leftPlatTrig = false;
+        private static bool lastHit;
+        private static bool hit;
 
-                    
+
+
+
 
         public static SphereCollider buttonCollider;
                     public static Camera TPC;
@@ -645,6 +655,11 @@ namespace StupidTemplate.Menu
                     public static bool Invisible = true;
                     public static bool AllowedToInvis = true;
                     private static bool rigPositionSet = false;
+
+        public static bool spin;
+        public static bool roll;
+        public static bool back;
+        public static bool upside;
         public static float flysped;
                     public static float colorchanger;
 

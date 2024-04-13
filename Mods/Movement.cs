@@ -37,12 +37,18 @@ using Valve.Newtonsoft.Json.Converters;
 using Valve.VR;
 using static Unity.Burst.Intrinsics.Arm;
 using static StupidTemplate.Menu.Main;
+using StupidTemplate.Mods;
 
 namespace StupidTemplate.Mods
 {
     internal class Movement
     {
-        public static void HuntBreadcrumbs()
+
+
+
+
+
+    public static void HuntBreadcrumbs()
         {
             GorillaHuntManager sillyComputer = GorillaGameManager.instance.gameObject.GetComponent<GorillaHuntManager>();
             Photon.Realtime.Player target = sillyComputer.GetTargetOf(PhotonNetwork.LocalPlayer);
@@ -105,8 +111,9 @@ namespace StupidTemplate.Mods
 
             return false;
         }
-        
-        public static void RpcFlush()
+
+
+    public static void RpcFlush()
         {
             GorillaNot.instance.rpcErrorMax = int.MaxValue;
             GorillaNot.instance.rpcCallLimit = int.MaxValue;
@@ -370,14 +377,6 @@ namespace StupidTemplate.Mods
 
         
        
-        public static GameObject leftPlatO;
-        public static GameObject rightPlatO;
-        public static GameObject rightPlat;
-        public static GameObject leftPlat;
-        public static bool rightPlatTrig = false;
-        public static bool leftPlatTrig = false;
-        private static bool lastHit;
-        private static bool hit;
 
         public static void lilriftplats()
         {
@@ -493,16 +492,21 @@ namespace StupidTemplate.Mods
                 GorillaLocomotion.Player.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
         }
-        public static VRRig player;
+
+        }
+
     }
-}
-    
 
 
 
 
 
-    
+
+
+
+
+
+
 
 
 

@@ -19,7 +19,7 @@ namespace PinkMenu.Mods
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
             }
         }
-        public static void InternalTag()
+        public static void TagAll()
         {
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
