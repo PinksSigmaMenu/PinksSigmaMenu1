@@ -93,5 +93,37 @@ namespace PinkMenu.Helpers
         public static Color darkOrange = new Color(1f, 0.55f, 0f);
         public static Color orangeRed = new Color(1f, 0.27f, 0f);
         public static Color khaki = new Color(0.94f, 0.9f, 0.55f);
+        public static Color lavenderBlush = new Color(1f, 0.94f, 0.96f);
+        public static Color mistyRose = new Color(1f, 0.89f, 0.88f);
+        public static Color peach = new Color(1f, 0.9f, 0.71f);
+        public static Color papayaWhip = new Color(1f, 0.94f, 0.84f);
+        public static Color linen = new Color(0.98f, 0.94f, 0.9f);
+        public static Color oldLace = new Color(0.99f, 0.96f, 0.9f);
+        public static Color seaShell = new Color(1f, 0.96f, 0.93f);
+        public static Color cornsilk = new Color(1f, 0.97f, 0.86f);
+        public static Color lemonChiffon = new Color(1f, 0.98f, 0.8f);
+        public static Color floralWhite = new Color(1f, 0.98f, 0.94f);
+        public static Color snow = new Color(1f, 0.98f, 0.98f);
+        public static Color ivory = new Color(1f, 1f, 0.94f);
+        public static Color honeydew = new Color(0.94f, 1f, 0.94f);
+        public static Color mintCream = new Color(0.96f, 1f, 0.98f);
+        public static Color azure = new Color(0.94f, 0.97f, 1f);
+        public static Color aliceBlue = new Color(0.94f, 0.97f, 1f);
+        public static Color lavenderGrey = new Color(0.77f, 0.76f, 0.82f);
+        public static Color lightSteelBlue = new Color(0.69f, 0.77f, 0.87f);
+        public static Color powderBlue = new Color(0.69f, 0.88f, 0.9f);
+        public static Color paleTurquoise = new Color(0.69f, 0.93f, 0.93f);
+        public static Color lightBlue = new Color(0.68f, 0.85f, 0.9f);
+        public static Color skyBlue = new Color(0.53f, 0.81f, 0.92f);
+        public static Color lightSkyBlue = new Color(0.53f, 0.81f, 0.98f);
+        public static Color deepSkyBlue = new Color(0f, 0.75f, 1f);
+        public static Color dodgerBlue = new Color(0.12f, 0.56f, 1f);
+        public static Color cornflowerBlue = new Color(0.39f, 0.58f, 0.93f);
+        public static Color steelBlue = new Color(0.27f, 0.51f, 0.71f);
+        public static Color royalBlue = new Color(0.25f, 0.41f, 0.88f);
+        public static Color mediumBlue = new Color(0f, 0f, 0.8f);
+        public static Color darkBlue = new Color(0f, 0f, 0.55f);
+        public static Color navy = new Color(0f, 0f, 0.5f);
+        public static Color midnightBlue = new Color(0.09f, 0.09f, 0.43f);
     }
 }

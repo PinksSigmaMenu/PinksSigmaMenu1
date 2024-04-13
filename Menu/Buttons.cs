@@ -2,6 +2,7 @@
 using StupidTemplate.Classes;
 using StupidTemplate.Helpers;
 using StupidTemplate.Mods;
+using StupidTemplate.Mods.Holdables;
 using static StupidTemplate.Config;
 
 namespace StupidTemplate.Menu
@@ -27,7 +28,7 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "Guns", method =() => SettingsMods.GunSettings(), isTogglable = false, toolTip = "Opens the gun settings for the menu."},
                 new ButtonInfo { buttonText = "Projectile", method =() => SettingsMods.ProjectileSettings(), isTogglable = false, toolTip = "Opens the projectile settings for the menu."},
                 new ButtonInfo { buttonText = "Visuals", method =() => SettingsMods.VisuaSettings(), isTogglable = false, toolTip = "visual mods"},
-                new ButtonInfo { buttonText = "TPS", method =() => SettingsMods.TPStuff(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+                new ButtonInfo { buttonText = "Custom Holdables", method =() => SettingsMods.CustomHolds(), isTogglable = false, toolTip = "Opens the settings for the menu."},
                 new ButtonInfo { buttonText = "OpStuff", method =() => SettingsMods.OPStuff(), isTogglable = false, toolTip = "Opens the settings for the menu."},
                 
             },
@@ -45,9 +46,9 @@ namespace StupidTemplate.Menu
 
             new ButtonInfo[] { // Movement Settings
                 new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Returns to the main settings page for the menu."},
-                new ButtonInfo { buttonText = "Platforms", method =() => Movement.Platformss(), isTogglable = true, toolTip = "When you press grips it puts object so you can walk"},
                 new ButtonInfo { buttonText = "Tag All", method =() => Guns.TagAll(), isTogglable = true, toolTip = "Tag All if tagged"},
-                new ButtonInfo { buttonText = "Lilrift platforms", method =() => Movement.lilriftplats(), isTogglable = true, toolTip = "Its lil rifts platforms mod"},
+                new ButtonInfo { buttonText = "Sphere Platforms", method =() => Movement.SpherePlats(), isTogglable = true, toolTip = "When you press grips it puts object so you can walk"},
+                new ButtonInfo { buttonText = "Platforms", method =() => Movement.lilriftplats(), isTogglable = true, toolTip = "Normal Platforms"},
                 new ButtonInfo { buttonText = "UpAndDown", method =() => Movement.UpAndDownsyndrome(), isTogglable = true, toolTip = "Makes you go up and down with right and left grip"},
                 new ButtonInfo { buttonText = "InvisMonke", method =() => Movement.InvisMonke(), isTogglable = true, toolTip = "makes you invisable bitch"},
                 new ButtonInfo { buttonText = "Spazzy Monkey", method =() => Movement.InsaneMonkey(), isTogglable = true, toolTip = "Makes you go insane"},
@@ -89,13 +90,6 @@ namespace StupidTemplate.Menu
                  //new ButtonInfo { buttonText = "Bone ESP", method =() => Visuals.BoneESP(), isTogglable = true, toolTip = "Bone ESP"},
             },
 
-           new ButtonInfo[] { //tp stuff
-               
-               new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
-               new ButtonInfo { buttonText = "TP to for", method =() => Teleport.ForestTP(), isTogglable = false, toolTip = "Spams Food!"},
-
-            },
-
            new ButtonInfo[] { //op stuff
                
                new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
@@ -110,10 +104,11 @@ namespace StupidTemplate.Menu
                new ButtonInfo { buttonText = "Tag Gun", method =() => Gun.UpdateGun((WeHit) => Guns.InternalTag(WeHit)), isTogglable = true, toolTip = "Tag Gun"},
 
             },
-           new ButtonInfo[] {//sound shit
+           new ButtonInfo[] {//Custom holdables
 
                new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
-              
+               new ButtonInfo { buttonText = "KKK Hat", method =() => Holdables.KKKHat(), isTogglable = true, toolTip = "Opens the settings for the menu."},
+
 
             },
 

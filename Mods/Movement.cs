@@ -43,42 +43,6 @@ namespace StupidTemplate.Mods
 {
     internal class Movement
     {
-
-
-
-
-
-    public static void HuntBreadcrumbs()
-        {
-            GorillaHuntManager sillyComputer = GorillaGameManager.instance.gameObject.GetComponent<GorillaHuntManager>();
-            Photon.Realtime.Player target = sillyComputer.GetTargetOf(PhotonNetwork.LocalPlayer);
-            foreach (Photon.Realtime.Player player in PhotonNetwork.PlayerList)
-            {
-                VRRig vrrig = RigManager.GetVRRigFromPlayer(player);
-                if (player == target)
-                {
-                    UnityEngine.Color thecolor = vrrig.playerColor;
-
-                    GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                    UnityEngine.Object.Destroy(sphere.GetComponent<SphereCollider>());
-                    sphere.GetComponent<Renderer>().material.color = thecolor;
-                    sphere.transform.position = vrrig.transform.position;
-                    sphere.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-                    UnityEngine.Object.Destroy(sphere, 20f);
-                }
-                if (sillyComputer.GetTargetOf(player) == PhotonNetwork.LocalPlayer)
-                {
-                    UnityEngine.Color thecolor = Color.magenta;
-                    GameObject box = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                    UnityEngine.Object.Destroy(sphere.GetComponent<SphereCollider>());
-                    sphere.GetComponent<Renderer>().material.color = thecolor;
-                    sphere.transform.position = vrrig.transform.position;
-                    sphere.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-                    UnityEngine.Object.Destroy(sphere, 20f);
-                }
-            }
-        }
         public static void nofingermovment()
         {
 
@@ -113,7 +77,7 @@ namespace StupidTemplate.Mods
         }
 
 
-    public static void RpcFlush()
+        public static void RpcFlush()
         {
             GorillaNot.instance.rpcErrorMax = int.MaxValue;
             GorillaNot.instance.rpcCallLimit = int.MaxValue;
@@ -143,50 +107,6 @@ namespace StupidTemplate.Mods
             }
             return false;
         }
-        
-
-        public static void Platformss()
-        {
-            {
-
-                GameObject RPlat = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                GameObject RPlat2 = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-
-                if (ControllerInputPoller.instance.rightGrab)
-
-                {
-                    RPlat.transform.localScale = new Vector3(0.300f, 0.300f, 0.300f);
-                    RPlat.transform.position = GorillaTagger.Instance.rightHandTransform.transform.position;
-                    RPlat.transform.rotation = GorillaTagger.Instance.rightHandTransform.transform.rotation;
-                }
-
-
-
-                GameObject LPlat = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-
-                if (ControllerInputPoller.instance.leftGrab)
-
-                {
-                    LPlat.transform.localScale = new Vector3(0.300f, 0.300f, 0.300f);
-                    LPlat.transform.position = GorillaTagger.Instance.leftHandTransform.transform.position;
-                    LPlat.transform.rotation = GorillaTagger.Instance.leftHandTransform.transform.rotation;
-                }
-
-                Shader ESPShader = Shader.Find("GUI/Text Shader");
-                Material sphereMaterial = new Material(ESPShader);
-                LPlat.GetComponent<Renderer>().material = sphereMaterial;
-                float pingPongValue = Mathf.PingPong(Time.time / 2f, 1f);
-                sphereMaterial.color = Color.Lerp(Color.magenta, Color.black, pingPongValue);
-                Shader ESPShader2 = Shader.Find("GUI/Text Shader");
-                Material sphereMaterial2 = new Material(ESPShader);
-                RPlat.GetComponent<Renderer>().material = sphereMaterial;
-                float pingPongValue2 = Mathf.PingPong(Time.time / 2f, 1f);
-                sphereMaterial.color = Color.Lerp(Color.magenta, Color.black, pingPongValue);
-                UnityEngine.Object.Destroy(RPlat, Time.deltaTime);
-                UnityEngine.Object.Destroy(LPlat, Time.deltaTime);
-            }
-        }
-
         public static void UpAndDownsyndrome()
         {
             if (ControllerInputPoller.instance != null)
@@ -375,8 +295,8 @@ namespace StupidTemplate.Mods
         }
 
 
-        
-       
+
+
 
         public static void lilriftplats()
         {
@@ -492,10 +412,11 @@ namespace StupidTemplate.Mods
                 GorillaLocomotion.Player.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
         }
-
-        }
-
     }
+}
+
+
+
 
 
 

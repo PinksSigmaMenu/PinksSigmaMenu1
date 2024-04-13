@@ -31,24 +31,20 @@ namespace StupidTemplate.Mods
             buttonsType = 5;
         }
 
-        public static void TPStuff()
-        {
-            buttonsType = 6;
-        }
 
         public static void OPStuff()
         {
-            buttonsType = 7;            
+            buttonsType = 6;            
             
             NotifiLib.SendNotification("almost all mod need master");                      
         }
         public static void GunSettings()
         {
-            buttonsType = 8;
+            buttonsType = 7;
         }
-        public static void SoundSpams()
+        public static void CustomHolds()
         {
-            buttonsType = 9;
+            buttonsType = 8;
 
             NotifiLib.SendNotification("almost all mod need master");
         }
