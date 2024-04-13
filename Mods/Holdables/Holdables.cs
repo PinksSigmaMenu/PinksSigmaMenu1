@@ -63,7 +63,7 @@ namespace StupidTemplate.Mods.Holdables
             }
             UnityEngine.Object.Destroy(NewHat3, Time.deltaTime);
         }
-        
+
        
       
     }

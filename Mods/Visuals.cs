@@ -3,6 +3,7 @@ using GorillaLocomotion;
 using Oculus.Interaction;
 using Photon.Pun;
 using Steamworks;
+using StupidTemplate.Classes;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -319,7 +320,7 @@ namespace PinkMenu.Mods
                             SObject.transform.rotation = FullPlayers.transform.rotation;
                             SObject.transform.position += new Vector3(0.00f, 0.10f, 0.00f);
                             SObject.transform.localScale = new Vector3(0.40f, 0.40f, 0.40f);
-                            
+
 
                             Shader ShaderShit = Shader.Find("GUI/Text Shader");
                             Material SphereMats = new Material(ShaderShit);
@@ -340,8 +341,44 @@ namespace PinkMenu.Mods
                 }
             }
         }
+        public static void HuntBreadcrumbs()
+        {
+            GorillaHuntManager sillyComputer = GorillaGameManager.instance.gameObject.GetComponent<GorillaHuntManager>();
+            Photon.Realtime.Player target = sillyComputer.GetTargetOf(PhotonNetwork.LocalPlayer);
+            foreach (Photon.Realtime.Player player in PhotonNetwork.PlayerList)
+            {
+                VRRig vrrig = RigManager.GetVRRigFromPlayer(player);
+                if (player == target)
+                {
+                    UnityEngine.Color thecolor = vrrig.playerColor;
+
+                    GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                    UnityEngine.Object.Destroy(sphere.GetComponent<SphereCollider>());
+                    sphere.GetComponent<Renderer>().material.color = thecolor;
+                    sphere.transform.position = vrrig.transform.position;
+                    sphere.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                    UnityEngine.Object.Destroy(sphere, Time.deltaTime);
+                }
+                if (sillyComputer.GetTargetOf(player) == PhotonNetwork.LocalPlayer)
+                {
+                    UnityEngine.Color thecolor = Color.magenta;
+                    GameObject box = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                    UnityEngine.Object.Destroy(sphere.GetComponent<SphereCollider>());
+                    sphere.GetComponent<Renderer>().material.color = thecolor;
+                    sphere.transform.position = vrrig.transform.position;
+                    sphere.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                    UnityEngine.Object.Destroy(box, Time.deltaTime);
+                    UnityEngine.Object.Destroy(sphere, Time.deltaTime);
+                }
+            }
+        }
     }
 }
+
+
+
+
 
                         
   
