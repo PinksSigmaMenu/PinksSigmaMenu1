@@ -11,6 +11,14 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using GTAG_NotificationLib;
 using System.Linq;
+using iiMenu.Mods.Spammers;
+using Oculus.Interaction.Input;
+using static Mono.Math.BigInteger;
+using static StupidTemplate.Classes.RigManager;
+using static StupidTemplate.Menu.Main;
+using UnityEngine.InputSystem;
+using UnityEngine.Animations.Rigging;
+
 
 namespace PinkMenu.Mods
 {
@@ -39,7 +47,7 @@ namespace PinkMenu.Mods
                         Penis.GetComponent<Renderer>().material = sphereMaterial;
                         float pingPongValue = Mathf.PingPong(Time.time / 2f, 1f);
                         sphereMaterial.color = Color.Lerp(Color.magenta, Color.black, pingPongValue);
-                        UnityEngine.Object.Destroy(Penis, 0.03f);
+                        UnityEngine.Object.Destroy(Penis, Time.deltaTime);
                     }
                 }
             }
@@ -357,7 +365,7 @@ namespace PinkMenu.Mods
                 }
             }
         }
-       
+
         internal class GhostPatch : MonoBehaviour
         {
             public static bool Prefix(VRRig __instance)
@@ -424,57 +432,44 @@ namespace PinkMenu.Mods
 
                 if (GorillaTagger.Instance.offlineVRRig.mainSkin.material.name.Contains("fected") && !vrrig.mainSkin.material.name.Contains("fected") && GorillaLocomotion.Player.Instance.disableMovement == false && distance < tagAuraDistance)
                 {
-                    if ( righthand == true) { GorillaLocomotion.Player.Instance.rightControllerTransform.position = they; } else { GorillaLocomotion.Player.Instance.leftControllerTransform.position = they; }
+                    if (righthand == true) { GorillaLocomotion.Player.Instance.rightControllerTransform.position = they; } else { GorillaLocomotion.Player.Instance.leftControllerTransform.position = they; }
                     if (lefthand == true) { GorillaLocomotion.Player.Instance.leftControllerTransform.position = they; } else { GorillaLocomotion.Player.Instance.rightControllerTransform.position = they; }
                 }
             }
         }
-        
 
 
-        public static int[] bones = new int[] {
-            4, 3, 5, 4, 19, 18, 20, 19, 3, 18, 21, 20, 22, 21, 25, 21, 29, 21, 31, 29, 27, 25, 24, 22, 6, 5, 7, 6, 10, 6, 14, 6, 16, 14, 12, 10, 9, 7
-        };
-        public static void BoneESP()
-        {
-            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
-            {
-                UnityEngine.Color thecolor = vrrig.playerColor;
-                if (vrrig != GorillaTagger.Instance.offlineVRRig)
-                {
-                    LineRenderer liner = vrrig.head.rigTarget.gameObject.AddComponent<LineRenderer>();
-                    liner.startWidth = 0.025f;
-                    liner.endWidth = 0.025f;
+       // public static void BoneESP()
+     //   {
+      //      if (PhotonNetwork.InRoom || PhotonNetwork.InLobby)
+      //      {
+     //           foreach (VRRig POS in GorillaParent.instance.vrrigs)
+      //          {
+      //              if (POS != GorillaTagger.Instance.offlineVRRig)
+     //               {
+      //                  {
+      //                      GameObject HeadLine = new GameObject("Line");
+      //                      LineRenderer HeadLineOBJ = HeadLine.AddComponent<LineRenderer>();
+      //
+      //                      HeadLineOBJ.startWidth = 0.1f;
+       //                     HeadLineOBJ.endWidth = 0.1f;
+       //                     HeadLineOBJ.transform.rotation = POS.transform.rotation;
+       //                     HeadLineOBJ.transform.localScale = new Vector3(1f, 1f, 1f);
+         //                   HeadLineOBJ.SetPosition(0, POS.transform.position);
+         //                   HeadLineOBJ.SetPosition(1, POS.transform.position);
+         //
+         //
+          //                  Shader HeadLineShader = Shader.Find("GUI/Text Shader");
+          //                  Material HeadMaterial = new Material(HeadLineShader);
+           //                 HeadLineOBJ.GetComponent<Renderer>().material = HeadMaterial;
+           //                 UnityEngine.Object.Destroy(HeadLine, Time.deltaTime);
+          //              }
+       //             }
+      //          }
+     //       }
+  //      }
 
-                    liner.startColor = Color.magenta;
-                    liner.endColor = Color.black;
-
-                    liner.material.shader = Shader.Find("GUI/Text Shader");
-
-                    liner.SetPosition(0, vrrig.head.rigTarget.transform.position + new Vector3(0f, 0.16f, 0f));
-                    liner.SetPosition(1, vrrig.head.rigTarget.transform.position - new Vector3(0f, 0.4f, 0f));
-
-                    UnityEngine.Object.Destroy(liner, Time.deltaTime);
-                    for (int i = 0; i < bones.Count<int>(); i += 2)
-                    {
-                        liner = vrrig.mainSkin.bones[bones[i]].gameObject.AddComponent<LineRenderer>();
-
-                        liner.startWidth = 0.025f;
-                        liner.endWidth = 0.025f;
-
-                        float pingPongValue = Mathf.PingPong(Time.time / 2f, 1f);
-                        liner.startColor = Color.Lerp(Color.magenta, Color.black, pingPongValue);
-
-                        liner.material.shader = Shader.Find("GUI/Text Shader");
-
-                       //liner.SetPosition(0, vrrig.mainSkin.bones[bones[i]].position);
-                        //liner.SetPosition(1, vrrig..bones[bones[i + 1]].position);
-
-                        UnityEngine.Object.Destroy(liner, Time.deltaTime);
-                    }
-                }
-            }
-        }
+        //this is bone esp above if you see this drperky PLES FIX IT
 
 
         public static void HuntBreadcrumbs()
@@ -511,6 +506,9 @@ namespace PinkMenu.Mods
         }
     }
 }
+
+        
+
 
 
 

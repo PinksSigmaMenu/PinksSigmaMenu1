@@ -7,6 +7,20 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Device;
 using UnityEngine.InputSystem;
+using BepInEx;
+using ExitGames.Client.Photon;
+using HarmonyLib;
+using iiMenu.Mods.Spammers;
+using Photon.Realtime;
+using StupidTemplate.Classes;
+using System.Linq;
+using UnityEngine.Rendering;
+using UnityEngine.UI;
+using static StupidTemplate.Menu.Buttons;
+using static StupidTemplate.Config;
+using Steamworks;
+using System.Diagnostics;
+
 
 namespace PinkMenu.Mods
 {
@@ -31,28 +45,30 @@ namespace PinkMenu.Mods
         }
         public static void Quitgame()
         {
-            if (PhotonNetwork.InRoom || PhotonNetwork.InLobby)
-            {
-                foreach (VRRig POS in GorillaParent.instance.vrrigs)
-                {
-                    if (POS != GorillaTagger.Instance.offlineVRRig)
-                    {
-
-                        GameObject SuperQuit = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        SuperQuit.transform.position = POS.transform.position;
-                        SuperQuit.transform.rotation = POS.transform.rotation;
-                        POS.transform.localScale = new Vector3(5, 5, 5);
-                        Shader SAD = Shader.Find("GUI/Text Shader");
-                        Material sphereMaterial = new Material(SAD);
-                        SuperQuit.GetComponent<Renderer>().material = sphereMaterial;
-                        float pingPongValue = Mathf.PingPong(Time.time / 2f, 1f);
-                        sphereMaterial.color = Color.Lerp(Color.magenta, Color.black, pingPongValue);
-                    }
-                }
-            }
+            UnityEngine.Application.Quit();
         }
+
+        public static void SetNight()
+        {
+            BetterDayNightManager.instance.SetTimeOfDay(0);
+        }
+
+        public static void SetAfternoon()
+        {
+            BetterDayNightManager.instance.SetTimeOfDay(1);
+        }
+
+        public static void SetDay()
+        {
+            BetterDayNightManager.instance.SetTimeOfDay(3);
+        }
+
+
     }
 }
+        
+
+ 
 
 
 

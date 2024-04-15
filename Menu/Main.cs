@@ -15,6 +15,7 @@ using static StupidTemplate.Menu.Buttons;
 using static StupidTemplate.Config;
 using Steamworks;
 using System.Diagnostics;
+using StupidTemplate.Mods;
 
 namespace StupidTemplate.Menu
 {
@@ -655,7 +656,7 @@ namespace StupidTemplate.Menu
         public static bool leftPlatTrig = false;
         private static bool lastHit;
         private static bool hit;
-
+ 
 
 
 
@@ -668,7 +669,6 @@ namespace StupidTemplate.Menu
                     public static bool Invisible = true;
                     public static bool AllowedToInvis = true;
                     private static bool rigPositionSet = false;
-
         public static bool spin;
         public static bool roll;
         public static bool back;

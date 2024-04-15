@@ -18,7 +18,10 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "Reconnect", method =() => NetworkStuff.Reconnect(), isTogglable = false, toolTip = "Reconnects you"},
                 new ButtonInfo { buttonText = "Join random", method =() => NetworkStuff.JoinRandom(), isTogglable = false, toolTip = "Joins random"},
                 new ButtonInfo { buttonText = "Create Public Room", method =() => NetworkStuff.CreatePublic(), isTogglable = false, toolTip = "Creates the public room"},
-                new ButtonInfo { buttonText = "Quit Game", method =() => NetworkStuff.Quitgame(), isTogglable = true, toolTip = "Creates the public room"},
+                new ButtonInfo { buttonText = "Quit Game", method =() => NetworkStuff.Quitgame(), isTogglable = false, toolTip = "Creates the public room"},
+                new ButtonInfo { buttonText = "Set AfterNoon", method =() => NetworkStuff.SetAfternoon(), isTogglable = false, toolTip = "Sets Time to Afternoon"},
+                new ButtonInfo { buttonText = "Set Night", method =() => NetworkStuff.SetNight(), isTogglable = false, toolTip = "Sets Time to Night"},
+                new ButtonInfo { buttonText = "Set Day", method =() => NetworkStuff.SetDay(), isTogglable = false, toolTip = "Sets time to Day"},
             },
 
 
@@ -43,8 +46,8 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "FPS Counter", enableMethod =() => SettingsMods.EnableFPSCounter(), disableMethod =() => SettingsMods.DisableFPSCounter(), enabled = fpsCounter, toolTip = "Toggles the FPS counter."},
                 new ButtonInfo { buttonText = "Disconnect Button", enableMethod =() => SettingsMods.EnableDisconnectButton(), disableMethod =() => SettingsMods.DisableDisconnectButton(), enabled = disconnectButton, toolTip = "Toggles the disconnect button."},
                 new ButtonInfo { buttonText = "AntiReport", method =() => AntiCheat.AntiReport(), enabled = true, toolTip = "it makes you leave before you get reported"},
-                 new ButtonInfo { buttonText = "Conduct Player IDS", method =() => Display22.ConductIDS(), enabled = true, toolTip = "Shows Player IDS on code of conduct boared"},
-                 new ButtonInfo { buttonText = "MOTD", method =() => Display22.MOTDTXT(), enabled = true, toolTip = "Changes motd"},
+                new ButtonInfo { buttonText = "Conduct Player IDS", method =() => Display22.ConductIDS(), enabled = true, toolTip = "Shows Player IDS on code of conduct boared"},
+                new ButtonInfo { buttonText = "MOTD", method =() => Display22.MOTDTXT(), enabled = true, toolTip = "Changes motd"},
             },
 
             new ButtonInfo[] { // Movement Settings
@@ -70,44 +73,44 @@ namespace StupidTemplate.Menu
             },
 
             new ButtonInfo[] { // Projectile Settings
-                new ButtonInfo { buttonText = "Return", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
-                 new ButtonInfo { buttonText = "SnowBall Spammer", method =() => Spammers.SnowBallSpammer(), isTogglable = true, toolTip = "Spams snow balls!"},
-                 new ButtonInfo { buttonText = "Water Balloon Spammer", method =() => Spammers.WaterBalloonSpammer(), isTogglable = true, toolTip = "Spams snow Waterballoons!"},
-                 new ButtonInfo { buttonText = "Lave Rock Spammer", method =() => Spammers.LavaRockSpammer(), isTogglable = true, toolTip = "Spams Lava rocks!"},
-                 new ButtonInfo { buttonText = "Gift Spammer", method =() => Spammers.ThrowableGiftSpammer(), isTogglable = true, toolTip = "Spams Gifts!"},
-                 new ButtonInfo { buttonText = "Candy Spammer", method =() => Spammers.ScienceCandySpammer(), isTogglable = true, toolTip = "Spams Candy!"},
-                 new ButtonInfo { buttonText = "Food Spammer", method =() => Spammers.FishFoodSpammer(), isTogglable = true, toolTip = "Spams Food!"},
-                 new ButtonInfo { buttonText = "Ultra Spam", method =() => Spammers.SuperSpam(), isTogglable = true, toolTip = "Spams Food!"},
+                new ButtonInfo { buttonText = "Return", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+                new ButtonInfo { buttonText = "SnowBall Spammer", method =() => Spammers.SnowBallSpammer(), isTogglable = true, toolTip = "Spams snow balls!"},
+                new ButtonInfo { buttonText = "Water Balloon Spammer", method =() => Spammers.WaterBalloonSpammer(), isTogglable = true, toolTip = "Spams snow Waterballoons!"},
+                new ButtonInfo { buttonText = "Lave Rock Spammer", method =() => Spammers.LavaRockSpammer(), isTogglable = true, toolTip = "Spams Lava rocks!"},
+                new ButtonInfo { buttonText = "Gift Spammer", method =() => Spammers.ThrowableGiftSpammer(), isTogglable = true, toolTip = "Spams Gifts!"},
+                new ButtonInfo { buttonText = "Candy Spammer", method =() => Spammers.ScienceCandySpammer(), isTogglable = true, toolTip = "Spams Candy!"},
+                new ButtonInfo { buttonText = "Food Spammer", method =() => Spammers.FishFoodSpammer(), isTogglable = true, toolTip = "Spams Food!"},
+                new ButtonInfo { buttonText = "Ultra Spam", method =() => Spammers.SuperSpam(), isTogglable = true, toolTip = "Spams Food!"},
             },
 
             new ButtonInfo[] { //Visual shit
-                new ButtonInfo { buttonText = "Return", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+                new ButtonInfo { buttonText = "Return", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
                 new ButtonInfo { buttonText = "Capsule ESP", method =() => Visuals.CapsuleESPP(), isTogglable = true, toolTip = "Lets you see people threw walls"},
                 new ButtonInfo { buttonText = "Snake ESP", method =() => Visuals.SnakeESP(), isTogglable = true, toolTip = "puts esp on players head and follows it"},
-                 new ButtonInfo { buttonText = "Doug ESP", method =() => Visuals.BugESPP(), isTogglable = true, toolTip = "Makes it so you can see doug through walls"},
-                 new ButtonInfo { buttonText = "Head ESP", method =() => Visuals.HeadESP(), isTogglable = true, toolTip = "Esp for head"},
-                  new ButtonInfo { buttonText = "Tracers", method =() => Visuals.Tracers(), isTogglable = true, toolTip = "Puts tracers on your body"},
+                new ButtonInfo { buttonText = "Doug ESP", method =() => Visuals.BugESPP(), isTogglable = true, toolTip = "Makes it so you can see doug through walls"},
+                new ButtonInfo { buttonText = "Head ESP", method =() => Visuals.HeadESP(), isTogglable = true, toolTip = "Esp for head"},
+                new ButtonInfo { buttonText = "Tracers", method =() => Visuals.Tracers(), isTogglable = true, toolTip = "Puts tracers on your body"},
                 new ButtonInfo { buttonText = "Hand Tracers", method =() => Visuals.HandTracers(), isTogglable = true, toolTip = "Puts tracers on your hands"},
                 new ButtonInfo { buttonText = "Beacons", method =() => Visuals.Beaconss(), isTogglable = true, toolTip = "These are beacons to see players ha ha"},
                 new ButtonInfo { buttonText = "Lilrift snake Chams", method =() => Visuals.lilriftsnakechams(), isTogglable = true, toolTip = "lilrift snake chams"},
-                 new ButtonInfo { buttonText = "PeanSP", method =() => Visuals.PeenSP(), isTogglable = true, toolTip = "PeainSP"},
+                new ButtonInfo { buttonText = "PeanSP", method =() => Visuals.PeenSP(), isTogglable = true, toolTip = "PeainSP"},
                 new ButtonInfo { buttonText = "Shit ESP", method =() => Visuals.Sigma(), isTogglable = true, toolTip = "its the worst esp"},
                 new ButtonInfo { buttonText = "Hunt ESP", method =() => Visuals.HuntBreadcrumbs(), isTogglable = true, toolTip = "Shows the person whos targeting you"},
-                 new ButtonInfo { buttonText = "Bone ESP", method =() => Visuals.BoneESP(), isTogglable = true, toolTip = "Bone ESP"},
+                new ButtonInfo { buttonText = "Bone ESP", method =() => Visuals.BoneESP(), isTogglable = true, toolTip = "Bone ESP"},
             },
 
 
 
            new ButtonInfo[] { //op stuff
-               new ButtonInfo { buttonText = "Return", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
-               new ButtonInfo { buttonText = "set master [Modded]", method =() => OPStuff.SetMaster(), isTogglable = true, toolTip = "Sets Master"},
-               new ButtonInfo { buttonText = "set master [M]", method =() => OPStuff.AcidAll(), isTogglable = true, toolTip = "Sets Master"},
+               new ButtonInfo { buttonText = "Return", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+               new ButtonInfo { buttonText = "set master [Modded]", method =() => OPStuff.SetMaster(), isTogglable = false, toolTip = "Sets Master"},
+               new ButtonInfo { buttonText = "set master [M]", method =() => OPStuff.AcidAll(), isTogglable = false, toolTip = "Sets Master"},
                new ButtonInfo { buttonText = "Mat Spam [M]", method =() => OPStuff.MatAll(), isTogglable = true, toolTip = "Sets Master"},
                new ButtonInfo { buttonText = "Spaz Soda [M]", method =() => OPStuff.Spazsoda(), isTogglable = true, toolTip = "Sets Master"},
             },
 
            new ButtonInfo[] { //Stuff
-                 new ButtonInfo { buttonText = "Return", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+               new ButtonInfo { buttonText = "Return", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
                new ButtonInfo { buttonText = "Cube Hands", method =() => Stuff.SquareHands(), isTogglable = true, toolTip = "Its a camera"},
 
             },
@@ -115,7 +118,7 @@ namespace StupidTemplate.Menu
 
            new ButtonInfo[] { //Guns
                
-               new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+               new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
                new ButtonInfo { buttonText = "Tag Gun", method =() => Gun.UpdateGun((WeHit) => Guns.InternalTag(WeHit)), isTogglable = true, toolTip = "Tag Gun"},
 
             },
