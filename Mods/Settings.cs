@@ -32,21 +32,22 @@ namespace StupidTemplate.Mods
         }
 
 
-        public static void OPStuff()
+        public static void OPStuffin()
         {
             buttonsType = 6;            
             
-            NotifiLib.SendNotification("almost all mod need master");                      
+                                
+        }
+
+        public static void Stuffimade()
+        {
+            buttonsType = 7;
+
+         
         }
         public static void GunSettings()
         {
-            buttonsType = 7;
-        }
-        public static void CustomHolds()
-        {
             buttonsType = 8;
-
-            NotifiLib.SendNotification("almost all mod need master");
         }
 
         public static void RightHand()
