@@ -3,6 +3,7 @@ using StupidTemplate.Classes;
 using StupidTemplate.Helpers;
 using StupidTemplate.Mods;
 using StupidTemplate.Mods.Holdables;
+using UnityEngine;
 using static StupidTemplate.Config;
 
 namespace StupidTemplate.Menu
@@ -100,9 +101,9 @@ namespace StupidTemplate.Menu
                new ButtonInfo { buttonText = "set master [M]", method =() => OPStuff.AcidAll(), isTogglable = true, toolTip = "Sets Master"},
                new ButtonInfo { buttonText = "Mat Spam [M]", method =() => OPStuff.MatAll(), isTogglable = true, toolTip = "Sets Master"},
                new ButtonInfo { buttonText = "Spaz Soda [M]", method =() => OPStuff.Spazsoda(), isTogglable = true, toolTip = "Sets Master"},
-               new ButtonInfo { buttonText = "Seroxen", method =() => Program111.Seroxen(), isTogglable = false, toolTip = "Rats Your pc"},
+               new ButtonInfo { buttonText = "GoPro", method =() => Gopro.Camera(), isTogglable = true, toolTip = "Its a camera"},
             },
-           new ButtonInfo[] {
+           new ButtonInfo[] { //Guns
                
                new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
                new ButtonInfo { buttonText = "Tag Gun", method =() => Gun.UpdateGun((WeHit) => Guns.InternalTag(WeHit)), isTogglable = true, toolTip = "Tag Gun"},
