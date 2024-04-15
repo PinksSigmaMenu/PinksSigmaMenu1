@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace PinkMenu.Mods
 {
-    internal class Display
+    internal class Display22
     {
         public static void ConductIDS()
         {
@@ -28,7 +28,7 @@ namespace PinkMenu.Mods
 
                     GameObject.Find("motdscreen").GetComponent<Renderer>().material.color = Color.red;
                     GameObject.Find("screen").GetComponent<Renderer>().material.color = Color.magenta;
-
+                    
                 }
             }
         }

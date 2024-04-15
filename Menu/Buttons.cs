@@ -41,8 +41,8 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "FPS Counter", enableMethod =() => SettingsMods.EnableFPSCounter(), disableMethod =() => SettingsMods.DisableFPSCounter(), enabled = fpsCounter, toolTip = "Toggles the FPS counter."},
                 new ButtonInfo { buttonText = "Disconnect Button", enableMethod =() => SettingsMods.EnableDisconnectButton(), disableMethod =() => SettingsMods.DisableDisconnectButton(), enabled = disconnectButton, toolTip = "Toggles the disconnect button."},
                 new ButtonInfo { buttonText = "AntiReport", method =() => AntiCheat.AntiReport(), enabled = true, toolTip = "it makes you leave before you get reported"},
-                 new ButtonInfo { buttonText = "Conduct Player IDS", method =() => Display.ConductIDS(), enabled = true, toolTip = "Shows Player IDS on code of conduct boared"},
-                 new ButtonInfo { buttonText = "MOTD", method =() => Display.MOTDTXT(), enabled = true, toolTip = "Changes motd"},
+                 new ButtonInfo { buttonText = "Conduct Player IDS", method =() => Display22.ConductIDS(), enabled = true, toolTip = "Shows Player IDS on code of conduct boared"},
+                 new ButtonInfo { buttonText = "MOTD", method =() => Display22.MOTDTXT(), enabled = true, toolTip = "Changes motd"},
             },
 
             new ButtonInfo[] { // Movement Settings
