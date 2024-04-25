@@ -439,35 +439,35 @@ namespace PinkMenu.Mods
         }
 
 
-       // public static void BoneESP()
-     //   {
-      //      if (PhotonNetwork.InRoom || PhotonNetwork.InLobby)
-      //      {
-     //           foreach (VRRig POS in GorillaParent.instance.vrrigs)
-      //          {
-      //              if (POS != GorillaTagger.Instance.offlineVRRig)
-     //               {
-      //                  {
-      //                      GameObject HeadLine = new GameObject("Line");
-      //                      LineRenderer HeadLineOBJ = HeadLine.AddComponent<LineRenderer>();
-      //
-      //                      HeadLineOBJ.startWidth = 0.1f;
-       //                     HeadLineOBJ.endWidth = 0.1f;
-       //                     HeadLineOBJ.transform.rotation = POS.transform.rotation;
-       //                     HeadLineOBJ.transform.localScale = new Vector3(1f, 1f, 1f);
-         //                   HeadLineOBJ.SetPosition(0, POS.transform.position);
-         //                   HeadLineOBJ.SetPosition(1, POS.transform.position);
-         //
-         //
-          //                  Shader HeadLineShader = Shader.Find("GUI/Text Shader");
-          //                  Material HeadMaterial = new Material(HeadLineShader);
-           //                 HeadLineOBJ.GetComponent<Renderer>().material = HeadMaterial;
-           //                 UnityEngine.Object.Destroy(HeadLine, Time.deltaTime);
-          //              }
-       //             }
-      //          }
-     //       }
-  //      }
+        // public static void BoneESP()
+        //   {
+        //      if (PhotonNetwork.InRoom || PhotonNetwork.InLobby)
+        //      {
+        //           foreach (VRRig POS in GorillaParent.instance.vrrigs)
+        //          {
+        //              if (POS != GorillaTagger.Instance.offlineVRRig)
+        //               {
+        //                  {
+        //                      GameObject HeadLine = new GameObject("Line");
+        //                      LineRenderer HeadLineOBJ = HeadLine.AddComponent<LineRenderer>();
+        //
+        //                      HeadLineOBJ.startWidth = 0.1f;
+        //                     HeadLineOBJ.endWidth = 0.1f;
+        //                     HeadLineOBJ.transform.rotation = POS.transform.rotation;
+        //                     HeadLineOBJ.transform.localScale = new Vector3(1f, 1f, 1f);
+        //                   HeadLineOBJ.SetPosition(0, POS.transform.position);
+        //                   HeadLineOBJ.SetPosition(1, POS.transform.position);
+        //
+        //
+        //                  Shader HeadLineShader = Shader.Find("GUI/Text Shader");
+        //                  Material HeadMaterial = new Material(HeadLineShader);
+        //                 HeadLineOBJ.GetComponent<Renderer>().material = HeadMaterial;
+        //                 UnityEngine.Object.Destroy(HeadLine, Time.deltaTime);
+        //              }
+        //             }
+        //          }
+        //       }
+        //      }
 
         //this is bone esp above if you see this drperky PLES FIX IT
 
@@ -501,6 +501,19 @@ namespace PinkMenu.Mods
                     sphere.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
                     UnityEngine.Object.Destroy(box, Time.deltaTime);
                     UnityEngine.Object.Destroy(sphere, Time.deltaTime);
+                }
+            }
+        }
+        public static void SigmaRizz()
+        {
+            if (PhotonNetwork.InRoom || PhotonNetwork.InLobby)
+            {
+                foreach (VRRig POS in GorillaParent.instance.vrrigs)
+                {
+                   
+
+
+                  
                 }
             }
         }

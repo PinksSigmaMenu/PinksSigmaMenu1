@@ -58,6 +58,35 @@ namespace StupidTemplate.Mods
                 NotifiLib.SendNotification("You are already master client.");
             }
         }
+        //sigam add me back later
+        public static void AntiBan()
+        {
+            {
+                Photon.Realtime.Player DADDYPINK = PhotonNetwork.LocalPlayer;
+                ExitGames.Client.Photon.Hashtable hash = new ExitGames.Client.Photon.Hashtable
+                {
+                    { "gameMode", PhotonNetwork.CurrentRoom.CustomProperties["gameMode"].ToString().Replace(GorillaComputer.instance.currentQueue, GorillaComputer.instance.currentQueue + "MODDEDMODDED") }
+                };
+                PhotonNetwork.CurrentRoom.IsOpen = false;
+                PhotonNetwork.CurrentRoom.IsVisible = false;
+                PhotonNetwork.CurrentRoom.SetCustomProperties(hash);
+                PlayFabClientAPI.ExecuteCloudScript(new PlayFab.ClientModels.ExecuteCloudScriptRequest
+                {
+                    FunctionName = "RoomClosed",
+                    FunctionParameter = new
+                    {
+                        GameId = PhotonNetwork.CurrentRoom.Name,
+                        Region = Regex.Replace(PhotonNetwork.CloudRegion, "[^a-zA-Z0-9]", "").ToUpper(),
+                        UserId = DADDYPINK.UserId,
+                        ActorNr = DADDYPINK.ActorNumber,
+                        ActorCount = PhotonNetwork.ViewCount,
+                        AppVersion = PhotonNetwork.AppVersion
+                    },
+                }, result =>
+                {
+                }, null);
+            }
+        }
         public static void Spazsoda()
         {
             if (!PhotonNetwork.IsMasterClient)

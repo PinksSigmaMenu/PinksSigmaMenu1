@@ -28,6 +28,7 @@ namespace PinkMenu.Mods
 
                     GameObject.Find("motdscreen").GetComponent<Renderer>().material.color = Color.red;
                     GameObject.Find("screen").GetComponent<Renderer>().material.color = Color.magenta;
+
                     
                 }
             }
@@ -49,7 +50,7 @@ namespace PinkMenu.Mods
 
                     motdText.text = "HELLO FELLOW SIGMA WELCOME TO PINKS SIGMA MENU I HOPE YOU ENJOY AND MAKE SURE TO RIZZ UP ALL OF THEM LEVEL 10s";
 
-
+                  
                 }
             }
         }

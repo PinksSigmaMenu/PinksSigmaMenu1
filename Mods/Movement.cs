@@ -447,16 +447,9 @@ namespace StupidTemplate.Mods
                 GorillaTagger.Instance.offlineVRRig.headBodyOffset = Vector3.zero;
             }
         }
-        public static void FlyMode()
-        {
-            if (ControllerInputPoller.instance.rightControllerPrimaryButton)
-            {
-                GorillaLocomotion.Player.Instance.transform.position += GorillaTagger.Instance.headCollider.transform.forward * Time.deltaTime * Main.flysped;
-                GorillaLocomotion.Player.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            }
-        }
     }
 }
+
 
 
 

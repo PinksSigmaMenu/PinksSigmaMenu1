@@ -48,6 +48,7 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "AntiReport", method =() => AntiCheat.AntiReport(), enabled = true, toolTip = "it makes you leave before you get reported"},
                 new ButtonInfo { buttonText = "Conduct Player IDS", method =() => Display22.ConductIDS(), enabled = true, toolTip = "Shows Player IDS on code of conduct boared"},
                 new ButtonInfo { buttonText = "MOTD", method =() => Display22.MOTDTXT(), enabled = true, toolTip = "Changes motd"},
+                 new ButtonInfo { buttonText = "Custom Sky", method =() => Custom_Sky.CustomSky(), enabled = true, toolTip = "Changes sky color"},
             },
 
             new ButtonInfo[] { // Movement Settings
@@ -61,7 +62,6 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "slow gliders", method =() => Movement.SlowGliders(), isTogglable = true, toolTip = "Slows gliders"},
                 new ButtonInfo { buttonText = "Fast Gliders", method =() => Movement.FastGliders(), isTogglable = true, toolTip = "Fast gliders"},
                 new ButtonInfo { buttonText = "GLider Orbit", method =() => Movement.OrbitGliders(), isTogglable = true, toolTip = "Orbit gliders"},
-                new ButtonInfo { buttonText = "Fly", method =() => Movement.FlyMode(), isTogglable = true, toolTip = "Makes you flyy!!"},
                 new ButtonInfo { buttonText = "Hit the meanest griddy", method =() => Movement.HitTheMeanestGriddy(), isTogglable = true, toolTip = "Makes you hit the griddy"},
                 new ButtonInfo { buttonText = "Fortnite move", method =() => Movement.fortnitemove(), isTogglable = true, toolTip = "Makes you T pose"},
                 new ButtonInfo { buttonText = "Bug orbit", method =() => Movement.BugHalo(), isTogglable = true, toolTip = "Makes doug fly around you"},
@@ -94,9 +94,10 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "Beacons", method =() => Visuals.Beaconss(), isTogglable = true, toolTip = "These are beacons to see players ha ha"},
                 new ButtonInfo { buttonText = "Lilrift snake Chams", method =() => Visuals.lilriftsnakechams(), isTogglable = true, toolTip = "lilrift snake chams"},
                 new ButtonInfo { buttonText = "PeanSP", method =() => Visuals.PeenSP(), isTogglable = true, toolTip = "PeainSP"},
+                new ButtonInfo { buttonText = "Weird Chams", method =() => Visuals.coolchamsforrigmods(), isTogglable = true, toolTip = "Chams"},
                 new ButtonInfo { buttonText = "Shit ESP", method =() => Visuals.Sigma(), isTogglable = true, toolTip = "its the worst esp"},
                 new ButtonInfo { buttonText = "Hunt ESP", method =() => Visuals.HuntBreadcrumbs(), isTogglable = true, toolTip = "Shows the person whos targeting you"},
-                new ButtonInfo { buttonText = "Bone ESP", method =() => Visuals.BoneESP(), isTogglable = true, toolTip = "Bone ESP"},
+                //new ButtonInfo { buttonText = "Bone ESP", method =() => Visuals.BoneESP(), isTogglable = true, toolTip = "Bone ESP"},
             },
 
 
@@ -111,7 +112,10 @@ namespace StupidTemplate.Menu
 
            new ButtonInfo[] { //Stuff
                new ButtonInfo { buttonText = "Return", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
-               new ButtonInfo { buttonText = "Cube Hands", method =() => Stuff.SquareHands(), isTogglable = true, toolTip = "Its a camera"},
+               new ButtonInfo { buttonText = "Cube Hands", method =() => Stuff.SquareHands(), isTogglable = true, toolTip = "Cube Hands"},
+               new ButtonInfo { buttonText = "Sphere Hands", method =() => Stuff.SphereHands(), isTogglable = true, toolTip = "Sphere Hands"},
+               new ButtonInfo { buttonText = "Dress", method =() => Stuff.Dress(), isTogglable = true, toolTip = "Gives you dress"},
+              // new ButtonInfo { buttonText = "Peanis", method =() => Stuff.Peanis(), isTogglable = true, toolTip = "Gives you peanis"},
 
             },
 
