@@ -656,7 +656,8 @@ namespace StupidTemplate.Menu
         public static bool leftPlatTrig = false;
         private static bool lastHit;
         private static bool hit;
- 
+        public static float colorFloat = 0f;
+
 
 
 

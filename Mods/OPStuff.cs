@@ -29,6 +29,7 @@ using Valve.VR;
 using static Unity.Burst.Intrinsics.Arm;
 using Photon.Realtime;
 using System.Text.RegularExpressions;
+using StupidTemplate.Menu;
 
 
 namespace StupidTemplate.Mods
@@ -188,6 +189,98 @@ namespace StupidTemplate.Mods
             else
             {
                 NotifiLib.SendNotification("<color=grey>[</color><color=red>ERROR</color><color=grey>]</color> <color=white>You are not master.</color>");
+            }
+        }
+
+
+        public static void CrashAll()
+        {
+           
+            Photon.Realtime.Player target = null;
+            ExitGames.Client.Photon.Hashtable hashtable = new ExitGames.Client.Photon.Hashtable();
+            float num = Mathf.Cos(Main.colorFloat * 3.1415927f * 2f) * 0.5f + 0.5f;
+            float num2 = Mathf.Sin(Main.colorFloat * 3.1415927f * 2f) * 0.5f + 0.5f;
+            float num3 = Mathf.Cos(Main.colorFloat * 3.1415927f * 2f + 1.5707964f) * 0.5f + 0.5f;
+            PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(209, hashtable, null, SendOptions.SendReliable);
+            PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(209, hashtable, null, SendOptions.SendReliable);
+            PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(207, hashtable, null, SendOptions.SendReliable);
+            PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(207, hashtable, null, SendOptions.SendReliable);
+            PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(202, hashtable, null, SendOptions.SendReliable);
+            PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(202, hashtable, null, SendOptions.SendReliable);
+            GorillaTagger.Instance.myVRRig.RpcSecure("InitializeNoobMaterial", target, true, new object[]
+            {
+  num,
+  num2,
+  num3
+            });
+            PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(209, hashtable, null, SendOptions.SendReliable);
+            PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(209, hashtable, null, SendOptions.SendReliable);
+            PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(207, hashtable, null, SendOptions.SendReliable);
+            PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(207, hashtable, null, SendOptions.SendReliable);
+            PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(202, hashtable, null, SendOptions.SendReliable);
+            PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(202, hashtable, null, SendOptions.SendReliable);
+            GorillaTagger.Instance.myVRRig.RpcSecure("InitializeNoobMaterial", target, true, new object[]
+            {
+  num,
+  num2,
+  num3
+            });
+            PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(209, hashtable, null, SendOptions.SendReliable);
+            PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(209, hashtable, null, SendOptions.SendReliable);
+            PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(207, hashtable, null, SendOptions.SendReliable);
+            PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(207, hashtable, null, SendOptions.SendReliable);
+            PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(202, hashtable, null, SendOptions.SendReliable);
+            PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(202, hashtable, null, SendOptions.SendReliable);
+            GorillaTagger.Instance.myVRRig.RpcSecure("InitializeNoobMaterial", target, true, new object[]
+            {
+  num,
+  num2,
+  num3
+            });
+            if (Mathf.RoundToInt(1f) < 100)
+            {
+                GorillaTagger.Instance.myVRRig.RpcSecure("InitializeNoobMaterial", target, true, new object[]
+                {
+      num,
+      num2,
+      num3
+                });
+                PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(209, hashtable, null, SendOptions.SendReliable);
+                PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(209, hashtable, null, SendOptions.SendReliable);
+                PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(207, hashtable, null, SendOptions.SendReliable);
+                PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(207, hashtable, null, SendOptions.SendReliable);
+                PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(202, hashtable, null, SendOptions.SendReliable);
+                PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(202, hashtable, null, SendOptions.SendReliable);
+                GorillaTagger.Instance.myVRRig.RpcSecure("InitializeNoobMaterial", target, true, new object[]
+                {
+      num,
+      num2,
+      num3
+                });
+                PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(209, hashtable, null, SendOptions.SendReliable);
+                PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(209, hashtable, null, SendOptions.SendReliable);
+                PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(207, hashtable, null, SendOptions.SendReliable);
+                PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(207, hashtable, null, SendOptions.SendReliable);
+                PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(202, hashtable, null, SendOptions.SendReliable);
+                PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(202, hashtable, null, SendOptions.SendReliable);
+                GorillaTagger.Instance.myVRRig.RpcSecure("InitializeNoobMaterial", target, true, new object[]
+                {
+      num,
+      num2,
+      num3
+                });
+                PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(209, hashtable, null, SendOptions.SendReliable);
+                PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(209, hashtable, null, SendOptions.SendReliable);
+                PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(207, hashtable, null, SendOptions.SendReliable);
+                PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(207, hashtable, null, SendOptions.SendReliable);
+                PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(202, hashtable, null, SendOptions.SendReliable);
+                PhotonNetwork.CurrentRoom.LoadBalancingClient.OpRaiseEvent(202, hashtable, null, SendOptions.SendReliable);
+                GorillaTagger.Instance.myVRRig.RpcSecure("InitializeNoobMaterial", target, true, new object[]
+               {
+      num,
+      num2,
+      num3
+                });
             }
         }
     }
