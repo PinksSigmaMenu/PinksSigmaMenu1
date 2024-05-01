@@ -14,6 +14,9 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Data;
 using System.Collections;
+using Photon.Pun;
+using BoingKit;
+using Oculus.Interaction;
 
 class Stuff
 {
@@ -122,8 +125,38 @@ class Stuff
             UnityEngine.Object.Destroy(collider2);
         }
     }
+
+    public static void AngryGorillas()
+    {
+        if (PhotonNetwork.InRoom || PhotonNetwork.InLobby)
+        {
+            foreach (VRRig POS in GorillaParent.instance.vrrigs)
+            {
+                if (POS.gameObject.CompareTag("offlineVRRig") && GorillaTagger.Instance.offlineVRRig != null && POS.gameObject == GorillaTagger.Instance.offlineVRRig)
+                {
+                    PhotonNetwork.Disconnect();
+                }
+
+            }
+
+        }
+    }
+    public static void GrabRig()
+    {
+        if (ControllerInputPoller.instance.rightGrab)
+        {
+
+
+
+        }
+    }
+
+
+
 }
 
-   
+
+
+
 
 

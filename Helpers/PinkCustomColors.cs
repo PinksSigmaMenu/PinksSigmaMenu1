@@ -1,0 +1,120 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
+
+namespace PinkMenu.Helpers
+{
+    internal class allshadesofpink
+    {
+        public static Color lightPink = new Color(1f, 0.71f, 0.76f);
+        public static Color mediumPink = new Color(0.8f, 0.31f, 0.61f); 
+        public static Color deepPink = new Color(1f, 0.08f, 0.58f);
+        public static Color darkPink = new Color(0.8f, 0.2f, 0.4f);
+        public static Color palePink = new Color(0.85f, 0.75f, 0.8f);
+        public static Color pastelPink = new Color(1f, 0.82f, 0.86f);
+        public static Color babyPink = new Color(1f, 0.84f, 0.89f);
+        public static Color hotPink = new Color(1f, 0.41f, 0.71f);
+        public static Color cottonCandyPink = new Color(1f, 0.87f, 0.93f);
+        public static Color salmonPink = new Color(1f, 0.55f, 0.41f);
+        public static Color fuchsiaPink = new Color(1f, 0f, 1f);
+        public static Color magentaPink = new Color(1f, 0f, 0.56f);
+        public static Color blushPink = new Color(0.87f, 0.36f, 0.51f);
+        public static Color rosePink = new Color(1f, 0.41f, 0.71f);
+        public static Color bubblegumPink = new Color(1f, 0.6f, 0.78f);
+        public static Color flamingoPink = new Color(1f, 0.6f, 0.6f);
+        public static Color peachyPink = new Color(1f, 0.8f, 0.6f);
+        public static Color coralPink = new Color(1f, 0.51f, 0.67f);
+        public static Color orchidPink = new Color(0.85f, 0.44f, 0.84f);
+        public static Color raspberryPink = new Color(0.89f, 0.04f, 0.36f);
+        public static Color candyPink = new Color(0.89f, 0.44f, 0.48f);
+        public static Color flamingoPink2 = new Color(1f, 0.5f, 0.6f);
+        public static Color salmonPink2 = new Color(1f, 0.6f, 0.6f);
+        public static Color rosePink2 = new Color(1f, 0.6f, 0.6f);
+        public static Color pinkLemonade = new Color(1f, 0.6f, 0.4f);
+        public static Color bubblegumPink2 = new Color(1f, 0.4f, 0.8f);
+        public static Color pinkSherbet = new Color(1f, 0.6f, 0.8f);
+        public static Color cottonCandyPink2 = new Color(1f, 0.7f, 0.85f);
+        public static Color peachyPink2 = new Color(1f, 0.7f, 0.5f);
+        public static Color rosePink3 = new Color(1f, 0.5f, 0.5f);
+        public static Color strawberryPink = new Color(1f, 0.4f, 0.7f);
+        public static Color pinkChampagne = new Color(1f, 0.7f, 0.85f);
+        public static Color flamingoPink3 = new Color(1f, 0.7f, 0.7f);
+        public static Color blushPink2 = new Color(1f, 0.5f, 0.5f);
+        public static Color cherryBlossomPink = new Color(1f, 0.8f, 0.9f);
+        public static Color salmonPink3 = new Color(1f, 0.8f, 0.8f);
+        public static Color pinkLemonade2 = new Color(1f, 0.7f, 0.5f);
+        public static Color bubblegumPink3 = new Color(1f, 0.5f, 0.9f);
+        public static Color cottonCandyPink3 = new Color(1f, 0.8f, 0.95f);
+        public static Color peachyPink3 = new Color(1f, 0.9f, 0.6f);
+        public static Color rosePink4 = new Color(1f, 0.7f, 0.7f);
+        public static Color pinkSherbet2 = new Color(1f, 0.8f, 0.95f);
+        public static Color flamingoPink4 = new Color(1f, 0.8f, 0.8f);
+        public static Color blushPink3 = new Color(1f, 0.7f, 0.7f);
+        public static Color cherryBlossomPink2 = new Color(1f, 0.9f, 0.95f);
+        public static Color salmonPink4 = new Color(1f, 0.9f, 0.9f);
+        public static Color pinkLemonade3 = new Color(1f, 0.8f, 0.6f);
+        public static Color bubblegumPink4 = new Color(1f, 0.7f, 0.95f);
+        public static Color cottonCandyPink4 = new Color(1f, 0.9f, 0.98f);
+        public static Color peachyPink4 = new Color(1f, 0.98f, 0.7f);
+        public static Color rosePink5 = new Color(1f, 0.8f, 0.8f);
+        public static Color pinkSherbet3 = new Color(1f, 0.9f, 0.98f);
+        public static Color flamingoPink5 = new Color(1f, 0.9f, 0.9f);
+        public static Color blushPink4 = new Color(1f, 0.8f, 0.8f);
+        public static Color cherryBlossomPink3 = new Color(1f, 0.98f, 0.99f);
+        public static Color salmonPink5 = new Color(1f, 0.98f, 0.98f);
+        public static Color pinkLemonade4 = new Color(1f, 0.9f, 0.7f);
+        public static Color bubblegumPink5 = new Color(1f, 0.8f, 0.99f);
+        public static Color cottonCandyPink5 = new Color(1f, 0.98f, 0.99f);
+        public static Color peachyPink5 = new Color(1f, 0.99f, 0.8f);
+        public static Color rosePink6 = new Color(1f, 0.9f, 0.9f);
+        public static Color pinkSherbet4 = new Color(1f, 0.98f, 0.99f);
+        public static Color flamingoPink6 = new Color(1f, 0.98f, 0.98f);
+        public static Color blushPink5 = new Color(1f, 0.9f, 0.9f);
+        public static Color cherryBlossomPink4 = new Color(1f, 0.99f, 0.99f);
+        public static Color salmonPink6 = new Color(1f, 0.99f, 0.99f);
+        public static Color pinkLemonade5 = new Color(1f, 0.98f, 0.8f);
+        public static Color bubblegumPink6 = new Color(1f, 0.9f, 0.99f);
+        public static Color cottonCandyPink6 = new Color(1f, 0.99f, 0.99f);
+        public static Color peachyPink6 = new Color(1f, 0.99f, 0.9f);
+        public static Color rosePink7 = new Color(1f, 0.98f, 0.98f);
+        public static Color pinkSherbet5 = new Color(1f, 0.99f, 0.99f);
+        public static Color flamingoPink7 = new Color(1f, 0.99f, 0.99f);
+        public static Color blushPink6 = new Color(1f, 0.98f, 0.98f);
+        public static Color cherryBlossomPink5 = new Color(1f, 0.999f, 0.999f);
+        public static Color salmonPink7 = new Color(1f, 0.999f, 0.999f);
+        public static Color pinkLemonade6 = new Color(1f, 0.99f, 0.85f);
+        public static Color bubblegumPink7 = new Color(1f, 0.98f, 0.999f);
+        public static Color cottonCandyPink7 = new Color(1f, 0.999f, 0.999f);
+        public static Color peachyPink7 = new Color(1f, 0.999f, 0.95f);
+        public static Color rosePink8 = new Color(1f, 0.999f, 0.999f);
+        public static Color pinkSherbet6 = new Color(1f, 0.999f, 0.999f);
+        public static Color flamingoPink8 = new Color(1f, 0.999f, 0.999f);
+        public static Color blushPink7 = new Color(1f, 0.999f, 0.999f);
+        public static Color cherryBlossomPink6 = new Color(1f, 0.999f, 0.999f);
+        public static Color salmonPink8 = new Color(1f, 0.999f, 0.999f);
+        public static Color pinkLemonade7 = new Color(1f, 0.999f, 0.9f);
+        public static Color bubblegumPink8 = new Color(1f, 0.999f, 0.999f);
+        public static Color cottonCandyPink8 = new Color(1f, 0.999f, 0.999f);
+        public static Color peachyPink8 = new Color(1f, 0.999f, 0.97f);
+        public static Color rosePink9 = new Color(1f, 0.999f, 0.999f);
+        public static Color pinkSherbet7 = new Color(1f, 0.999f, 0.999f);
+        public static Color flamingoPink9 = new Color(1f, 0.999f, 0.999f);
+        public static Color blushPink8 = new Color(1f, 0.999f, 0.999f);
+        public static Color cherryBlossomPink7 = new Color(1f, 0.999f, 0.999f);
+        public static Color darkPink1 = new Color(0.8f, 0.2f, 0.4f); 
+        public static Color darkPink2 = new Color(0.75f, 0.15f, 0.35f); 
+        public static Color darkPink3 = new Color(0.7f, 0.1f, 0.3f); 
+        public static Color darkPink4 = new Color(0.65f, 0.05f, 0.25f);
+        public static Color darkPink5 = new Color(0.6f, 0f, 0.2f);
+        public static Color darkPink6 = new Color(0.55f, 0f, 0.15f);
+        public static Color darkPink7 = new Color(0.5f, 0f, 0.1f); 
+        public static Color darkPink8 = new Color(0.45f, 0f, 0.05f); 
+        public static Color darkPink9 = new Color(0.4f, 0f, 0f);
+        public static Color darkPink10 = new Color(0.35f, 0f, 0f); 
+    }
+}
+
+//made by 21_pink_12 im putting this here because this took 5 years to do so yea if you delete this your a fucking bitch//
+
+

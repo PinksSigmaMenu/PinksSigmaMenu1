@@ -31,7 +31,8 @@ namespace StupidTemplate
 
         public static KeyCode keyboardButton = KeyCode.Q;
 
-        public static Vector3 menuSize = new Vector3(0.1f, 1f, 1f); // Depth, Width, Height
+        public static Vector3 menuSize = new Vector3(0.1f, 0.95f, 1.05f); // Depth, Width, Height
+        public static Vector3 menuSize2 = new Vector3(0.1f, 1f, 1.10f); // Depth, Width, Height
         public static int buttonsPerPage = 8;
     }
 }

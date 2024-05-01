@@ -1,49 +1,47 @@
 ﻿using Photon.Pun;
 using StupidTemplate.Menu;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace PinkMenu.Mods
 {
     internal class AntiCheat
     {
-        public static List<GorillaPlayerLineButton> ReportButtons = new List<GorillaPlayerLineButton>();
-        public static int ButtonCount = 10000;
+        public static List<GorillaScoreBoard> Scoreboards = new List<GorillaScoreBoard>();
+
         public static void onReported()
         {
             PhotonNetwork.Disconnect();
             Main.RPCProtection();
         }
+
         public static void AntiReport()
         {
-            if (ReportButtons.Count < ButtonCount)
+            if (Scoreboards.Count == 0)
             {
-                GorillaPlayerLineButton[] gameObjects = GameObject.FindObjectsOfType<GorillaPlayerLineButton>();
-                foreach (GorillaPlayerLineButton button in gameObjects)
-                {
-                    if (button.gameObject.name == "ReportButton")
-                    {
-                        ReportButtons.Add(button);
-                    }
-                }
-                ButtonCount = ReportButtons.Count;
+                GorillaScoreBoard[] boards = GameObject.FindObjectsOfType<GorillaScoreBoard>();
+                Scoreboards.AddRange(boards);
             }
+
             float maxDistance = 0.35f;
-            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+
+            foreach (GorillaScoreBoard board in Scoreboards)
             {
-                foreach (GorillaPlayerLineButton button in ReportButtons)
+                foreach (GorillaPlayerScoreboardLine line in board.lines)
                 {
-                    if (vrrig != GorillaTagger.Instance.offlineVRRig)
+                    if (line.linePlayer == NetworkSystem.Instance.LocalPlayer)
                     {
-                        if (Vector3.Distance(vrrig.rightHandTransform.position, button.transform.position) < maxDistance)
+                        foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
                         {
-                            onReported();
-                        }
-                        else if (Vector3.Distance(vrrig.leftHandTransform.position, button.transform.position) < maxDistance)
-                        {
-                            onReported();
+                            if (vrrig != GorillaTagger.Instance.offlineVRRig)
+                            {
+                                if (Vector3.Distance(vrrig.rightHandTransform.position, line.reportButton.transform.position) < maxDistance ||
+                                    Vector3.Distance(vrrig.leftHandTransform.position, line.reportButton.transform.position) < maxDistance)
+                                {
+                                    onReported();
+                                    return;
+                                }
+                            }
                         }
                     }
                 }

@@ -14,6 +14,7 @@ namespace StupidTemplate.Helpers
     internal class Gun
     {
         public static GameObject GunPointer = null;
+        public static GameObject TeleportGunPointer = null;
         public static LineRenderer LineRender = null;
 
         public static void CreateGun()
@@ -37,7 +38,16 @@ namespace StupidTemplate.Helpers
             LineRender.material.shader = Shader.Find("GUI/Text Shader");
             LineRender.enabled = false;
 
+            TeleportGunPointer = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            TeleportGunPointer.GetComponent<Renderer>().material.color = Color.green;
+            TeleportGunPointer.transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
+
+            UnityEngine.Object.Destroy(TeleportGunPointer.GetComponent<Rigidbody>());
+            UnityEngine.Object.Destroy(TeleportGunPointer.GetComponent<Collider>());
+            TeleportGunPointer.GetComponent<Renderer>().material.shader = Shader.Find("GUI/Text Shader");
+            TeleportGunPointer.SetActive(false);
         }
+
         public static void UpdateGun(Action<VRRig> WhenHit)
         {
             if (GunPointer == null)
@@ -52,13 +62,12 @@ namespace StupidTemplate.Helpers
             RaycastHit RaycastResult;
             if (Physics.Raycast(GorillaTagger.Instance.rightHandTransform.position, -GorillaTagger.Instance.rightHandTransform.up, out RaycastResult))
             {
-
                 GunPointer.transform.position = RaycastResult.point;
                 LineRender.SetPosition(0, GorillaTagger.Instance.rightHandTransform.position);
                 LineRender.SetPosition(1, GunPointer.transform.position);
                 LineRender.enabled = true;
                 GunPointer.SetActive(true);
-                
+
                 if (ControllerInputPoller.TriggerFloat(XRNode.RightHand) > 0.5f)
                 {
                     VRRig RigHit = RaycastResult.collider.GetComponentInParent<VRRig>();
@@ -69,3 +78,5 @@ namespace StupidTemplate.Helpers
         }
     }
 }
+
+

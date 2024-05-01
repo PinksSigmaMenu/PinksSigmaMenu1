@@ -33,11 +33,13 @@ using Unity.Mathematics;
 using UnityEngine.InputSystem;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UIElements;
+using UnityEngine;
 using Valve.Newtonsoft.Json.Converters;
 using Valve.VR;
 using static Unity.Burst.Intrinsics.Arm;
 using static StupidTemplate.Menu.Main;
 using StupidTemplate.Mods;
+using PinkMenu.Helpers;
 
 namespace StupidTemplate.Mods
 {
@@ -337,89 +339,27 @@ namespace StupidTemplate.Mods
             }
         }
 
-
-
-
-
-        public static void lilriftplats()
-        {
-
-
-            if (ControllerInputPoller.instance.rightGrab)
-            {
-
-
-
-                if (!rightPlatTrig)
-                {
-
-                    rightPlat = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    rightPlat.GetComponent<Renderer>().material.color = Color.black;
-                    rightPlat.transform.position = GorillaLocomotion.Player.Instance.rightControllerTransform.position;
-                    rightPlat.transform.rotation = GorillaLocomotion.Player.Instance.rightControllerTransform.rotation;
-                    rightPlat.transform.localScale = new Vector3(0.01f, 0.25f, 0.25f);
-                    rightPlatO = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    rightPlatO.GetComponent<Renderer>().material.color = Color.magenta;
-                    rightPlatO.transform.position = GorillaLocomotion.Player.Instance.rightControllerTransform.position;
-                    rightPlatO.transform.rotation = GorillaLocomotion.Player.Instance.rightControllerTransform.rotation;
-                    rightPlatO.transform.localScale = new Vector3(0.009f, 0.26f, 0.26f);
-                    rightPlatTrig = true;
-                }
-            }
-            else
-            {
-                if (rightPlatTrig)
-                {
-                    UnityEngine.Object.Destroy(rightPlat);
-                    UnityEngine.Object.Destroy(rightPlatO);
-                    rightPlatTrig = false;
-                }
-            }
-            if (ControllerInputPoller.instance.leftGrab)
-            {
-                if (!leftPlatTrig)
-                {
-                    leftPlat = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    leftPlat.GetComponent<Renderer>().material.color = Color.black;
-                    leftPlat.transform.position = GorillaLocomotion.Player.Instance.leftControllerTransform.position;
-                    leftPlat.transform.rotation = GorillaLocomotion.Player.Instance.leftControllerTransform.rotation;
-                    leftPlat.transform.localScale = new Vector3(0.01f, 0.25f, 0.25f);
-                    leftPlatO = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    leftPlatO.GetComponent<Renderer>().material.color = Color.magenta;
-                    leftPlatO.transform.position = GorillaLocomotion.Player.Instance.leftControllerTransform.position;
-                    leftPlatO.transform.rotation = GorillaLocomotion.Player.Instance.leftControllerTransform.rotation;
-                    leftPlatO.transform.localScale = new Vector3(0.009f, 0.26f, 0.26f);
-                    leftPlatTrig = true;
-                }
-            }
-            else
-            {
-                if (leftPlatTrig)
-                {
-                    UnityEngine.Object.Destroy(leftPlat);
-                    UnityEngine.Object.Destroy(leftPlatO);
-                    leftPlatTrig = false;
-                }
-            }
-        }
         public static void InsaneMonkey()
         {
-            for (int i = 1; i < 2; i++)
-            {
-                GorillaTagger.Instance.offlineVRRig.head.rigTarget.eulerAngles = new Vector3(
-                (float)UnityEngine.Random.Range(0, 360),
-                (float)UnityEngine.Random.Range(0, 360 / i),
-                (float)UnityEngine.Random.Range(0, 360 / i));
-                GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.eulerAngles = new Vector3(
-                (float)UnityEngine.Random.Range(0, 360),
-                (float)UnityEngine.Random.Range(0, 360 / i),
-                (float)UnityEngine.Random.Range(0, 360 / i));
-                GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.eulerAngles = new Vector3(
-                (float)UnityEngine.Random.Range(0, 360),
-                (float)UnityEngine.Random.Range(0, 360 / i),
-                (float)UnityEngine.Random.Range(0, 360 / i));
-            }
+            GorillaTagger.Instance.offlineVRRig.head.rigTarget.eulerAngles = new Vector3(
+                UnityEngine.Random.Range(0f, 360f),
+                UnityEngine.Random.Range(0f, 360f),
+                UnityEngine.Random.Range(0f, 360f));
+
+            GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.eulerAngles = new Vector3(
+                UnityEngine.Random.Range(0f, 360f),
+                UnityEngine.Random.Range(0f, 360f),
+                UnityEngine.Random.Range(0f, 360f));
+
+            GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.eulerAngles = new Vector3(
+                UnityEngine.Random.Range(0f, 360f),
+                UnityEngine.Random.Range(0f, 360f),
+                UnityEngine.Random.Range(0f, 360f));
+
+            GorillaTagger.Instance.offlineVRRig.headBodyOffset = Vector3.zero;
         }
+
+
 
         public static bool Invisible = true;
         public static bool AllowedToInvis = true;
@@ -447,8 +387,174 @@ namespace StupidTemplate.Mods
                 GorillaTagger.Instance.offlineVRRig.headBodyOffset = Vector3.zero;
             }
         }
+        public static void loudhandtaps()
+        {
+            GorillaTagger.Instance.handTapVolume = 999;
+        }
+
+        public static void quiethandtaps()
+        {
+            GorillaTagger.Instance.handTapVolume = 0.50f;
+        }
+
+        public static void nohandtaps()
+        {
+            GorillaTagger.Instance.handTapVolume = 0;
+        }
+
+        public static void RightTriggerDisconnect()
+        {
+            if (ControllerInputPoller.instance.rightGrab)
+            {
+                PhotonNetwork.Disconnect();
+            }
+        }
+
+        public static void LeftTriggerDisconnect()
+        {
+            if (ControllerInputPoller.instance.leftGrab)
+            {
+                PhotonNetwork.Disconnect();
+            }
+        }
+
+        public static void Fly()
+        {
+            if (ControllerInputPoller.instance.rightControllerPrimaryButton)
+            {
+                GorillaTagger.Instance.transform.position += GorillaTagger.Instance.headCollider.transform.forward * Time.deltaTime * 15f;
+                GorillaTagger.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            }
+        }
+
+        private static bool moveForward = false;
+        private static bool moveBackward = false;
+        private static bool moveLeft = false;
+        private static bool moveRight = false;
+
+        public static void UpdateFlyControls()
+        {
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                moveForward = true;
+                moveBackward = false;
+            }
+            else if (Input.GetKeyDown(KeyCode.A))
+            {
+                moveLeft = true;
+                moveRight = false;
+            }
+            else if (Input.GetKeyDown(KeyCode.S))
+            {
+                moveBackward = true;
+                moveForward = false;
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                moveRight = true;
+                moveLeft = false;
+            }
+
+            if (Input.GetKeyUp(KeyCode.W))
+            {
+                moveForward = false;
+            }
+            else if (Input.GetKeyUp(KeyCode.A))
+            {
+                moveLeft = false;
+            }
+            else if (Input.GetKeyUp(KeyCode.S))
+            {
+                moveBackward = false;
+            }
+            else if (Input.GetKeyUp(KeyCode.D))
+            {
+                moveRight = false;
+            }
+
+            Vector3 movement = Vector3.zero;
+
+            if (moveForward)
+            {
+                movement += GorillaTagger.Instance.transform.forward;
+            }
+            else if (moveBackward)
+            {
+                movement -= GorillaTagger.Instance.transform.forward;
+            }
+
+            if (moveRight)
+            {
+                movement += GorillaTagger.Instance.transform.right;
+            }
+            else if (moveLeft)
+            {
+                movement -= GorillaTagger.Instance.transform.right;
+            }
+
+            GorillaTagger.Instance.rigidbody.MovePosition(GorillaTagger.Instance.rigidbody.position + movement * 15f * Time.deltaTime);
+        }
+
+        public static void TriggerFly()
+        {
+            if (ControllerInputPoller.instance.leftControllerGripFloat > 0f)
+            {
+                GorillaTagger.Instance.transform.position += GorillaTagger.Instance.headCollider.transform.forward * Time.deltaTime * 15f;
+                GorillaTagger.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            }
+        }
     }
 }
+
+
+    
+
+
+
+// <summary>
+// 
+// private static GameObject RPlat;
+// private static GameObject LPlat;
+// private static System.Action<UnityEngine.Object> Destroy = UnityEngine.Object.Destroy;
+// public static void Plats()
+// {
+//     if (ControllerInputPoller.instance.rightGrab)
+//     {
+//         RPlat = GameObject.CreatePrimitive(PrimitiveType.Cube);
+//         RPlat.transform.localScale = new Vector3(0.25f, 0.05f, 0.5f);
+//         Shader ESPShader = Shader.Find("GorillaTag/UberShader");
+//         Material sphereMaterial = new Material(ESPShader);
+//         RPlat.GetComponent<Renderer>().material = sphereMaterial;
+//         RPlat.transform.position = new Vector3(0f, 2f, 0f);
+//         RPlat.transform.rotation = Quaternion.identity;
+//
+//         float pingPongValue = Mathf.PingPong(Time.time / 2f, 1f);
+//         RPlat.GetComponent<Renderer>().material.color = Color.Lerp(Color.magenta, Color.black, pingPongValue);
+//         Destroy(RPlat);
+//     }
+//
+//     if (ControllerInputPoller.instance.leftGrab)
+//     {
+//         LPlat = GameObject.CreatePrimitive(PrimitiveType.Cube);
+//         LPlat.transform.localScale = new Vector3(0.25f, 0.05f, 0.5f);
+//         Shader ESPShader = Shader.Find("GorillaTag/UberShader");
+//         Material sphereMaterial = new Material(ESPShader);
+//         LPlat.GetComponent<Renderer>().material = sphereMaterial;
+//
+//         LPlat.transform.position = new Vector3(0f, 2f, 0f);
+//         LPlat.transform.rotation = Quaternion.identity;
+//
+//         float pingPongValue = Mathf.PingPong(Time.time / 2f, 1f);
+//         LPlat.GetComponent<Renderer>().material.color = Color.Lerp(Color.magenta, Color.black, pingPongValue);
+//
+//         Destroy(LPlat);
+//     }
+// }
+// }
+// </summary>
+
+//Scratched Idea
+
 
 
 
