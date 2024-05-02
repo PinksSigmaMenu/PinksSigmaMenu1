@@ -105,7 +105,7 @@ class Stuff
     }
     public static void Dress()
     {
-        Color BaseColor = new Color(255, 0, 255); // Pink color
+        Color BaseColor = new Color(255, 0, 255);
 
         GameObject Pean = GameObject.CreatePrimitive(PrimitiveType.Capsule);
 

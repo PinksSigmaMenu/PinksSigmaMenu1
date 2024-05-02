@@ -31,23 +31,15 @@ namespace StupidTemplate.Mods
             buttonsType = 5;
         }
 
-
-        public static void OPStuffin()
-        {
-            buttonsType = 6;            
-            
-                                
-        }
-
         public static void Stuffimade()
         {
-            buttonsType = 7;
+            buttonsType = 6;
 
          
         }
         public static void GunSettings()
         {
-            buttonsType = 8;
+            buttonsType = 7;
         }
 
         public static void RightHand()

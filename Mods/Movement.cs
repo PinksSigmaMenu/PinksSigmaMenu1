@@ -45,96 +45,7 @@ namespace StupidTemplate.Mods
 {
     internal class Movement
     {
-        public static void nofingermovment()
-        {
 
-            ControllerInputPoller.instance.leftControllerGripFloat = 0f;
-            ControllerInputPoller.instance.rightControllerGripFloat = 0f;
-            ControllerInputPoller.instance.leftControllerIndexFloat = 0f;
-            ControllerInputPoller.instance.rightControllerIndexFloat = 0f;
-            ControllerInputPoller.instance.leftControllerPrimaryButton = false;
-            ControllerInputPoller.instance.leftControllerSecondaryButton = false;
-            ControllerInputPoller.instance.rightControllerPrimaryButton = false;
-            ControllerInputPoller.instance.rightControllerSecondaryButton = false;
-        }
-        public static bool fakeoculusmenu()
-        {
-            if (ControllerInputPoller.instance.rightControllerPrimaryButton)
-            {
-                Movement.nofingermovment();
-            }
-            {
-                System.Type type = GorillaLocomotion.Player.Instance.GetType();
-                FieldInfo feildInfo = type.GetField("leftHandHolding", BindingFlags.NonPublic | BindingFlags.Instance);
-                feildInfo.SetValue(GorillaLocomotion.Player.Instance, ControllerInputPoller.instance.leftControllerPrimaryButton);
-                type = GorillaLocomotion.Player.Instance.GetType();
-                feildInfo = type.GetField("rightHandHolding", BindingFlags.NonPublic | BindingFlags.Instance);
-                feildInfo.SetValue(GorillaLocomotion.Player.Instance, ControllerInputPoller.instance.leftControllerPrimaryButton);
-                GorillaLocomotion.Player.Instance.InReportMenu = ControllerInputPoller.instance.leftControllerPrimaryButton;
-                GameObject.Find("Player Objects/Player VR Controller/GorillaPlayer/TurnParent/LeftHand Controller").SetActive(!ControllerInputPoller.instance.leftControllerPrimaryButton);
-                GameObject.Find("Player Objects/Player VR Controller/GorillaPlayer/TurnParent/LeftHand Controller").SetActive(!ControllerInputPoller.instance.leftControllerPrimaryButton);
-            }
-
-            return false;
-        }
-        private static float delaythinggg;
-        public static void TagSelf()
-        {
-            if (!GorillaTagger.Instance.offlineVRRig.mainSkin.material.name.Contains("fected") && Time.time > delaythinggg)
-            {
-                PhotonView.Get(GorillaGameManager.instance).RPC("ReportContactWithLavaRPC", RpcTarget.MasterClient, Array.Empty<object>());
-                delaythinggg = Time.time + 0.5f;
-            }
-            if (PhotonNetwork.LocalPlayer.IsMasterClient)
-            {
-                foreach (GorillaTagManager gorillaTagManager in GameObject.FindObjectsOfType<GorillaTagManager>())
-                {
-                    if (!gorillaTagManager.currentInfected.Contains(PhotonNetwork.LocalPlayer))
-                    {
-                        gorillaTagManager.currentInfected.Add(PhotonNetwork.LocalPlayer);
-                        NotifiLib.SendNotification("<color=grey>[</color><color=green>SUCCESS</color><color=grey>]</color> <color=white>You have been tagged!</color>");
-
-                    }
-                }
-            }
-            else
-            {
-                foreach (GorillaTagManager gorillaTagManager in GameObject.FindObjectsOfType<GorillaTagManager>())
-                {
-                    if (gorillaTagManager.currentInfected.Contains(PhotonNetwork.LocalPlayer))
-                    {
-                        NotifiLib.SendNotification("<color=grey>[</color><color=green>SUCCESS</color><color=grey>]</color> <color=white>You have been tagged!</color>");
-                        GorillaTagger.Instance.offlineVRRig.enabled = true;
-
-                    }
-                    else
-                    {
-                        foreach (VRRig rig in GorillaParent.instance.vrrigs)
-                        {
-                            if (rig.mainSkin.material.name.Contains("fected"))
-                            {
-                                GorillaTagger.Instance.offlineVRRig.enabled = false;
-                                GorillaTagger.Instance.offlineVRRig.transform.position = rig.rightHandTransform.position;
-                                GorillaTagger.Instance.myVRRig.transform.position = rig.rightHandTransform.position;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        public static void RpcFlush()
-        {
-            GorillaNot.instance.rpcErrorMax = int.MaxValue;
-            GorillaNot.instance.rpcCallLimit = int.MaxValue;
-            GorillaNot.instance.logErrorMax = int.MaxValue;
-
-            PhotonNetwork.RemoveRPCs(PhotonNetwork.LocalPlayer);
-            PhotonNetwork.OpCleanRpcBuffer(GorillaTagger.Instance.myVRRig);
-            PhotonNetwork.RemoveBufferedRPCs(GorillaTagger.Instance.myVRRig.ViewID, null, null);
-            PhotonNetwork.RemoveRPCsInGroup(int.MaxValue);
-            PhotonNetwork.SendAllOutgoingCommands();
-            GorillaNot.instance.OnPlayerLeftRoom(PhotonNetwork.LocalPlayer);
-        }
         public static bool isMaster()
         {
             if (PhotonNetwork.IsMasterClient)
@@ -166,88 +77,7 @@ namespace StupidTemplate.Mods
                 }
             }
         }
-        public static void OrbitGliders()
-        {
-            GliderHoldable[] them = GetGliders();
-            int index = 0;
-            foreach (GliderHoldable glider in them)
-            {
-                float offset = (360f / (float)them.Length) * index;
-                glider.gameObject.transform.position = GorillaTagger.Instance.headCollider.transform.position + new Vector3(MathF.Cos(offset + ((float)Time.frameCount / 30)) * 5f, 2, MathF.Sin(offset + ((float)Time.frameCount / 30)) * 5f);
-                index++;
-            }
-        }
-        public static GliderHoldable[] archiveholdables = null;
-        public static GliderHoldable[] GetGliders()
-        {
-            if (archiveholdables == null)
-            {
-                archiveholdables = UnityEngine.Object.FindObjectsOfType<GliderHoldable>();
-            }
-            return archiveholdables;
-        }
-        public static void FastGliders()
-        {
-            foreach (GliderHoldable glider in GetGliders())
-            {
-                glider.pullUpLiftBonus = 0.5f;
-                glider.dragVsSpeedDragFactor = 0.5f;
-            }
-        }
-        public static void fortnitemove()
-        {
-            if (ControllerInputPoller.instance.rightControllerPrimaryButton)
-            {
-                GorillaTagger.Instance.offlineVRRig.enabled = false;
-
-                GorillaTagger.Instance.offlineVRRig.transform.position = GorillaTagger.Instance.bodyCollider.transform.position + new Vector3(0f, 0.15f, 0f);
-                try
-                {
-                    GorillaTagger.Instance.myVRRig.transform.position = GorillaTagger.Instance.bodyCollider.transform.position + new Vector3(0f, 0.15f, 0f);
-                }
-                catch { }
-
-                GorillaTagger.Instance.offlineVRRig.transform.rotation = GorillaTagger.Instance.bodyCollider.transform.rotation;
-                try
-                {
-                    GorillaTagger.Instance.myVRRig.transform.rotation = GorillaTagger.Instance.bodyCollider.transform.rotation;
-                }
-                catch { }
-
-                GorillaTagger.Instance.offlineVRRig.head.rigTarget.transform.rotation = GorillaTagger.Instance.bodyCollider.transform.rotation;
-
-                GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.transform.position = GorillaTagger.Instance.offlineVRRig.transform.position + GorillaTagger.Instance.offlineVRRig.transform.right * -1f;
-                GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.transform.position = GorillaTagger.Instance.offlineVRRig.transform.position + GorillaTagger.Instance.offlineVRRig.transform.right * 1f;
-
-                GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.transform.rotation = GorillaTagger.Instance.offlineVRRig.transform.rotation;
-                GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.transform.rotation = GorillaTagger.Instance.offlineVRRig.transform.rotation;
-
-                GameObject l = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                UnityEngine.Object.Destroy(l.GetComponent<Rigidbody>());
-                UnityEngine.Object.Destroy(l.GetComponent<SphereCollider>());
-
-                l.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                l.transform.position = GorillaTagger.Instance.leftHandTransform.position;
-
-                GameObject r = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                UnityEngine.Object.Destroy(r.GetComponent<Rigidbody>());
-                UnityEngine.Object.Destroy(r.GetComponent<SphereCollider>());
-
-                r.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                r.transform.position = GorillaTagger.Instance.rightHandTransform.position;
-
-                l.GetComponent<Renderer>().material.color = Color.black;
-                r.GetComponent<Renderer>().material.color = Color.blue;
-
-                UnityEngine.Object.Destroy(l, Time.deltaTime);
-                UnityEngine.Object.Destroy(r, Time.deltaTime);
-            }
-            else
-            {
-                GorillaTagger.Instance.offlineVRRig.enabled = true;
-            }
-        }
-
+     
         public static void BatHalo()
         {
             float offset = 360f / 3f;
@@ -271,73 +101,6 @@ namespace StupidTemplate.Mods
         {
             Application.Quit();
         }
-        public static void HitTheMeanestGriddy()
-        {
-            if (ControllerInputPoller.instance.rightControllerPrimaryButton)
-            {
-                GorillaTagger.Instance.offlineVRRig.enabled = false;
-
-                Vector3 bodyOffset = GorillaTagger.Instance.offlineVRRig.transform.forward * (5f * Time.deltaTime);
-                GorillaTagger.Instance.offlineVRRig.transform.position = GorillaTagger.Instance.offlineVRRig.transform.position + bodyOffset;
-                try
-                {
-                    GorillaTagger.Instance.myVRRig.transform.position = GorillaTagger.Instance.offlineVRRig.transform.position + bodyOffset;
-                }
-                catch { }
-
-                GorillaTagger.Instance.offlineVRRig.transform.rotation = GorillaTagger.Instance.bodyCollider.transform.rotation;
-                GorillaTagger.Instance.myVRRig.transform.rotation = GorillaTagger.Instance.bodyCollider.transform.rotation;
-
-                GorillaTagger.Instance.offlineVRRig.head.rigTarget.transform.rotation = GorillaTagger.Instance.offlineVRRig.transform.rotation;
-
-                GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.transform.position = GorillaTagger.Instance.offlineVRRig.transform.position + (GorillaTagger.Instance.offlineVRRig.transform.right * -0.33f) + (GorillaTagger.Instance.offlineVRRig.transform.forward * (0.5f * Mathf.Cos((float)Time.frameCount / 10f))) + (GorillaTagger.Instance.offlineVRRig.transform.up * (-0.5f * Mathf.Abs(Mathf.Sin((float)Time.frameCount / 10f))));
-                GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.transform.position = GorillaTagger.Instance.offlineVRRig.transform.position + (GorillaTagger.Instance.offlineVRRig.transform.right * 0.33f) + (GorillaTagger.Instance.offlineVRRig.transform.forward * (0.5f * Mathf.Cos((float)Time.frameCount / 10f))) + (GorillaTagger.Instance.offlineVRRig.transform.up * (-0.5f * Mathf.Abs(Mathf.Sin((float)Time.frameCount / 10f))));
-
-                GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.transform.rotation = GorillaTagger.Instance.offlineVRRig.transform.rotation;
-                GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.transform.rotation = GorillaTagger.Instance.offlineVRRig.transform.rotation;
-
-                GameObject l = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                UnityEngine.Object.Destroy(l.GetComponent<Rigidbody>());
-                UnityEngine.Object.Destroy(l.GetComponent<SphereCollider>());
-
-                l.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                l.transform.position = GorillaTagger.Instance.leftHandTransform.position;
-
-                GameObject r = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                UnityEngine.Object.Destroy(r.GetComponent<Rigidbody>());
-                UnityEngine.Object.Destroy(r.GetComponent<SphereCollider>());
-
-                r.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                r.transform.position = GorillaTagger.Instance.rightHandTransform.position;
-
-                l.GetComponent<Renderer>().material.color = Color.black;
-                r.GetComponent<Renderer>().material.color = Color.blue;
-
-                UnityEngine.Object.Destroy(l, Time.deltaTime);
-                UnityEngine.Object.Destroy(r, Time.deltaTime);
-            }
-            else
-            {
-                GorillaTagger.Instance.offlineVRRig.enabled = true;
-            }
-        }
-        public static void SlowGliders()
-        {
-            foreach (GliderHoldable glider in GetGliders())
-            {
-                glider.pullUpLiftBonus = 0.05f;
-                glider.dragVsSpeedDragFactor = 0.05f;
-            }
-        }
-
-        public static void FixGliderSpeed()
-        {
-            foreach (GliderHoldable glider in GetGliders())
-            {
-                glider.pullUpLiftBonus = 0.1f;
-                glider.dragVsSpeedDragFactor = 0.2f;
-            }
-        }
 
         public static void InsaneMonkey()
         {
@@ -358,8 +121,6 @@ namespace StupidTemplate.Mods
 
             GorillaTagger.Instance.offlineVRRig.headBodyOffset = Vector3.zero;
         }
-
-
 
         public static bool Invisible = true;
         public static bool AllowedToInvis = true;

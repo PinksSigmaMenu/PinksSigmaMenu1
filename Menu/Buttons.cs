@@ -19,7 +19,7 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "Visuals", method =() => SettingsMods.VisuaSettings(), isTogglable = false, toolTip = "visual mods"},
                 new ButtonInfo { buttonText = "Guns", method =() => SettingsMods.GunSettings(), isTogglable = false, toolTip = "gun stuff"},
                 new ButtonInfo { buttonText = "Stuff", method =() => SettingsMods.Stuffimade(), isTogglable = false, toolTip = "its stuff"},
-                new ButtonInfo { buttonText = "OpStuff", method =() => SettingsMods.OPStuffin(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+                
             },
 
 
@@ -45,20 +45,12 @@ namespace StupidTemplate.Menu
 
             new ButtonInfo[] { // Movement Settings
                 new ButtonInfo { buttonText = "Return", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Returns to the main settings page for the menu."},
-                new ButtonInfo { buttonText = "Tag All", method =() => Guns.TagAll(),  enableMethod = Visuals.coolchamsforrigmods, isTogglable = true,  toolTip = "Tag All if tagged"},
-                new ButtonInfo { buttonText = "TagAura", method =() => Visuals.TagAura(), isTogglable = true, toolTip = "Makes Beach ball fly arounf you"},
                 new ButtonInfo { buttonText = "UpAndDown", method =() => Movement.UpAndDownsyndrome(), isTogglable = true, toolTip = "Makes you go up and down with right and left grip"},
                 new ButtonInfo { buttonText = "InvisMonke", method =() => Movement.InvisMonke(), isTogglable = true, toolTip = "makes you invisable bitch"},
                 new ButtonInfo { buttonText = "Spazzy Monkey", method =() => Movement.InsaneMonkey(), isTogglable = true, toolTip = "Makes you go insane"},
-                new ButtonInfo { buttonText = "slow gliders", method =() => Movement.SlowGliders(), isTogglable = true, toolTip = "Slows gliders"},
-                new ButtonInfo { buttonText = "Fast Gliders", method =() => Movement.FastGliders(), isTogglable = true, toolTip = "Fast gliders"},
-                new ButtonInfo { buttonText = "GLider Orbit", method =() => Movement.OrbitGliders(), isTogglable = true, toolTip = "Orbit gliders"},
-                new ButtonInfo { buttonText = "Hit the meanest griddy", method =() => Movement.HitTheMeanestGriddy(), isTogglable = true, toolTip = "Makes you hit the griddy"},
-                new ButtonInfo { buttonText = "Fortnite move", method =() => Movement.fortnitemove(), isTogglable = true, toolTip = "Makes you T pose"},
                 new ButtonInfo { buttonText = "Bug orbit", method =() => Movement.BugHalo(), isTogglable = true, toolTip = "Makes doug fly around you"},
                 new ButtonInfo { buttonText = "Bat orbit", method =() => Movement.BatHalo(), isTogglable = true, toolTip = "Makes the bat fly around you"},
                 new ButtonInfo { buttonText = "Beach Ball orbit", method =() => Movement.BeachBallHalo(), isTogglable = true, toolTip = "Makes Beach ball fly arounf you"},
-                new ButtonInfo { buttonText = "Tagself", method =() => Movement.TagSelf(), isTogglable = true, toolTip = "Makes Beach ball fly arounf you"},
                 new ButtonInfo { buttonText = "Loud Hand Taps", method =() => Movement.loudhandtaps(), isTogglable = true, toolTip = "Makes your hand taps loud!"},
                 new ButtonInfo { buttonText = "Quiet Hand Taps", method =() => Movement.quiethandtaps(), isTogglable = true, toolTip = "Makes your hand taps quiet!"},
                 new ButtonInfo { buttonText = "No Hand Taps", method =() => Movement.nohandtaps(), isTogglable = true, toolTip = "makes it so there is no sound to handtaps!"},
@@ -91,7 +83,6 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "Beacons", method =() => Visuals.Beaconss(), isTogglable = true, toolTip = "These are beacons to see players ha ha"},
                 new ButtonInfo { buttonText = "Lilrift snake Chams", method =() => Visuals.lilriftsnakechams(), isTogglable = true, toolTip = "lilrift snake chams"},
                 new ButtonInfo { buttonText = "PeanSP", method =() => Visuals.PeenSP(), isTogglable = true, toolTip = "PeainSP"},
-                new ButtonInfo { buttonText = "Weird Chams", method =() => Visuals.coolchamsforrigmods(), isTogglable = true, toolTip = "Chams"},
                 new ButtonInfo { buttonText = "Shit ESP", method =() => Visuals.Sigma(), isTogglable = true, toolTip = "its the worst esp"},
                 new ButtonInfo { buttonText = "Hunt ESP", method =() => Visuals.HuntBreadcrumbs(), isTogglable = true, toolTip = "Shows the person whos targeting you"},
                 //new ButtonInfo { buttonText = "Bone ESP", method =() => Visuals.BoneESP(), isTogglable = true, toolTip = "Bone ESP"},
@@ -99,14 +90,7 @@ namespace StupidTemplate.Menu
 
 
 
-           new ButtonInfo[] { //op stuff
-               new ButtonInfo { buttonText = "Return", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
-               new ButtonInfo { buttonText = "set master [M]", method =() => OPStuff.AcidAll(), isTogglable = false, toolTip = "Sets Master"},
-               new ButtonInfo { buttonText = "Mat Spam [M]", method =() => OPStuff.MatAll(), isTogglable = true, toolTip = "Sets Master"},
-               new ButtonInfo { buttonText = "Spaz Soda [M]", method =() => OPStuff.Spazsoda(), isTogglable = true, toolTip = "Sets Master"},
-               new ButtonInfo { buttonText = "Crash All", method =() => OPStuff.CrashAll(), isTogglable = false, toolTip = "Crashes everyone"},
-
-            },
+          
 
            new ButtonInfo[] { //Stuff
                new ButtonInfo { buttonText = "Return", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},

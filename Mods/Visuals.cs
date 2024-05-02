@@ -197,7 +197,6 @@ namespace PinkMenu.Mods
 
 
 
-                        //Destroys objects
                         UnityEngine.Object.Destroy(LeftNut, Time.deltaTime);
                         UnityEngine.Object.Destroy(rightnut, Time.deltaTime);
                         UnityEngine.Object.Destroy(Peanit, Time.deltaTime);
@@ -249,9 +248,10 @@ namespace PinkMenu.Mods
                         lineRenderer.endWidth = 0.05f;
                         lineRenderer.SetPositions(new Vector3[]
                         {
-                    Player.Instance.rightControllerTransform.position,
-                    Trace.transform.position
-                });
+                            GorillaTagger.Instance.offlineVRRig.headBodyOffset
+
+
+                        });
                         Shader ShaderShit = Shader.Find("GUI/Text Shader");
                         Material SphereMats = new Material(ShaderShit);
                         Lines.GetComponent<Renderer>().material = SphereMats;
@@ -288,44 +288,6 @@ namespace PinkMenu.Mods
                         SphereMats.color = Color.Lerp(Color.magenta, Color.black, pingPongValue1);
 
                         UnityEngine.Object.Destroy(Lines, Time.deltaTime);
-                    }
-                }
-            }
-        }
-        public static void lilriftsnakechams()
-        {
-            if (PhotonNetwork.InRoom || PhotonNetwork.InLobby)
-            {
-                foreach (VRRig FullPlayers in GorillaParent.instance.vrrigs)
-                {
-                    if (FullPlayers != GorillaTagger.Instance.offlineVRRig)
-                    {
-                        if (FullPlayers.mainSkin.material.name.Contains("fected"))
-                        {
-                            GameObject ThePointer1 = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-                            ThePointer1.transform.localScale = new Vector3(0.085f, 0.085f, 0.085f);
-                            ThePointer1.transform.position = FullPlayers.transform.position;
-                            ThePointer1.transform.rotation = FullPlayers.transform.rotation;
-                            Shader ESPShader = Shader.Find("GUI/Text Shader");
-                            ThePointer1.GetComponent<Renderer>().material.shader = ESPShader;
-                            ThePointer1.GetComponent<Renderer>().material.color = Color.red;
-                            UnityEngine.Object.Destroy(ThePointer1, 0.175f);
-                            UnityEngine.Object.Destroy(ThePointer1.GetComponent<BoxCollider>());
-                            UnityEngine.Object.Destroy(ThePointer1.GetComponent<Rigidbody>());
-                        }
-                        else
-                        {
-                            GameObject ThePointer1 = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-                            ThePointer1.transform.localScale = new Vector3(0.085f, 0.085f, 0.085f);
-                            ThePointer1.transform.position = FullPlayers.transform.position;
-                            ThePointer1.transform.rotation = FullPlayers.transform.rotation;
-                            Shader ESPShader = Shader.Find("GUI/Text Shader");
-                            ThePointer1.GetComponent<Renderer>().material.shader = ESPShader;
-                            ThePointer1.GetComponent<Renderer>().material.color = FullPlayers.mainSkin.material.color;
-                            UnityEngine.Object.Destroy(ThePointer1, 0.175f);
-                            UnityEngine.Object.Destroy(ThePointer1.GetComponent<BoxCollider>());
-                            UnityEngine.Object.Destroy(ThePointer1.GetComponent<Rigidbody>());
-                        }
                     }
                 }
             }
@@ -373,70 +335,9 @@ namespace PinkMenu.Mods
                 return !(__instance == GorillaTagger.Instance.offlineVRRig);
             }
         }
-        public static bool ghostException = false;
-        public static Material funnyghostmaterial = null;
-        public static VRRig GhostRig = null;
-        public static void coolchamsforrigmods()
-        {
-            if (!GorillaTagger.Instance.offlineVRRig.enabled || ghostException)
-            {
-                if (GhostRig == null)
-                {
-                    GhostRig = UnityEngine.Object.Instantiate<VRRig>(GorillaTagger.Instance.offlineVRRig, GorillaLocomotion.Player.Instance.transform.position, GorillaLocomotion.Player.Instance.transform.rotation);
-                    GhostRig.enabled = true;
 
-                    GhostPatch.Prefix(GorillaTagger.Instance.offlineVRRig);
-                }
 
-                if (funnyghostmaterial == null)
-                {
-                    funnyghostmaterial = new Material(Shader.Find("GUI/Text Shader"));
-                }
-                Color ghm = Color.magenta;
-                ghm.a = 0.5f;
-                funnyghostmaterial.color = ghm;
-                GhostRig.mainSkin.material = funnyghostmaterial;
 
-                GhostRig.headConstraint.transform.position = GorillaLocomotion.Player.Instance.headCollider.transform.position;
-                GhostRig.headConstraint.transform.rotation = GorillaLocomotion.Player.Instance.headCollider.transform.rotation;
-
-                GhostRig.leftHandTransform.position = GorillaLocomotion.Player.Instance.leftControllerTransform.position;
-                GhostRig.rightHandTransform.position = GorillaLocomotion.Player.Instance.rightControllerTransform.position;
-
-                GhostRig.leftHandTransform.rotation = GorillaLocomotion.Player.Instance.leftControllerTransform.rotation;
-                GhostRig.rightHandTransform.rotation = GorillaLocomotion.Player.Instance.rightControllerTransform.rotation;
-
-                GhostRig.transform.position = GorillaLocomotion.Player.Instance.transform.position;
-                GhostRig.transform.rotation = GorillaLocomotion.Player.Instance.transform.rotation;
-            }
-            else
-            {
-                if (GhostRig != null)
-                {
-                    UnityEngine.Object.Destroy(GhostRig.gameObject);
-                }
-            }
-        }
-        public static float tagAuraDistance = 2.666f;
-        public static bool righthand;
-        public static bool lefthand;
-        private static float delaythinggg;
-
-        public static void TagAura()
-        {
-            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
-            {
-                Vector3 they = vrrig.headMesh.transform.position;
-                Vector3 notthem = GorillaTagger.Instance.offlineVRRig.head.rigTarget.position;
-                float distance = Vector3.Distance(they, notthem);
-
-                if (GorillaTagger.Instance.offlineVRRig.mainSkin.material.name.Contains("fected") && !vrrig.mainSkin.material.name.Contains("fected") && GorillaLocomotion.Player.Instance.disableMovement == false && distance < tagAuraDistance)
-                {
-                    if (righthand == true) { GorillaLocomotion.Player.Instance.rightControllerTransform.position = they; } else { GorillaLocomotion.Player.Instance.leftControllerTransform.position = they; }
-                    if (lefthand == true) { GorillaLocomotion.Player.Instance.leftControllerTransform.position = they; } else { GorillaLocomotion.Player.Instance.rightControllerTransform.position = they; }
-                }
-            }
-        }
 
 
         // public static void BoneESP()
