@@ -12,6 +12,8 @@ using UnityEngine.XR;
 namespace StupidTemplate.Helpers
 {
     internal class Gun
+
+        //penus
     {
         public static GameObject GunPointer = null;
         public static GameObject TeleportGunPointer = null;
