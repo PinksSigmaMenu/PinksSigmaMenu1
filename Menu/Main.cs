@@ -143,11 +143,9 @@ namespace StupidTemplate.Menu
             menuBackground.transform.rotation = Quaternion.identity;
             menuBackground.transform.localScale = menuSize2;
             menuBackground.GetComponent<Renderer>().material.color = allshadesofpink.mediumPink;
-            menuBackground.transform.position = new Vector3(0.05f, 0f, 0f);
-
-
-
-
+            menuBackground.transform.position = new Vector3(-0.02f, 0f, 0f);
+         
+         
 
 
             // Canvas
@@ -602,6 +600,8 @@ namespace StupidTemplate.Menu
         public static float projDebounceType = 0.1f;
         public static float projDebounce = 0f;
         public static bool hasRemovedThisFrame = false;
+        public static float flyingSpeed = 15f;
+        public static float noCollisionRadius = 5f;
 
         // Important
 
@@ -649,6 +649,9 @@ namespace StupidTemplate.Menu
         private static bool lastHit;
         private static bool hit;
         public static float colorFloat = 0f;
+
+        public Text textComponent;
+        public string displayText = "Your Text Here";
 
 
 

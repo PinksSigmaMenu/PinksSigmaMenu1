@@ -1,4 +1,5 @@
-﻿using PinkMenu.Mods;
+﻿using DiscordRPC;
+using PinkMenu.Mods;
 using StupidTemplate.Classes;
 using StupidTemplate.Helpers;
 using StupidTemplate.Mods;
@@ -40,8 +41,10 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "AntiReport", method =() => AntiCheat.AntiReport(), enabled = true, toolTip = "it makes you leave before you get reported"},
                 new ButtonInfo { buttonText = "Conduct Player IDS", method =() => Display22.ConductIDS(), enabled = true, toolTip = "Shows Player IDS on code of conduct boared"},
                 new ButtonInfo { buttonText = "MOTD", method =() => Display22.MOTDTXT(), enabled = true, toolTip = "Changes motd"},
-                 new ButtonInfo { buttonText = "Custom Sky", method =() => Custom_Sky.CustomSky(), enabled = true, toolTip = "Changes sky color"},
+                new ButtonInfo { buttonText = "Custom Sky", method =() => Custom_Sky.CustomSky(), enabled = true, toolTip = "Changes sky color"},
+                new ButtonInfo { buttonText = "ScoreBoard Changer", method =() => Display22.ScoreboardChanger(), enabled = true, toolTip = "Changes sky color"},
             },
+
 
             new ButtonInfo[] { // Movement Settings
                 new ButtonInfo { buttonText = "Return", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Returns to the main settings page for the menu."},
@@ -57,8 +60,9 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "Right grab Disconnect", method =() => Movement.RightTriggerDisconnect(), isTogglable = true, toolTip = "disconnects you when you press right grab"},
                 new ButtonInfo { buttonText = "Left grab Disconnect", method =() => Movement.LeftTriggerDisconnect(), isTogglable = true, toolTip = "disconnects you when you press left grab"},
                 new ButtonInfo { buttonText = "Fly", method =() => Movement.Fly(), isTogglable = true, toolTip = "Makes you fly"},
-                new ButtonInfo { buttonText = "WASD Fly", method =() => Movement.UpdateFlyControls(), isTogglable = true, toolTip = "Makes you fly with WASD"},
-                new ButtonInfo { buttonText = "Trigger Fly", method =() => Movement.TriggerFly(), isTogglable = true, toolTip = "Makes you fly with Trigger"},
+                 new ButtonInfo { buttonText = "NoClip Fly", method =() => FlyingController.NoClipFly(), isTogglable = true, toolTip = "Makes you fly with noclip"},
+                 new ButtonInfo { buttonText = "Trigger Fly", method =() => Movement.TriggerFly(), isTogglable = true, toolTip = "Makes you fly with Trigger"},
+             //   new ButtonInfo { buttonText = "WASD Fly", method =() => Movement.UpdateFlyControls(), isTogglable = true, toolTip = "Makes you fly with WASD"},
             },
 
             new ButtonInfo[] { // Projectile Settings
@@ -84,6 +88,7 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "PeanSP", method =() => Visuals.PeenSP(), isTogglable = true, toolTip = "PeainSP"},
                 new ButtonInfo { buttonText = "Shit ESP", method =() => Visuals.Sigma(), isTogglable = true, toolTip = "its the worst esp"},
                 new ButtonInfo { buttonText = "Hunt ESP", method =() => Visuals.HuntBreadcrumbs(), isTogglable = true, toolTip = "Shows the person whos targeting you"},
+                new ButtonInfo { buttonText = "Wireframe BoxESP", method =() => Visuals.BoxESP2(), isTogglable = true, toolTip = "Shows the person whos targeting you"},
                 //new ButtonInfo { buttonText = "Bone ESP", method =() => Visuals.BoneESP(), isTogglable = true, toolTip = "Bone ESP"},
             },
 

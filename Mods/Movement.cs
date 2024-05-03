@@ -187,7 +187,7 @@ namespace StupidTemplate.Mods
                 GorillaTagger.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
         }
-
+//
         private static bool moveForward = false;
         private static bool moveBackward = false;
         private static bool moveLeft = false;
@@ -255,10 +255,10 @@ namespace StupidTemplate.Mods
 
             GorillaTagger.Instance.rigidbody.MovePosition(GorillaTagger.Instance.rigidbody.position + movement * 15f * Time.deltaTime);
         }
-
+//;
         public static void TriggerFly()
         {
-            if (ControllerInputPoller.instance.leftControllerGripFloat > 0f)
+            if (ControllerInputPoller.instance.leftGrab)
             {
                 GorillaTagger.Instance.transform.position += GorillaTagger.Instance.headCollider.transform.forward * Time.deltaTime * 15f;
                 GorillaTagger.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;

@@ -1,12 +1,15 @@
-﻿using Photon.Pun;
+﻿using BepInEx;
+using Photon.Pun;
 using Photon.Realtime;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace PinkMenu.Mods
+namespace StupidTemplate.Helpers
 {
     internal class Display22
     {
@@ -29,7 +32,7 @@ namespace PinkMenu.Mods
                     GameObject.Find("motdscreen").GetComponent<Renderer>().material.color = Color.red;
                     GameObject.Find("screen").GetComponent<Renderer>().material.color = Color.magenta;
 
-                    
+
                 }
             }
         }
@@ -50,10 +53,38 @@ namespace PinkMenu.Mods
 
                     motdText.text = "HELLO FELLOW SIGMA WELCOME TO PINKS SIGMA MENU I HOPE YOU ENJOY AND MAKE SURE TO RIZZ UP ALL OF THEM LEVEL 10s";
 
-                  
+
                 }
             }
         }
+        public static void ScoreboardChanger()
+        {
+            GameObject ScoreBoard = GameObject.Find("scoreboard");
 
+            if (ScoreBoard != null)
+            {
+                Text motd = ScoreBoard.GetComponent<Text>();
+
+                if (motd != null)
+                {
+                    float lerp = Mathf.PingPong(Time.time, 1) / 1;
+                    Color color = Color.Lerp(Color.magenta, Color.black, lerp);
+                    motd.color = color;
+                }
+            }
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -17,6 +17,8 @@ using System.Collections;
 using Photon.Pun;
 using BoingKit;
 using Oculus.Interaction;
+using PinkMenu.Helpers;
+using StupidTemplate.Classes;
 
 class Stuff
 {
@@ -132,27 +134,35 @@ class Stuff
         {
             foreach (VRRig POS in GorillaParent.instance.vrrigs)
             {
-                if (POS.gameObject.CompareTag("offlineVRRig") && GorillaTagger.Instance.offlineVRRig != null && POS.gameObject == GorillaTagger.Instance.offlineVRRig)
+                if (POS)
                 {
                     PhotonNetwork.Disconnect();
                 }
-
             }
-
         }
     }
+    public class ColliderDetection : MonoBehaviour
+    {
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject == GorillaTagger.Instance.offlineVRRig.gameObject)
+            {
+                AngryGorillas();
+            }
+        }
+    }
+  
     public static void GrabRig()
     {
         if (ControllerInputPoller.instance.rightGrab)
         {
-
-
-
+            GorillaTagger.Instance.offlineVRRig.transform.position = GorillaTagger.Instance.rightHandTransform.position;
+        }
+        else
+        {
+            GorillaTagger.Instance.offlineVRRig.transform.position = Vector3.zero;
         }
     }
-
-
-
 }
 
 
