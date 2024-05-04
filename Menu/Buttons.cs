@@ -60,9 +60,10 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "Right grab Disconnect", method =() => Movement.RightTriggerDisconnect(), isTogglable = true, toolTip = "disconnects you when you press right grab"},
                 new ButtonInfo { buttonText = "Left grab Disconnect", method =() => Movement.LeftTriggerDisconnect(), isTogglable = true, toolTip = "disconnects you when you press left grab"},
                 new ButtonInfo { buttonText = "Fly", method =() => Movement.Fly(), isTogglable = true, toolTip = "Makes you fly"},
-                 new ButtonInfo { buttonText = "NoClip Fly", method =() => FlyingController.NoClipFly(), isTogglable = true, toolTip = "Makes you fly with noclip"},
-                 new ButtonInfo { buttonText = "Trigger Fly", method =() => Movement.TriggerFly(), isTogglable = true, toolTip = "Makes you fly with Trigger"},
-             //   new ButtonInfo { buttonText = "WASD Fly", method =() => Movement.UpdateFlyControls(), isTogglable = true, toolTip = "Makes you fly with WASD"},
+                new ButtonInfo { buttonText = "NoClip Fly", method =() => FlyingController.NoClipFly(), isTogglable = true, toolTip = "Makes you fly with noclip"},
+                new ButtonInfo { buttonText = "Trigger Fly", method =() => Movement.TriggerFly(), isTogglable = true, toolTip = "Makes you fly with Trigger"},
+                new ButtonInfo { buttonText = "Spazzy Hands", method =() => Movement.SpazzyHands(), isTogglable = true, toolTip = "Spazzes hands"},
+             // new ButtonInfo { buttonText = "WASD Fly", method =() => Movement.UpdateFlyControls(), isTogglable = true, toolTip = "Makes you fly with WASD"},
             },
 
             new ButtonInfo[] { // Projectile Settings
@@ -88,7 +89,7 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "PeanSP", method =() => Visuals.PeenSP(), isTogglable = true, toolTip = "PeainSP"},
                 new ButtonInfo { buttonText = "Shit ESP", method =() => Visuals.Sigma(), isTogglable = true, toolTip = "its the worst esp"},
                 new ButtonInfo { buttonText = "Hunt ESP", method =() => Visuals.HuntBreadcrumbs(), isTogglable = true, toolTip = "Shows the person whos targeting you"},
-                new ButtonInfo { buttonText = "Wireframe BoxESP", method =() => Visuals.BoxESP2(), isTogglable = true, toolTip = "Shows the person whos targeting you"},
+                //new ButtonInfo { buttonText = "Wireframe BoxESP", method =() => Visuals.BoxESP2(), isTogglable = true, toolTip = "Shows the person whos targeting you"},
                 //new ButtonInfo { buttonText = "Bone ESP", method =() => Visuals.BoneESP(), isTogglable = true, toolTip = "Bone ESP"},
             },
 

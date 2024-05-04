@@ -77,7 +77,7 @@ namespace StupidTemplate.Mods
                 }
             }
         }
-     
+
         public static void BatHalo()
         {
             float offset = 360f / 3f;
@@ -187,7 +187,7 @@ namespace StupidTemplate.Mods
                 GorillaTagger.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
         }
-//
+        //
         private static bool moveForward = false;
         private static bool moveBackward = false;
         private static bool moveLeft = false;
@@ -255,7 +255,7 @@ namespace StupidTemplate.Mods
 
             GorillaTagger.Instance.rigidbody.MovePosition(GorillaTagger.Instance.rigidbody.position + movement * 15f * Time.deltaTime);
         }
-//;
+        //;
         public static void TriggerFly()
         {
             if (ControllerInputPoller.instance.leftGrab)
@@ -264,11 +264,24 @@ namespace StupidTemplate.Mods
                 GorillaTagger.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
         }
+
+        public static void SpazzyHands()
+        {
+            GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.eulerAngles = new Vector3(
+                UnityEngine.Random.Range(0f, 360f),
+                UnityEngine.Random.Range(0f, 360f),
+                UnityEngine.Random.Range(0f, 360f));
+
+            GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.eulerAngles = new Vector3(
+                UnityEngine.Random.Range(0f, 360f),
+                UnityEngine.Random.Range(0f, 360f),
+                UnityEngine.Random.Range(0f, 360f));
+        }
     }
 }
 
 
-    
+
 
 
 

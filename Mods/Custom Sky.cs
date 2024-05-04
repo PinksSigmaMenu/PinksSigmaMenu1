@@ -22,11 +22,6 @@ namespace StupidTemplate.Mods
 
             GameObject.Find("Environment Objects/LocalObjects_Prefab/Standard Sky/newsky (1)").GetComponent<Renderer>().material = mat;
             GameObject.Find("Environment Objects/LocalObjects_Prefab/Standard Sky").GetComponent<Renderer>().material = mat;
-          
-
-
-
-
         }
 
     }

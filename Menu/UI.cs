@@ -7,12 +7,7 @@ public class DisplayText : MonoBehaviour
     public Color textColor = Color.white;
     public Font customFont;
 
-    void Start()
-    {
-        ShowTextField("Sigma Rizz", fontSize, fontStyle, textColor, customFont);
-    }
-
-    public static void ShowTextField(string defaultText, int fontSize, FontStyle fontStyle, Color textColor, Font customFont)
+    void OnGUI()
     {
         GUI.skin.textField.font = customFont;
         GUI.skin.textField.fontStyle = fontStyle;
@@ -27,7 +22,7 @@ public class DisplayText : MonoBehaviour
         float textFieldX = (screenWidth - textFieldWidth) / 2;
         float textFieldY = (screenHeight - textFieldHeight) / 2;
 
-        string newText = GUI.TextField(new Rect(textFieldX, textFieldY, textFieldWidth, textFieldHeight), defaultText);
+        string newText = GUI.TextField(new Rect(textFieldX, textFieldY, textFieldWidth, textFieldHeight), "Sigma Rizz");
 
         Debug.Log("Entered text: " + newText);
     }

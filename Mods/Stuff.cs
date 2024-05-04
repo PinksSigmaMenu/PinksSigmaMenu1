@@ -156,7 +156,7 @@ class Stuff
     {
         if (ControllerInputPoller.instance.rightGrab)
         {
-            GorillaTagger.Instance.offlineVRRig.transform.position = GorillaTagger.Instance.rightHandTransform.position;
+            GorillaTagger.Instance.offlineVRRig.transform.position = GorillaTagger.Instance.rightHandTransform.transform.position;
         }
         else
         {
