@@ -247,12 +247,7 @@ namespace PinkMenu.Mods
                         LineRenderer lineRenderer = Lines.AddComponent<LineRenderer>();
                         lineRenderer.startWidth = 0.05f;
                         lineRenderer.endWidth = 0.05f;
-                        lineRenderer.SetPositions(new Vector3[]
-                        {
-                            GorillaTagger.Instance.offlineVRRig.headBodyOffset
-
-
-                        });
+                        lineRenderer.transform.position = GorillaTagger.Instance.offlineVRRig.transform.position;
                         Shader ShaderShit = Shader.Find("GUI/Text Shader");
                         Material SphereMats = new Material(ShaderShit);
                         Lines.GetComponent<Renderer>().material = SphereMats;
@@ -406,55 +401,10 @@ namespace PinkMenu.Mods
                 }
             }
         }
-        public static void BoxESP2()
-        {
-            if (PhotonNetwork.InRoom || PhotonNetwork.InLobby)
-            {
-                foreach (VRRig POS in GorillaParent.instance.vrrigs)
-                {
-                    Renderer renderer = POS.GetComponent<Renderer>();
-                    if (renderer != null)
-                    {
-                        Bounds bounds = renderer.bounds;
-                        Vector3 boxSize = bounds.size;
-                        GameObject box = new GameObject("Line");
-                        LineRenderer lineRenderer = box.AddComponent<LineRenderer>();
-                        lineRenderer.material = new Material(Shader.Find("GUI/Text Shader"));
-                        lineRenderer.transform.position = POS.transform.position;
-                        lineRenderer.startColor = SigmaColors.hotPink;
-                        lineRenderer.endColor = SigmaColors.deepPink;
-                        lineRenderer.startWidth = 0.20f;
-                        lineRenderer.endWidth = 0.20f;
-                        Vector3[] vertices =
-                        {
-                    bounds.center + new Vector3(-boxSize.x / 2, -boxSize.y / 2, -boxSize.z / 2),
-                    bounds.center + new Vector3(boxSize.x / 2, -boxSize.y / 2, -boxSize.z / 2),
-                    bounds.center + new Vector3(boxSize.x / 2, -boxSize.y / 2, boxSize.z / 2),
-                    bounds.center + new Vector3(-boxSize.x / 2, -boxSize.y / 2, boxSize.z / 2),
-                    bounds.center + new Vector3(-boxSize.x / 2, -boxSize.y / 2, -boxSize.z / 2),
-                    bounds.center + new Vector3(-boxSize.x / 2, boxSize.y / 2, -boxSize.z / 2),
-                    bounds.center + new Vector3(boxSize.x / 2, boxSize.y / 2, -boxSize.z / 2),
-                    bounds.center + new Vector3(boxSize.x / 2, boxSize.y / 2, boxSize.z / 2),
-                    bounds.center + new Vector3(-boxSize.x / 2, boxSize.y / 2, boxSize.z / 2),
-                    bounds.center + new Vector3(-boxSize.x / 2, boxSize.y / 2, -boxSize.z / 2),
-                    bounds.center + new Vector3(-boxSize.x / 2, -boxSize.y / 2, boxSize.z / 2),
-                    bounds.center + new Vector3(-boxSize.x / 2, boxSize.y / 2, boxSize.z / 2),
-                    bounds.center + new Vector3(boxSize.x / 2, -boxSize.y / 2, boxSize.z / 2),
-                    bounds.center + new Vector3(boxSize.x / 2, boxSize.y / 2, boxSize.z / 2),
-                    bounds.center + new Vector3(boxSize.x / 2, -boxSize.y / 2, -boxSize.z / 2),
-                    bounds.center + new Vector3(boxSize.x / 2, boxSize.y / 2, -boxSize.z / 2)
-                };
-
-                        lineRenderer.positionCount = vertices.Length;
-                        lineRenderer.SetPositions(vertices);
-
-                        UnityEngine.Object.Destroy(box, 1.0f);
-                    }
-                }
-            }
-        }
     }
 }
+     
+
   
         
 

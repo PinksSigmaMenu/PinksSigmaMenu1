@@ -64,3 +64,14 @@ V1
 2:Body,t
 2:LShoulder,c
 2:RShoulder,lG
+2:CreateMenu,v
+2:fadeOutScript,FD
+2:canvas,o
+2:canvasScaler,bO
+2:text,wQ
+2:component,JF
+2:component2,K
+2:disconnectbutton,T4
+2:discontext,M
+2:rectt,r
+2:gameObject,V

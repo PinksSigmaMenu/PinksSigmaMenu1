@@ -42,7 +42,9 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "Conduct Player IDS", method =() => Display22.ConductIDS(), enabled = true, toolTip = "Shows Player IDS on code of conduct boared"},
                 new ButtonInfo { buttonText = "MOTD", method =() => Display22.MOTDTXT(), enabled = true, toolTip = "Changes motd"},
                 new ButtonInfo { buttonText = "Custom Sky", method =() => Custom_Sky.CustomSky(), enabled = true, toolTip = "Changes sky color"},
-                new ButtonInfo { buttonText = "ScoreBoard Changer", method =() => Display22.ScoreboardChanger(), enabled = true, toolTip = "Changes sky color"},
+                new ButtonInfo { buttonText = "Wrist menu", method =() => WristMenuThing.WristMenu(), enabled = false, toolTip = "Its a menu for your wrist"},
+                new ButtonInfo { buttonText = "Changes Conduct name", method =() => Display22.ConductNameChanger(), enabled = true, toolTip = "Changes sky color"},
+                new ButtonInfo { buttonText = "ScoreBoard Changer", method =() => Display22.UpdateColor(), enabled = true, toolTip = "Changes sky color"},
             },
 
 

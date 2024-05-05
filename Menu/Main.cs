@@ -15,6 +15,9 @@ using static StupidTemplate.Menu.Buttons;
 using static StupidTemplate.Config;
 using StupidTemplate.Patches;
 using PinkMenu.Helpers;
+using Photon.Voice;
+using System.Collections;
+using static Photon.Voice.OpusCodec;
 
 namespace StupidTemplate.Menu
 {
@@ -143,10 +146,7 @@ namespace StupidTemplate.Menu
             menuBackground.transform.rotation = Quaternion.identity;
             menuBackground.transform.localScale = menuSize2;
             menuBackground.GetComponent<Renderer>().material.color = allshadesofpink.mediumPink;
-            menuBackground.transform.position = new Vector3(-0.02f, 0f, 0f);
-         
-         
-
+            menuBackground.transform.position = new Vector3(0.05f, 0f, 0f);
 
             // Canvas
             canvasObject = new GameObject();
@@ -334,6 +334,40 @@ namespace StupidTemplate.Menu
                 CreateButton(i * 0.1f, activeButtons[i]);
             }
         }
+
+        //timer for fading object
+        public class FadeOut : MonoBehaviour
+        {
+            public float fadeDuration = 6f;
+            internal Material fadeMaterial;
+            private float fadeTimer = 0f;
+            private Material material;
+            private Color originalColor;
+
+            void Start()
+            {
+                material = GetComponent<Renderer>().material;
+                originalColor = material.color;
+            }
+
+            void Update()
+            {
+                fadeTimer += Time.deltaTime;
+
+                float t = Mathf.Clamp01(fadeTimer / fadeDuration);
+
+                float alpha = Mathf.Lerp(1f, 0f, Mathf.Pow(t, 3));
+
+                material.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+
+                if (alpha <= 0f)
+                {
+                    Destroy(gameObject);
+                }
+            }
+        }
+
+
 
 
         public static void SysFireProjectile(string projectilename, string trailname, Vector3 position, Vector3 velocity, float r, float g, float b, bool bluet, bool oranget, bool noDelay = false)
@@ -642,6 +676,7 @@ namespace StupidTemplate.Menu
                     public static GameObject reference;
                     public static GameObject canvasObject;
                     public static GameObject pointer;
+                    
                   
 
         public static bool rightPlatTrig = false;
@@ -654,6 +689,10 @@ namespace StupidTemplate.Menu
         public string displayText = "Your Text Here";
 
 
+        public GameObject menu1; 
+        public Vector3 FadingPart; 
+        public Material fadeMaterial;
+        public Material fadeMaterial2;
 
 
 

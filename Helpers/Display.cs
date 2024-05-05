@@ -1,13 +1,8 @@
-﻿using BepInEx;
+﻿using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using System.Text;
-using UnityEngine;
 using UnityEngine.UI;
+using PinkMenu.Helpers;
 
 namespace StupidTemplate.Helpers
 {
@@ -30,61 +25,56 @@ namespace StupidTemplate.Helpers
                     codeOfConductText.text += id + "\n";
 
                     GameObject.Find("motdscreen").GetComponent<Renderer>().material.color = Color.red;
-                    GameObject.Find("screen").GetComponent<Renderer>().material.color = Color.magenta;
-
-
+                    GameObject.Find("screen").GetComponent<Renderer>().material.color = SigmaColors.hotPink;
                 }
             }
         }
+
+        public static void ConductNameChanger()
+        {
+            GameObject conductObject = GameObject.Find("CodeOfConduct");
+            Transform textTransform = conductObject.transform.Find("Text.text");
+            Text textComponent = textTransform.GetComponent<Text>();
+            textComponent.text = "Pinks Conduct IDS";
+            textComponent.color = SigmaColors.hotPink;
+        }
+
+        public static void UpdateConductName()
+        {
+            GameObject conductObject = GameObject.Find("CodeOfConduct");
+            Text motdText = conductObject.GetComponent<Text>();
+            float lerp = Mathf.PingPong(Time.time, 1) / 1;
+            Color color = Color.Lerp(SigmaColors.deepPink, SigmaColors.hotPink, lerp);
+            motdText.color = color;
+            motdText.text = "Pinks Conduct IDS";
+        }
+
         public static void MOTDTXT()
         {
             GameObject motdObject = GameObject.Find("motdtext");
-
-            if (motdObject != null)
-            {
-                Text motdText = motdObject.GetComponent<Text>();
-
-                if (motdText != null)
-                {
-                    Text motd = motdObject.GetComponent<Text>();
-                    float lerp = Mathf.PingPong(Time.time, 1) / 1;
-                    Color color = Color.Lerp(Color.magenta, Color.black, lerp);
-                    motdText.color = color;
-
-                    motdText.text = "HELLO FELLOW SIGMA WELCOME TO PINKS SIGMA MENU I HOPE YOU ENJOY AND MAKE SURE TO RIZZ UP ALL OF THEM LEVEL 10s";
-
-
-                }
-            }
+            Text motdText = motdObject.GetComponent<Text>();
+            float lerp = Mathf.PingPong(Time.time, 1) / 1;
+            Color color = Color.Lerp(SigmaColors.deepPink, SigmaColors.hotPink, lerp);
+            motdText.color = color;
+            motdText.text = "HELLO FELLOW SIGMA WELCOME TO PINKS SIGMA MENU I HOPE YOU ENJOY AND MAKE SURE TO RIZZ UP ALL OF THEM LEVEL 10s";
         }
-        public static void ScoreboardChanger()
+
+        public static void UpdateColor()
         {
-            GameObject ScoreBoard = GameObject.Find("scoreboard");
-
-            if (ScoreBoard != null)
-            {
-                Text motd = ScoreBoard.GetComponent<Text>();
-
-                if (motd != null)
-                {
-                    float lerp = Mathf.PingPong(Time.time, 1) / 1;
-                    Color color = Color.Lerp(Color.magenta, Color.black, lerp);
-                    motd.color = color;
-                }
-            }
+            GameObject screenObject = GameObject.Find("scoreboard");
+            Renderer renderer = screenObject.GetComponent<Renderer>();
+            renderer.material.color = SigmaColors.lightPink;
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+public class GameManager : MonoBehaviour
+{
+    void Start()
+    {
+        StupidTemplate.Helpers.Display22.ConductIDS();
+        StupidTemplate.Helpers.Display22.ConductNameChanger();
+        StupidTemplate.Helpers.Display22.UpdateConductName();
+        StupidTemplate.Helpers.Display22.MOTDTXT();
+        StupidTemplate.Helpers.Display22.UpdateColor();
+    }
+}
