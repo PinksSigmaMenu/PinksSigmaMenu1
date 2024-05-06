@@ -100,7 +100,7 @@ namespace StupidTemplate.Menu
 
            new ButtonInfo[] { //Stuff
                new ButtonInfo { buttonText = "Return", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
-               new ButtonInfo { buttonText = "Pink User Preset", method =() => Stuff.rightgrabchangeidentity(), isTogglable = true, toolTip = "Pink User Preset"},
+               new ButtonInfo { buttonText = "Pink User Preset", method =() => Stuff.PinkUseridentityPreset(), isTogglable = true, toolTip = "Pink User Preset"},
                new ButtonInfo { buttonText = "Spazzy Names", method =() => Stuff.SpazzyNames(), isTogglable = true, toolTip = "Spazzes Name"},
                new ButtonInfo { buttonText = "RightGrab Change idenity", method =() => Stuff.rightgrabchangeidentity(), isTogglable = true, toolTip = "Changes idenity with right grab"},
                new ButtonInfo { buttonText = "Cube Hands", method =() => Stuff.SquareHands(), isTogglable = true, toolTip = "Cube Hands"},

@@ -165,7 +165,7 @@ class Stuff
     }
     public static void PinkUseridentityPreset()
     {
-        GorillaTagger.Instance.UpdateColor(255, 0, 234);
+        GorillaTagger.Instance.UpdateColor(252, 175, 246);
 
         PhotonNetwork.NickName = "ThePinkMenuUser";
     }
