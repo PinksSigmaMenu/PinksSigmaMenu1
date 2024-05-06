@@ -3,6 +3,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
 using PinkMenu.Helpers;
+using UnityEngine.Device;
 
 namespace StupidTemplate.Helpers
 {
@@ -24,20 +25,11 @@ namespace StupidTemplate.Helpers
 
                     codeOfConductText.text += id + "\n";
 
-                    GameObject.Find("motdscreen").GetComponent<Renderer>().material.color = Color.red;
-                    GameObject.Find("screen").GetComponent<Renderer>().material.color = SigmaColors.hotPink;
                 }
             }
         }
 
-        public static void ConductNameChanger()
-        {
-            GameObject conductObject = GameObject.Find("CodeOfConduct");
-            Transform textTransform = conductObject.transform.Find("Text.text");
-            Text textComponent = textTransform.GetComponent<Text>();
-            textComponent.text = "Pinks Conduct IDS";
-            textComponent.color = SigmaColors.hotPink;
-        }
+
 
         public static void UpdateConductName()
         {
@@ -51,30 +43,53 @@ namespace StupidTemplate.Helpers
 
         public static void MOTDTXT()
         {
+
             GameObject motdObject = GameObject.Find("motdtext");
             Text motdText = motdObject.GetComponent<Text>();
             float lerp = Mathf.PingPong(Time.time, 1) / 1;
             Color color = Color.Lerp(SigmaColors.deepPink, SigmaColors.hotPink, lerp);
             motdText.color = color;
-            motdText.text = "HELLO FELLOW SIGMA WELCOME TO PINKS SIGMA MENU I HOPE YOU ENJOY AND MAKE SURE TO RIZZ UP ALL OF THEM LEVEL 10s";
+            motdText.text = "HELLO EVERYONE WELCOME TO THE PINK MENU THIS MENU IS CURRENTLY IN IN BETA SO BARE WITH ME ON WHATS IN THE MENU LOL YOU CAN JOIN MY DISCORD AT <color=#FFB6F9><b>https://discord.gg/MNjwNcvUgu</b></color> IF YOU'D LIKE THIS MENU CURRENTLY HAS <color=#FFB6F9><b>78</b></color> MODS IN THE MENU";
         }
 
-        public static void UpdateColor()
+        public static void UpdateColors()
         {
-            GameObject screenObject = GameObject.Find("scoreboard");
-            Renderer renderer = screenObject.GetComponent<Renderer>();
-            renderer.material.color = SigmaColors.lightPink;
+            Text codeOfConductText = GameObject.Find("CodeOfConduct").GetComponent<Text>();
+            codeOfConductText.text = "<color=#FF69B4><b>Pink</b></color> <color=#FF6BF3><b>Conduct</b></color> <color=#FF2CEE><b>IDS</b></color>";
+
+            Text motdText = GameObject.Find("motd").GetComponent<Text>();
+            motdText.text = "<color=#FF69B4><b>Pink</b></color> <color=#FF6BF3><b>Menu</b></color> <color=#FF2CEE><b>MOTD</b></color>";
+
+           
+            UpdateObjectColor("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/Wall Monitors Screens/wallmonitorforest");
+            UpdateObjectColor("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/Wall Monitors Screens/wallmonitorcave");
+            UpdateObjectColor("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/Wall Monitors Screens/wallmonitorskyjungle");
+            UpdateObjectColor("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/Wall Monitors Screens/wallmonitorcosmetics");
+            UpdateObjectColor("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/Wall Monitors Screens/wallmonitorcanyon");
+        }
+
+        static void UpdateObjectColor(string objectName)
+        {
+            GameObject obj = GameObject.Find(objectName);
+            if (obj)
+            {
+                Renderer renderer = obj.GetComponent<Renderer>();
+                if (renderer)
+                {
+                    renderer.material.color = SigmaColors.deepPink;
+                }
+            }
         }
     }
-}
-public class GameManager : MonoBehaviour
-{
-    void Start()
+
+    public class GameManager : MonoBehaviour
     {
-        StupidTemplate.Helpers.Display22.ConductIDS();
-        StupidTemplate.Helpers.Display22.ConductNameChanger();
-        StupidTemplate.Helpers.Display22.UpdateConductName();
-        StupidTemplate.Helpers.Display22.MOTDTXT();
-        StupidTemplate.Helpers.Display22.UpdateColor();
+        void Start()
+        {
+            StupidTemplate.Helpers.Display22.ConductIDS();
+            StupidTemplate.Helpers.Display22.UpdateConductName();
+            StupidTemplate.Helpers.Display22.MOTDTXT();
+            StupidTemplate.Helpers.Display22.UpdateColors();
+        }
     }
 }

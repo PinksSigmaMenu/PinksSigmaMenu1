@@ -40,6 +40,8 @@ using static Unity.Burst.Intrinsics.Arm;
 using static StupidTemplate.Menu.Main;
 using StupidTemplate.Mods;
 using PinkMenu.Helpers;
+using StupidTemplate.Helpers;
+using StupidTemplate.Helpers.InvisMonkeBallCreator;
 
 namespace StupidTemplate.Mods
 {
@@ -121,33 +123,6 @@ namespace StupidTemplate.Mods
 
             GorillaTagger.Instance.offlineVRRig.headBodyOffset = Vector3.zero;
         }
-
-        public static bool Invisible = true;
-        public static bool AllowedToInvis = true;
-        private static bool rigPositionSet = false;
-
-        public static void InvisMonke()
-        {
-            if (ControllerInputPoller.instance.rightControllerPrimaryButton)
-            {
-
-                Invisible = !Invisible;
-
-
-                GorillaTagger.Instance.offlineVRRig.headBodyOffset = new Vector3(99999f, 99999f, 99999f);
-
-                if (rigPositionSet)
-                    rigPositionSet = false;
-            }
-
-
-
-            if (ControllerInputPoller.instance.rightControllerSecondaryButton && !rigPositionSet)
-            {
-
-                GorillaTagger.Instance.offlineVRRig.headBodyOffset = Vector3.zero;
-            }
-        }
         public static void loudhandtaps()
         {
             GorillaTagger.Instance.handTapVolume = 999;
@@ -155,7 +130,7 @@ namespace StupidTemplate.Mods
 
         public static void quiethandtaps()
         {
-            GorillaTagger.Instance.handTapVolume = 0.50f;
+            GorillaTagger.Instance.handTapVolume = 0.10f;
         }
 
         public static void nohandtaps()
@@ -268,17 +243,55 @@ namespace StupidTemplate.Mods
         public static void SpazzyHands()
         {
             GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.eulerAngles = new Vector3(
-                UnityEngine.Random.Range(0f, 360f),
-                UnityEngine.Random.Range(0f, 360f),
-                UnityEngine.Random.Range(0f, 360f));
+            UnityEngine.Random.Range(0f, 360f),
+            UnityEngine.Random.Range(0f, 360f),
+            UnityEngine.Random.Range(0f, 360f));
 
             GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.eulerAngles = new Vector3(
-                UnityEngine.Random.Range(0f, 360f),
-                UnityEngine.Random.Range(0f, 360f),
-                UnityEngine.Random.Range(0f, 360f));
+            UnityEngine.Random.Range(0f, 360f),
+            UnityEngine.Random.Range(0f, 360f),
+            UnityEngine.Random.Range(0f, 360f));
+        }
+
+
+
+        static bool isGrabbing = false;
+        static bool wasRightGrabToggled = false;
+
+        public static void ghostmonkeywithballs()
+        {
+            if (ControllerInputPoller.instance.rightGrab && !wasRightGrabToggled)
+            {
+                isGrabbing = !isGrabbing;
+                wasRightGrabToggled = true; 
+                if (isGrabbing)
+                {
+                    GorillaTagger.Instance.offlineVRRig.headBodyOffset = new Vector3(9999f, 9999f, 9999f);
+
+                    GameObject ballobject = InvisMonkeBallCreator.CreateInvisMonkeBall();
+                    GameObject ballobject2 = InvisMonkeBallCreator.CreateInvisMonkeBall();
+
+                    ballobject.transform.position = GorillaTagger.Instance.rightHandTransform.transform.position;
+                    ballobject.transform.rotation = GorillaTagger.Instance.rightHandTransform.transform.rotation;
+
+                    ballobject2.transform.position = GorillaTagger.Instance.rightHandTransform.transform.position;
+                    ballobject2.transform.rotation = GorillaTagger.Instance.rightHandTransform.transform.rotation;
+                }
+            }
+            else if (!ControllerInputPoller.instance.rightGrab && wasRightGrabToggled)
+            {
+                wasRightGrabToggled = false; 
+            }
+
+            if (ControllerInputPoller.instance.leftGrab)
+            {
+                isGrabbing = false; 
+                GorillaTagger.Instance.offlineVRRig.headBodyOffset = Vector3.zero;
+            }
         }
     }
 }
+
 
 
 

@@ -151,9 +151,7 @@ namespace PinkMenu.Mods
                 {
                     if (FullPlayers != GorillaTagger.Instance.offlineVRRig)
                     {
-                        //left nut
                         GameObject LeftNut = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-                        //length //Height //Width
                         LeftNut.transform.localScale = new Vector3(0.50f, 0.100f, 0.100f);
                         LeftNut.transform.position = FullPlayers.transform.position;
                         LeftNut.transform.rotation = FullPlayers.transform.rotation;
@@ -163,10 +161,7 @@ namespace PinkMenu.Mods
                         float pingPongValue = Mathf.PingPong(Time.time / 2f, 1f);
                         sphereMaterial.color = Color.Lerp(Color.magenta, Color.black, pingPongValue);
                         UnityEngine.Object.Destroy(LeftNut, 0.50f);
-
-                        //right nut
                         GameObject rightnut = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-                        //length //Height //Width
                         rightnut.transform.localScale = new Vector3(0.50f, 0.100f, 0.100f);
                         rightnut.transform.position = FullPlayers.transform.position;
                         LeftNut.transform.rotation = FullPlayers.transform.rotation;
@@ -176,11 +171,7 @@ namespace PinkMenu.Mods
                         float pingPongValuer = Mathf.PingPong(Time.time / 2f, 1f);
                         sphereMaterial.color = Color.Lerp(Color.magenta, Color.black, pingPongValue);
                         UnityEngine.Object.Destroy(rightnut, 0.100f);
-
-
-                        //Penit
                         GameObject Peanit = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-                        //length //Height //Width
                         Peanit.transform.localScale = new Vector3(0.100f, 0.50f, 0.0100f);
                         Peanit.transform.position = FullPlayers.transform.position;
                         Peanit.transform.rotation = FullPlayers.transform.rotation;
@@ -195,9 +186,6 @@ namespace PinkMenu.Mods
                         {
                             UnityEngine.Object.Destroy(collider);
                         }
-
-
-
                         UnityEngine.Object.Destroy(LeftNut, Time.deltaTime);
                         UnityEngine.Object.Destroy(rightnut, Time.deltaTime);
                         UnityEngine.Object.Destroy(Peanit, Time.deltaTime);
@@ -213,24 +201,16 @@ namespace PinkMenu.Mods
                 {
                     if (Sigmarizz != GorillaTagger.Instance.offlineVRRig)
                     {
-
                         GameObject Sigma = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-
                         Sigma.transform.position = Sigmarizz.transform.position;
                         Sigma.transform.rotation = Sigmarizz.transform.rotation;
                         Sigma.transform.localScale = new Vector3(0.10f, 0.10f, 0.10f);
-
-
                         Shader ShaderShit = Shader.Find("GUI/Text Shader");
                         Material SphereMats = new Material(ShaderShit);
                         Sigma.GetComponent<Renderer>().material = SphereMats;
                         float pingPongValue1 = Mathf.PingPong(Time.time / 1f, 0.90f);
                         SphereMats.color = Color.Lerp(Color.black, Color.yellow, pingPongValue1);
-
-
-
                         UnityEngine.Object.Destroy(Sigma, Time.deltaTime);
-
                     }
                 }
             }

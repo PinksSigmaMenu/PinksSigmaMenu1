@@ -145,13 +145,13 @@ class Stuff
     {
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject == GorillaTagger.Instance.offlineVRRig.gameObject)
+            if (other.gameObject == GorillaTagger.Instance.offlineVRRig)
             {
                 AngryGorillas();
             }
         }
     }
-  
+
     public static void GrabRig()
     {
         if (ControllerInputPoller.instance.rightGrab)
@@ -163,7 +163,82 @@ class Stuff
             GorillaTagger.Instance.offlineVRRig.transform.position = Vector3.zero;
         }
     }
+    public static void PinkUseridentityPreset()
+    {
+        GorillaTagger.Instance.UpdateColor(255, 0, 234);
+
+        PhotonNetwork.NickName = "ThePinkMenuUser";
+    }
+
+
+    public static void rightgrabchangeidentity()
+    {
+        if (ControllerInputPoller.instance.rightGrab)
+        {
+            string randomColorCode = GenerateRandomColorCode();
+
+            ColorUtility.TryParseHtmlString(randomColorCode, out Color color);
+            int randomR = Mathf.RoundToInt(color.r * 255);
+            int randomG = Mathf.RoundToInt(color.g * 0);
+            int randomB = Mathf.RoundToInt(color.b * 234);
+
+            GorillaTagger.Instance.UpdateColor(randomR, randomG, randomB);
+
+            string[] randomNames = {
+                "Pinkie", "Strawberry", "Bubblegum", "Raspberry", "CottonCandy",
+                "Cherry", "Rose", "Magenta", "Fuchsia", "Blush",
+                "Coral", "Salmon", "Mauve", "Lavender", "Plum",
+                "Peach", "Apricot", "Taffy", "Cranberry", "Mulberry",
+                "Watermelon", "Grape", "Pomegranate", "Amethyst", "Lilac",
+                "Carnation", "Sangria", "Orchid", "Maroon", "Ruby", "Sigma", "Skibidi",
+                "PinkMenuOnTop",
+            };
+            string randomName = randomNames[UnityEngine.Random.Range(0, randomNames.Length)];
+
+            PhotonNetwork.NickName = randomName;
+        }
+    }
+
+    private static string GenerateRandomColorCode()
+    {
+        Color color = UnityEngine.Random.ColorHSV();
+        return ColorUtility.ToHtmlStringRGB(color);
+    }
+    public static void SpazzyNames()
+    {
+        {
+            string randomColorCode = GenerateRandomColorCode();
+
+            ColorUtility.TryParseHtmlString(randomColorCode, out Color color);
+            int randomR = Mathf.RoundToInt(color.r * 255);
+            int randomG = Mathf.RoundToInt(color.g * 0);
+            int randomB = Mathf.RoundToInt(color.b * 234);
+
+            GorillaTagger.Instance.UpdateColor(randomR, randomG, randomB);
+
+            string[] randomNames = {
+    "Pinkie", "Strawberry", "Bubblegum", "Raspberry", "CottonCandy",
+    "Cherry", "Rose", "Magenta", "Fuchsia", "Blush",
+    "Coral", "Salmon", "Mauve", "Lavender", "Plum",
+    "Peach", "Apricot", "Taffy", "Cranberry", "Mulberry",
+    "Watermelon", "Grape", "Pomegranate", "Amethyst", "Lilac",
+    "Carnation", "Sangria", "Orchid", "Maroon", "Ruby", "Sigma", "Skibidi",
+    "PinkMenuOnTop",
+    "PinkFlamingo", "Candyfloss", "PinkPetal", "SugarPlum", "CherryBlossom",
+    "BubblegumBlast", "RaspberryRipple", "PinkLemonade", "FlamingoFrost", "StrawberrySwirl",
+    "CottonCandyCrush", "PinkFairyDust", "BerryBlast", "PeonyPink", "RosyCheeks", "PinkLush",
+    "SweetheartPink", "PinkParadise", "BerryBerryPink", "TickledPink", "PinkDazzle", "CottonCandyCloud",
+    "PinkChampagne", "PinkCupcake", "PetalPink", "BubblegumBliss", "PinkBouquet", "PinkVelvet",
+    "PinkPassion", "PinkDream", "PinkSparkle", "PinkSorbet", "PinkWhisper", "PinkGlaze"
+};
+            string randomName = randomNames[UnityEngine.Random.Range(0, randomNames.Length)];
+
+            PhotonNetwork.NickName = randomName;
+        }
+    }
 }
+
+
 
 
 

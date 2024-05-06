@@ -43,15 +43,14 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "MOTD", method =() => Display22.MOTDTXT(), enabled = true, toolTip = "Changes motd"},
                 new ButtonInfo { buttonText = "Custom Sky", method =() => Custom_Sky.CustomSky(), enabled = true, toolTip = "Changes sky color"},
                 new ButtonInfo { buttonText = "Wrist menu", method =() => WristMenuThing.WristMenu(), enabled = false, toolTip = "Its a menu for your wrist"},
-                new ButtonInfo { buttonText = "Changes Conduct name", method =() => Display22.ConductNameChanger(), enabled = true, toolTip = "Changes sky color"},
-                new ButtonInfo { buttonText = "ScoreBoard Changer", method =() => Display22.UpdateColor(), enabled = true, toolTip = "Changes sky color"},
+                new ButtonInfo { buttonText = "ScoreBoard Changer", method =() => Display22.UpdateColors(), enabled = true, toolTip = "Changes sky color"},
             },
 
 
             new ButtonInfo[] { // Movement Settings
                 new ButtonInfo { buttonText = "Return", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Returns to the main settings page for the menu."},
                 new ButtonInfo { buttonText = "UpAndDown", method =() => Movement.UpAndDownsyndrome(), isTogglable = true, toolTip = "Makes you go up and down with right and left grip"},
-                new ButtonInfo { buttonText = "InvisMonke", method =() => Movement.InvisMonke(), isTogglable = true, toolTip = "makes you invisable bitch"},
+                new ButtonInfo { buttonText = "Invis Monke", method =() => Movement.ghostmonkeywithballs(), isTogglable = true, toolTip = "makes you invisable bitch"},
                 new ButtonInfo { buttonText = "Spazzy Monkey", method =() => Movement.InsaneMonkey(), isTogglable = true, toolTip = "Makes you go insane"},
                 new ButtonInfo { buttonText = "Bug orbit", method =() => Movement.BugHalo(), isTogglable = true, toolTip = "Makes doug fly around you"},
                 new ButtonInfo { buttonText = "Bat orbit", method =() => Movement.BatHalo(), isTogglable = true, toolTip = "Makes the bat fly around you"},
@@ -101,11 +100,14 @@ namespace StupidTemplate.Menu
 
            new ButtonInfo[] { //Stuff
                new ButtonInfo { buttonText = "Return", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+               new ButtonInfo { buttonText = "Pink User Preset", method =() => Stuff.rightgrabchangeidentity(), isTogglable = true, toolTip = "Pink User Preset"},
+               new ButtonInfo { buttonText = "Spazzy Names", method =() => Stuff.SpazzyNames(), isTogglable = true, toolTip = "Spazzes Name"},
+               new ButtonInfo { buttonText = "RightGrab Change idenity", method =() => Stuff.rightgrabchangeidentity(), isTogglable = true, toolTip = "Changes idenity with right grab"},
                new ButtonInfo { buttonText = "Cube Hands", method =() => Stuff.SquareHands(), isTogglable = true, toolTip = "Cube Hands"},
                new ButtonInfo { buttonText = "Sphere Hands", method =() => Stuff.SphereHands(), isTogglable = true, toolTip = "Sphere Hands"},
                new ButtonInfo { buttonText = "Dress", method =() => Stuff.Dress(), isTogglable = true, toolTip = "Gives you dress"},
                new ButtonInfo { buttonText = "Angry Gorillas", method =() => Stuff.AngryGorillas(), isTogglable = true, toolTip = "Makes you disconnect when a gorilla touches you"},
-                new ButtonInfo { buttonText = "Grab Rig", method =() => Stuff.AngryGorillas(), isTogglable = true, toolTip = "Grabs your rig"},
+               //new ButtonInfo { buttonText = "Grab Rig", method =() => Stuff.AngryGorillas(), isTogglable = true, toolTip = "Grabs your rig"},
 
             },
 

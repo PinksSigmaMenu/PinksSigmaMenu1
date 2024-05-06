@@ -15,8 +15,6 @@ namespace StupidTemplate.Mods
        
         public static void CustomSky()
         {
-
-
             Material mat = new Material(Shader.Find("GorillaTag/UberShader"));
             mat.color = Color.Lerp(pink, deepPink, Mathf.PingPong(Time.time, 0.50f));
 
