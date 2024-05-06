@@ -1,20 +1,43 @@
 ﻿using BepInEx;
+using HarmonyLib;
 using System.ComponentModel;
+using System.Reflection;
 
-namespace StupidTemplate.Patches
+namespace PinkMenu.Patches
 {
-    [Description(StupidTemplate.PluginInfo.Description)]
-    [BepInPlugin(StupidTemplate.PluginInfo.GUID, StupidTemplate.PluginInfo.Name, StupidTemplate.PluginInfo.Version)]
+    [Description(PinkMenu.PluginInfo.Description)]
+    [BepInPlugin(PinkMenu.PluginInfo.GUID, PinkMenu.PluginInfo.Name, PinkMenu.PluginInfo.Version)]
     public class HarmonyPatches : BaseUnityPlugin
     {
+        public static bool IsPatched { get; private set; }
+        private static Harmony instance;
+
         private void OnEnable()
         {
-            Menu.ApplyHarmonyPatches();
+            if (!IsPatched)
+            {
+                if (instance == null)
+                {
+                    instance = new Harmony(PinkMenu.PluginInfo.GUID);
+                }
+                instance.PatchAll(Assembly.GetExecutingAssembly());
+                IsPatched = true;
+            }
+        }
+        void OnGUI()
+        {
+            if (IsPatched)
+            {
+                Menu.UI.DrawGUI();
+            }
         }
 
         private void OnDisable()
         {
-            Menu.RemoveHarmonyPatches();
+            if (instance != null && IsPatched)
+            {
+                IsPatched = false;
+            }
         }
     }
 }

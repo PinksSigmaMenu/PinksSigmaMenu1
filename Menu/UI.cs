@@ -1,29 +1,32 @@
 ﻿using UnityEngine;
 
-public class DisplayText : MonoBehaviour
+namespace PinkMenu.Menu
 {
-    public int fontSize = 25;
-    public FontStyle fontStyle = FontStyle.Italic;
-    public Color textColor = Color.white;
-    public Font customFont;
-
-    void OnGUI()
+    public class UI
     {
-        GUI.skin.textField.font = customFont;
-        GUI.skin.textField.fontStyle = fontStyle;
-        GUI.skin.textField.fontSize = fontSize;
+        public static int fontSize = 25;
+        public static FontStyle fontStyle = FontStyle.Italic;
+        public static Color textColor = Color.white;
+        public static Font customFont;
 
-        GUI.color = textColor;
+        public static void DrawGUI()
+        {
+            GUI.skin.textField.font = customFont;
+            //GUI.skin.textField.fontStyle = fontStyle; // custom font is not dynamic somehow so u cant edit it
+            GUI.skin.textField.fontSize = fontSize;
 
-        float textFieldWidth = 200;
-        float textFieldHeight = 20;
-        float screenWidth = Screen.width;
-        float screenHeight = Screen.height;
-        float textFieldX = (screenWidth - textFieldWidth) / 2;
-        float textFieldY = (screenHeight - textFieldHeight) / 2;
+            GUI.color = textColor;
 
-        string newText = GUI.TextField(new Rect(textFieldX, textFieldY, textFieldWidth, textFieldHeight), "Sigma Rizz");
+            float textFieldWidth = 200;
+            float textFieldHeight = 40;
+            float screenWidth = Screen.width;
+            float screenHeight = Screen.height;
+            float textFieldX = (screenWidth - textFieldWidth) / 2;
+            float textFieldY = (screenHeight - textFieldHeight) / 2;
 
-        Debug.Log("Entered text: " + newText);
+            string newText = GUI.TextField(new Rect(textFieldX, textFieldY, textFieldWidth, textFieldHeight), "Sigma Rizz");
+
+            //Debug.Log("Entered text: " + newText);
+        }
     }
 }

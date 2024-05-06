@@ -7,7 +7,7 @@ using Photon.Realtime;
 using GorillaLocomotion.Gameplay;
 using HarmonyLib;
 
-namespace StupidTemplate.Mods
+namespace PinkMenu.Mods
 {
     internal class RigShit : MonoBehaviour
     {

@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
-namespace StupidTemplate.Mods.Holdables
+namespace PinkMenu.Mods.Holdables
 {
     internal class Holdables
     {

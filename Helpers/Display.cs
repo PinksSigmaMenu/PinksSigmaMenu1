@@ -5,12 +5,10 @@ using UnityEngine.UI;
 using PinkMenu.Helpers;
 using UnityEngine.Device;
 
-namespace StupidTemplate.Helpers
+namespace PinkMenu.Helpers
 {
     internal class Display22
     {
-
-        
         public static void MOTDTXT()
         {
             
@@ -59,16 +57,15 @@ namespace StupidTemplate.Helpers
             GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/Wall Monitors Screens/wallmonitorskyjungle").GetComponent<Renderer>().material.color = SigmaColors.lightPink;
             GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/campgroundstructure/scoreboard/REMOVE board").GetComponent<Renderer>().material.color = SigmaColors.lightPink;
         }
+    }
 
-
-        public class GameManager : MonoBehaviour
+    public class GameManager : MonoBehaviour
+    {
+        void Start()
         {
-            void Start()
-            {
-                StupidTemplate.Helpers.Display22.MOTDTXT();
-                StupidTemplate.Helpers.Display22.ConductIDS();
-                StupidTemplate.Helpers.Display22.UpdateColors();
-            }
+            PinkMenu.Helpers.Display22.MOTDTXT();
+            PinkMenu.Helpers.Display22.ConductIDS();
+            PinkMenu.Helpers.Display22.UpdateColors();
         }
     }
 }

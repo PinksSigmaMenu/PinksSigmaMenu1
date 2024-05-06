@@ -1,6 +1,6 @@
-﻿using static StupidTemplate.Menu.Main;
+﻿using static PinkMenu.Menu.Main;
 
-namespace StupidTemplate.Mods
+namespace PinkMenu.Mods
 {
     internal class Global
     {

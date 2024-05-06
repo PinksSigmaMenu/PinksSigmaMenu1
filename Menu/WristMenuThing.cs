@@ -10,18 +10,16 @@ using GorillaLocomotion;
 using Oculus.Interaction;
 using Photon.Pun;
 using Steamworks;
-using StupidTemplate.Classes;
 using UnityEngine.UIElements;
-using GTAG_NotificationLib;
 using System.Linq;
 using iiMenu.Mods.Spammers;
 using Oculus.Interaction.Input;
 using static Mono.Math.BigInteger;
-using static StupidTemplate.Classes.RigManager;
-using static StupidTemplate.Menu.Main;
+using static PinkMenu.Managers.RigManager;
+using static PinkMenu.Menu.Main;
 using UnityEngine.Animations.Rigging;
 
-namespace StupidTemplate.Menu
+namespace PinkMenu.Menu
 {
     internal class WristMenuThing
     {

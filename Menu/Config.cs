@@ -1,27 +1,12 @@
 ﻿using PinkMenu.Helpers;
-using StupidTemplate.Classes;
+using PinkMenu.Classes;
 using UnityEngine;
-using static StupidTemplate.Menu.Main;
+using static PinkMenu.Menu.Main;
 
-namespace StupidTemplate
+namespace PinkMenu
 {
     internal class Config
     {
-        public static ExtGradient backgroundColor = new ExtGradient {isRainbow = false};
-
-        public static ExtGradient[] buttonColors = new ExtGradient[]
-        {
-            new ExtGradient{colors = GetSolidGradient(SigmaColors.hotPink)}, // Disabled
-            new ExtGradient{colors = GetSolidGradient(SigmaColors.deepPink)} // Enabled
-        };
-        public static Color[] textColors = new Color[]
-        {
-            Color.white, // Disabled
-            Color.green // Enabled
-        };
-
-        
-
         public static Font currentFont = (Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font);
 
         public static bool fpsCounter = true;

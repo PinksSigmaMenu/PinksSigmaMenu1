@@ -1,4 +1,4 @@
-﻿namespace StupidTemplate
+﻿namespace PinkMenu
 {
     internal class PluginInfo
     {

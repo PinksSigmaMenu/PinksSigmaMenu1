@@ -4,7 +4,7 @@ using System.Numerics;
 using System.Text;
 using Vector3 = UnityEngine.Vector3;
 
-namespace StupidTemplate.Mods
+namespace PinkMenu.Mods
 {
     internal class Teleport
     {

@@ -7,10 +7,10 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UIElements;
 using static Mono.Math.BigInteger;
-using static StupidTemplate.Classes.RigManager;
-using static StupidTemplate.Menu.Main;
+using static PinkMenu.Managers.RigManager;
+using static PinkMenu.Menu.Main;
 
-namespace StupidTemplate.Mods
+namespace PinkMenu.Mods
 {
     internal class Spammers
     {

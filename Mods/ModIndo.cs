@@ -5,7 +5,7 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 
-namespace StupidTemplate.Mods
+namespace PinkMenu.Mods
 {
     internal class ModIndo
     {

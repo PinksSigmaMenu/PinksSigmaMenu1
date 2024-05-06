@@ -1,9 +1,9 @@
 using Photon.Pun;
 using UnityEngine;
-using static StupidTemplate.Menu.Main;
-using static StupidTemplate.Config;
+using static PinkMenu.Menu.Main;
+using static PinkMenu.Config;
 
-namespace StupidTemplate.Classes
+namespace PinkMenu.Classes
 {
 	internal class Button : MonoBehaviour
 	{

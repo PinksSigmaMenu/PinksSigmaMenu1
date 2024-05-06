@@ -4,7 +4,7 @@ using System.Text;
 using UnityEngine;
 
 
-namespace StupidTemplate.Mods
+namespace PinkMenu.Mods
 {
     internal class Custom_Sky
     {

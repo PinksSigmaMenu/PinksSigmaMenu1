@@ -4,9 +4,9 @@ using BepInEx;
 using HarmonyLib;
 using UnityEngine;
 
-namespace StupidTemplate.Classes
+namespace PinkMenu.Managers
 {
-    internal class RigManager : BaseUnityPlugin
+    internal class RigManager
     {
         public static VRRig GetVRRigFromPlayer(Player p)
         {
@@ -15,7 +15,7 @@ namespace StupidTemplate.Classes
 
         public static VRRig GetRandomVRRig(bool includeSelf)
         {
-            VRRig random = GorillaParent.instance.vrrigs[UnityEngine.Random.Range(0, GorillaParent.instance.vrrigs.Count - 1)];
+            VRRig random = GorillaParent.instance.vrrigs[Random.Range(0, GorillaParent.instance.vrrigs.Count - 1)];
             if (includeSelf)
             {
                 return random;
@@ -53,26 +53,27 @@ namespace StupidTemplate.Classes
             return (PhotonView)Traverse.Create(p).Field("photonView").GetValue();
         }
 
-        public static Photon.Realtime.Player GetRandomPlayer(bool includeSelf)
+        public static Player GetRandomPlayer(bool includeSelf)
         {
             if (includeSelf)
             {
-                return PhotonNetwork.PlayerList[UnityEngine.Random.Range(0, PhotonNetwork.PlayerList.Length - 1)];
-            } else
+                return PhotonNetwork.PlayerList[Random.Range(0, PhotonNetwork.PlayerList.Length - 1)];
+            }
+            else
             {
-                return PhotonNetwork.PlayerListOthers[UnityEngine.Random.Range(0, PhotonNetwork.PlayerListOthers.Length - 1)];
+                return PhotonNetwork.PlayerListOthers[Random.Range(0, PhotonNetwork.PlayerListOthers.Length - 1)];
             }
         }
 
-        public static Photon.Realtime.Player GetPlayerFromVRRig(VRRig p)
+        public static Player GetPlayerFromVRRig(VRRig p)
         {
             return GetPhotonViewFromVRRig(p).Owner;
         }
 
-        public static Photon.Realtime.Player GetPlayerFromID(string id)
+        public static Player GetPlayerFromID(string id)
         {
-            Photon.Realtime.Player found = null;
-            foreach (Photon.Realtime.Player target in PhotonNetwork.PlayerList)
+            Player found = null;
+            foreach (Player target in PhotonNetwork.PlayerList)
             {
                 if (target.UserId == id)
                 {

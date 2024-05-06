@@ -2,7 +2,7 @@
 using HarmonyLib;
 using UnityEngine;
 
-namespace StupidTemplate.Patches
+namespace PinkMenu.Patches
 {
     [HarmonyPatch(typeof(GameObject))]
     [HarmonyPatch("CreatePrimitive", 0)]
@@ -12,6 +12,16 @@ namespace StupidTemplate.Patches
         {
             __result.GetComponent<Renderer>().material.shader = Shader.Find("GorillaTag/UberShader");
             __result.GetComponent<Renderer>().material.color = new Color32(255, 128, 0, 128);
+        }
+
+    }
+
+    [HarmonyPatch(typeof(VRRig), "OnDisable")]
+    internal class GhostPatch : MonoBehaviour
+    {
+        public static bool Prefix(VRRig __instance)
+        {
+            return !(__instance == GorillaTagger.Instance.offlineVRRig);
         }
     }
 }

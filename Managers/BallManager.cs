@@ -1,18 +1,16 @@
 ﻿using PinkMenu.Helpers;
 using UnityEngine;
 
-namespace StupidTemplate.Helpers.InvisMonkeBallCreator
+namespace PinkMenu.Managers
 {
-    internal class InvisMonkeBallCreator
+    internal class BallManager
     {
         private static GameObject createdBall1;
         private static GameObject createdBall2;
 
-        public static GameObject CreateInvisMonkeBall()
+        public static GameObject[] GetInvisMonkeBalls()
         {
-            createdBall1 = CreateBall();
-            createdBall2 = CreateBall();
-            return createdBall1;
+            return new GameObject[] { CreateBall(), CreateBall() };
         }
 
         private static GameObject CreateBall()
@@ -28,16 +26,6 @@ namespace StupidTemplate.Helpers.InvisMonkeBallCreator
             float pingPongValue = Mathf.PingPong(Time.time / 2f, 1f);
             mat.color = Color.Lerp(SigmaColors.hotPink, SigmaColors.deepPink, pingPongValue);
             return ballObject;
-        }
-
-        public static GameObject GetCreatedBall1()
-        {
-            return createdBall1;
-        }
-
-        public static GameObject GetCreatedBall2()
-        {
-            return createdBall2;
         }
     }
 }

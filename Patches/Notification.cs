@@ -10,7 +10,7 @@ using ExitGames.Client.Photon;
 using UnityEngine.UIElements;
 using System.Threading.Tasks;
 
-namespace GTAG_NotificationLib
+namespace PinkMenu.Patches
 {
     public class NotifiLib : MonoBehaviour
     {
@@ -37,15 +37,15 @@ namespace GTAG_NotificationLib
             }
             try
             {
-                if (NotifiLib.IsEnabled && NotifiLib.PreviousNotifi != NotificationText)
+                if (IsEnabled && PreviousNotifi != NotificationText)
                 {
                     if (!NotificationText.Contains(Environment.NewLine))
                     {
                         NotificationText += Environment.NewLine;
                     }
-                    NotifiLib.NotifiText.text = NotifiLib.NotifiText.text + NotificationText;
-                    NotifiLib.NotifiText.supportRichText = true;
-                    NotifiLib.PreviousNotifi = NotificationText;
+                    NotifiText.text = NotifiText.text + NotificationText;
+                    NotifiText.supportRichText = true;
+                    PreviousNotifi = NotificationText;
                     try
                     {
                         ClearPastNotifications(1);
@@ -55,7 +55,7 @@ namespace GTAG_NotificationLib
             }
             catch
             {
-                UnityEngine.Debug.LogError("Notification failed, object probably nil due to third person ; " + NotificationText);
+                Debug.LogError("Notification failed, object probably nil due to third person ; " + NotificationText);
             }
 
         }

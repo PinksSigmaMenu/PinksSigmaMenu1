@@ -1,10 +1,9 @@
 ﻿using GorillaLocomotion;
-using GTAG_NotificationLib;
+using PinkMenu.Patches;
 using Photon.Pun;
 using Photon.Realtime;
-using StupidTemplate.Classes;
-using StupidTemplate.Menu;
-using StupidTemplate.Patches;
+using PinkMenu.Classes;
+using PinkMenu.Menu;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
@@ -33,17 +32,14 @@ using Unity.Mathematics;
 using UnityEngine.InputSystem;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UIElements;
-using UnityEngine;
 using Valve.Newtonsoft.Json.Converters;
 using Valve.VR;
 using static Unity.Burst.Intrinsics.Arm;
-using static StupidTemplate.Menu.Main;
-using StupidTemplate.Mods;
+using PinkMenu.Mods;
 using PinkMenu.Helpers;
-using StupidTemplate.Helpers;
-using StupidTemplate.Helpers.InvisMonkeBallCreator;
+using PinkMenu.Managers;
 
-namespace StupidTemplate.Mods
+namespace PinkMenu.Mods
 {
     internal class Movement
     {
@@ -254,14 +250,13 @@ namespace StupidTemplate.Mods
                 {
                     GorillaTagger.Instance.offlineVRRig.headBodyOffset = new Vector3(9999f, 9999f, 9999f);
 
-                    GameObject ballobject = InvisMonkeBallCreator.CreateInvisMonkeBall();
-                    GameObject ballobject2 = InvisMonkeBallCreator.CreateInvisMonkeBall();
+                    GameObject[] InvisBalls = BallManager.GetInvisMonkeBalls();
 
-                    ballobject.transform.position = GorillaTagger.Instance.rightHandTransform.transform.position;
-                    ballobject.transform.rotation = GorillaTagger.Instance.rightHandTransform.transform.rotation;
+                    InvisBalls[0].transform.position = GorillaTagger.Instance.rightHandTransform.transform.position;
+                    InvisBalls[0].transform.rotation = GorillaTagger.Instance.rightHandTransform.transform.rotation;
 
-                    ballobject2.transform.position = GorillaTagger.Instance.rightHandTransform.transform.position;
-                    ballobject2.transform.rotation = GorillaTagger.Instance.rightHandTransform.transform.rotation;
+                    InvisBalls[1].transform.position = GorillaTagger.Instance.rightHandTransform.transform.position;
+                    InvisBalls[1].transform.rotation = GorillaTagger.Instance.rightHandTransform.transform.rotation;
                 }
             }
             else if (!ControllerInputPoller.instance.rightGrab && wasRightGrabToggled)

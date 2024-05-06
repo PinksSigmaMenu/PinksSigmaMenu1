@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-namespace StupidTemplate.Helpers
+namespace PinkMenu.Managers
 {
 
     public class RoomManager

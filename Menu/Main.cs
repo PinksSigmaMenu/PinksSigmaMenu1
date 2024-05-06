@@ -4,22 +4,23 @@ using HarmonyLib;
 using iiMenu.Mods.Spammers;
 using Photon.Pun;
 using Photon.Realtime;
-using StupidTemplate.Classes;
+using PinkMenu.Classes;
 using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
-using static StupidTemplate.Menu.Buttons;
-using static StupidTemplate.Config;
-using StupidTemplate.Patches;
+using static PinkMenu.Menu.Buttons;
+using static PinkMenu.Config;
+using PinkMenu.Patches;
 using PinkMenu.Helpers;
 using Photon.Voice;
 using System.Collections;
 using static Photon.Voice.OpusCodec;
+using PinkMenu.Managers;
 
-namespace StupidTemplate.Menu
+namespace PinkMenu.Menu
 {
     [HarmonyPatch(typeof(GorillaLocomotion.Player))]
     [HarmonyPatch("LateUpdate", MethodType.Normal)]
@@ -131,11 +132,11 @@ namespace StupidTemplate.Menu
             menuBackground.transform.parent = menu.transform;
             menuBackground.transform.rotation = Quaternion.identity;
             menuBackground.transform.localScale = menuSize;
-            menuBackground.GetComponent<Renderer>().material.color = backgroundColor.colors[0].color;
+            menuBackground.GetComponent<Renderer>().material.color = ThemeManager.GetTheme().GetBackground().colors[0].color;
             menuBackground.transform.position = new Vector3(0.05f, 0f, 0f);
 
             ColorChanger colorChanger = menuBackground.AddComponent<ColorChanger>();
-            colorChanger.colorInfo = backgroundColor;
+            colorChanger.colorInfo = ThemeManager.GetTheme().GetBackground();
             colorChanger.Start();
 
             //Outline Background
@@ -145,7 +146,7 @@ namespace StupidTemplate.Menu
             menuBackground.transform.parent = menu.transform;
             menuBackground.transform.rotation = Quaternion.identity;
             menuBackground.transform.localScale = menuSize2;
-            menuBackground.GetComponent<Renderer>().material.color = allshadesofpink.mediumPink;
+            menuBackground.GetComponent<Renderer>().material.color = ThemeManager.GetTheme().GetOutline().colors[0].color;
             menuBackground.transform.position = new Vector3(0.05f, 0f, 0f);
 
             // Canvas
@@ -168,7 +169,7 @@ namespace StupidTemplate.Menu
             text.font = currentFont;
             text.text = PluginInfo.Name + " <color=grey>[</color><color=white>" + (pageNumber + 1).ToString() + "</color><color=grey>]</color>";
             text.fontSize = 1;
-            text.color = textColors[0];
+            text.color = ThemeManager.GetTheme().GetText(false);
             text.supportRichText = true;
             text.fontStyle = FontStyle.Italic;
             text.alignment = TextAnchor.MiddleCenter;
@@ -191,7 +192,7 @@ namespace StupidTemplate.Menu
                 }.AddComponent<Text>();
                 fpsObject.font = currentFont;
                 fpsObject.text = "FPS: " + Mathf.Ceil(1f / Time.unscaledDeltaTime).ToString();
-                fpsObject.color = textColors[0];
+                fpsObject.color = ThemeManager.GetTheme().GetText(false);
                 fpsObject.fontSize = 1;
                 fpsObject.supportRichText = true;
                 fpsObject.fontStyle = FontStyle.Italic;
@@ -221,11 +222,11 @@ namespace StupidTemplate.Menu
                 disconnectbutton.transform.rotation = Quaternion.identity;
                 disconnectbutton.transform.localScale = new Vector3(0.09f, 0.9f, 0.08f);
                 disconnectbutton.transform.localPosition = new Vector3(0.56f, 0f, 0.6f);
-                disconnectbutton.GetComponent<Renderer>().material.color = buttonColors[0].colors[0].color;
+                disconnectbutton.GetComponent<Renderer>().material.color = ThemeManager.GetTheme().GetButton(false).colors[0].color;
                 disconnectbutton.AddComponent<Classes.Button>().relatedText = "Disconnect";
 
                 colorChanger = disconnectbutton.AddComponent<ColorChanger>();
-                colorChanger.colorInfo = buttonColors[0];
+                colorChanger.colorInfo = ThemeManager.GetTheme().GetButton(false);
                 colorChanger.Start();
 
                 Text discontext = new GameObject
@@ -238,7 +239,7 @@ namespace StupidTemplate.Menu
                 discontext.text = "Disconnect";
                 discontext.font = currentFont;
                 discontext.fontSize = 1;
-                discontext.color = textColors[0];
+                discontext.color = ThemeManager.GetTheme().GetText(false);
                 discontext.alignment = TextAnchor.MiddleCenter;
                 discontext.resizeTextForBestFit = true;
                 discontext.resizeTextMinSize = 0;
@@ -262,11 +263,11 @@ namespace StupidTemplate.Menu
             gameObject.transform.rotation = Quaternion.identity;
             gameObject.transform.localScale = new Vector3(0.09f, 0.2f, 0.9f);
             gameObject.transform.localPosition = new Vector3(0.56f, 0.65f, 0);
-            gameObject.GetComponent<Renderer>().material.color = buttonColors[0].colors[0].color;
+            gameObject.GetComponent<Renderer>().material.color = ThemeManager.GetTheme().GetButton(false).colors[0].color;
             gameObject.AddComponent<Classes.Button>().relatedText = "PreviousPage";
 
             colorChanger = gameObject.AddComponent<ColorChanger>();
-            colorChanger.colorInfo = buttonColors[0];
+            colorChanger.colorInfo = ThemeManager.GetTheme().GetButton(false);
             colorChanger.Start();
 
             text = new GameObject
@@ -279,7 +280,7 @@ namespace StupidTemplate.Menu
             text.font = currentFont;
             text.text = "<";
             text.fontSize = 1;
-            text.color = textColors[0];
+            text.color = ThemeManager.GetTheme().GetText(false);
             text.alignment = TextAnchor.MiddleCenter;
             text.resizeTextForBestFit = true;
             text.resizeTextMinSize = 0;
@@ -300,11 +301,11 @@ namespace StupidTemplate.Menu
             gameObject.transform.rotation = Quaternion.identity;
             gameObject.transform.localScale = new Vector3(0.09f, 0.2f, 0.9f);
             gameObject.transform.localPosition = new Vector3(0.56f, -0.65f, 0);
-            gameObject.GetComponent<Renderer>().material.color = buttonColors[0].colors[0].color;
+            gameObject.GetComponent<Renderer>().material.color = ThemeManager.GetTheme().GetButton(false).colors[0].color;
             gameObject.AddComponent<Classes.Button>().relatedText = "NextPage";
 
             colorChanger = gameObject.AddComponent<ColorChanger>();
-            colorChanger.colorInfo = buttonColors[0];
+            colorChanger.colorInfo = ThemeManager.GetTheme().GetButton(false);
             colorChanger.Start();
 
             text = new GameObject
@@ -317,7 +318,7 @@ namespace StupidTemplate.Menu
             text.font = currentFont;
             text.text = ">";
             text.fontSize = 1;
-            text.color = textColors[0];
+            text.color = ThemeManager.GetTheme().GetText(false);
             text.alignment = TextAnchor.MiddleCenter;
             text.resizeTextForBestFit = true;
             text.resizeTextMinSize = 0;
@@ -392,14 +393,7 @@ namespace StupidTemplate.Menu
             gameObject.AddComponent<Classes.Button>().relatedText = method.buttonText;
 
             ColorChanger colorChanger = gameObject.AddComponent<ColorChanger>();
-            if (method.enabled)
-            {
-                colorChanger.colorInfo = buttonColors[1];
-            }
-            else
-            {
-                colorChanger.colorInfo = buttonColors[0];
-            }
+            colorChanger.colorInfo = ThemeManager.GetTheme().GetButton(method.enabled);
             colorChanger.Start();
 
             Text text = new GameObject
@@ -417,14 +411,9 @@ namespace StupidTemplate.Menu
             }
             text.supportRichText = true;
             text.fontSize = 1;
-            if (method.enabled)
-            {
-                text.color = textColors[1];
-            }
-            else
-            {
-                text.color = textColors[0];
-            }
+
+            text.color = ThemeManager.GetTheme().GetText(method.enabled);
+
             text.alignment = TextAnchor.MiddleCenter;
             text.fontStyle = FontStyle.Italic;
             text.resizeTextForBestFit = true;
@@ -498,6 +487,7 @@ namespace StupidTemplate.Menu
                     GameObject bg = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     bg.transform.localScale = new Vector3(10f, 10f, 0.01f);
                     bg.transform.transform.position = TPC.transform.position + TPC.transform.forward;
+                    ExtGradient backgroundColor = ThemeManager.GetTheme().GetBackground();
                     bg.GetComponent<Renderer>().material.color = new Color32((byte)(backgroundColor.colors[0].color.r * 50), (byte)(backgroundColor.colors[0].color.g * 50), (byte)(backgroundColor.colors[0].color.b * 50), 255);
                     GameObject.Destroy(bg, Time.deltaTime);
                     menu.transform.parent = TPC.transform;
@@ -539,13 +529,13 @@ namespace StupidTemplate.Menu
             else
                 reference.transform.parent = GorillaTagger.Instance.rightHandTransform;
 
-            reference.GetComponent<Renderer>().material.color = backgroundColor.colors[0].color;
+            reference.GetComponent<Renderer>().material.color = ThemeManager.GetTheme().GetBackground().colors[0].color;
             reference.transform.localPosition = new Vector3(0f, -0.1f, 0f);
             reference.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
             buttonCollider = reference.GetComponent<SphereCollider>();
 
             ColorChanger colorChanger = reference.AddComponent<ColorChanger>();
-            colorChanger.colorInfo = backgroundColor;
+            colorChanger.colorInfo = ThemeManager.GetTheme().GetBackground();
             colorChanger.Start();
         }
 
@@ -607,10 +597,7 @@ namespace StupidTemplate.Menu
             RecreateMenu();
         }
 
-        public static GradientColorKey[] GetSolidGradient(Color color)
-        {
-            return new GradientColorKey[] { new GradientColorKey(color, 0f), new GradientColorKey(color, 1f) };
-        }
+        
 
         public static ButtonInfo GetIndex(string buttonText)
         {

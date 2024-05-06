@@ -1,8 +1,7 @@
-﻿using static StupidTemplate.Menu.Main;
-using static StupidTemplate.Config;
-using GTAG_NotificationLib;
+﻿using static PinkMenu.Menu.Main;
+using static PinkMenu.Config;
 
-namespace StupidTemplate.Mods
+namespace PinkMenu.Mods
 {
     internal class SettingsMods
     {

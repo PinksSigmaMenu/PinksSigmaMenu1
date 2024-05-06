@@ -1,13 +1,14 @@
-﻿using DiscordRPC;
+﻿//using DiscordRPC; // i dont have this so i cant compile, so please uncomment if u still need it
 using PinkMenu.Mods;
-using StupidTemplate.Classes;
-using StupidTemplate.Helpers;
-using StupidTemplate.Mods;
-using StupidTemplate.Mods.Holdables;
+using PinkMenu.Classes;
+using PinkMenu.Helpers;
+using PinkMenu.Mods;
+using PinkMenu.Mods.Holdables;
 using UnityEngine;
-using static StupidTemplate.Config;
+using static PinkMenu.Config;
+using PinkMenu.Managers;
 
-namespace StupidTemplate.Menu
+namespace PinkMenu.Menu
 {
     internal class Buttons
     {
@@ -29,10 +30,8 @@ namespace StupidTemplate.Menu
                 new ButtonInfo { buttonText = "Return", method =() => Global.ReturnHome(), isTogglable = false, toolTip = "Returns to the main page of the menu."},
             },
 
-
-
             new ButtonInfo[] { // Menu Settings
-                new ButtonInfo { buttonText = "AntiReport", method =() => AntiCheat.AntiReport(), enabled = true, toolTip = "it makes you leave before you get reported"},
+                new ButtonInfo { buttonText = "AntiReport", method =() => AntiReport.Check(), enabled = true, toolTip = "it makes you leave before you get reported"},
                 new ButtonInfo { buttonText = "InfoHut", method =() => ModIndo.MenuInfo(), enabled = true, toolTip = "Shows Player IDS on code of conduct boared"},
                 new ButtonInfo { buttonText = "Custom Sky", method =() => Custom_Sky.CustomSky(), enabled = true, toolTip = "Changes sky color"},
                 new ButtonInfo { buttonText = "Disconnect Button", enableMethod =() => SettingsMods.EnableDisconnectButton(), disableMethod =() => SettingsMods.DisableDisconnectButton(), enabled = disconnectButton, toolTip = "Toggles the disconnect button."},

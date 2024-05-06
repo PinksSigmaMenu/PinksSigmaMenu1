@@ -1,5 +1,4 @@
-﻿using GTAG_NotificationLib;
-using Oculus.Platform;
+﻿using Oculus.Platform;
 using System;
 using System.IO;
 using System.Net.Http;
@@ -18,7 +17,7 @@ using Photon.Pun;
 using BoingKit;
 using Oculus.Interaction;
 using PinkMenu.Helpers;
-using StupidTemplate.Classes;
+using PinkMenu.Classes;
 using System.Threading;
 using Fusion;
 

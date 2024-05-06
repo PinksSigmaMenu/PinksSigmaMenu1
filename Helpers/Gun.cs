@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
 using UnityEngine.XR;
 
-namespace StupidTemplate.Helpers
+namespace PinkMenu.Helpers
 {
     internal class Gun
 

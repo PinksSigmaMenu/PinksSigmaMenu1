@@ -1,4 +1,4 @@
-﻿﻿using ExitGames.Client.Photon;
+﻿using ExitGames.Client.Photon;
 using GorillaTag;
 using Photon.Pun;
 using Photon.Realtime;
@@ -6,8 +6,8 @@ using System;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static StupidTemplate.Classes.RigManager;
-using static StupidTemplate.Menu.Main;
+using static PinkMenu.Managers.RigManager;
+using static PinkMenu.Menu.Main;
 
 namespace iiMenu.Mods.Spammers
 {

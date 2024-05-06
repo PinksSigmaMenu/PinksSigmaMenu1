@@ -1,11 +1,11 @@
 ﻿using Photon.Pun;
-using StupidTemplate.Menu;
+using PinkMenu.Menu;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace PinkMenu.Mods
 {
-    internal class AntiCheat
+    internal class AntiReport
     {
         public static List<GorillaScoreBoard> Scoreboards = new List<GorillaScoreBoard>();
 
@@ -15,7 +15,7 @@ namespace PinkMenu.Mods
             Main.RPCProtection();
         }
 
-        public static void AntiReport()
+        public static void Check()
         {
             if (Scoreboards.Count == 0)
             {

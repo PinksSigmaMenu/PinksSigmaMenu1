@@ -12,12 +12,12 @@ using ExitGames.Client.Photon;
 using HarmonyLib;
 using iiMenu.Mods.Spammers;
 using Photon.Realtime;
-using StupidTemplate.Classes;
+using PinkMenu.Classes;
 using System.Linq;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
-using static StupidTemplate.Menu.Buttons;
-using static StupidTemplate.Config;
+using static PinkMenu.Menu.Buttons;
+using static PinkMenu.Config;
 using Steamworks;
 using System.Diagnostics;
 

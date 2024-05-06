@@ -3,23 +3,20 @@ using GorillaLocomotion;
 using Oculus.Interaction;
 using Photon.Pun;
 using Steamworks;
-using StupidTemplate.Classes;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UIElements;
-using GTAG_NotificationLib;
 using System.Linq;
 using iiMenu.Mods.Spammers;
 using Oculus.Interaction.Input;
 using static Mono.Math.BigInteger;
-using static StupidTemplate.Classes.RigManager;
-using static StupidTemplate.Menu.Main;
+using static PinkMenu.Managers.RigManager;
+using static PinkMenu.Menu.Main;
 using UnityEngine.InputSystem;
 using UnityEngine.Animations.Rigging;
-using PinkMenu.Helpers;
-
+using PinkMenu.Managers;
 
 namespace PinkMenu.Mods
 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-namespace StupidTemplate.Classes
+namespace PinkMenu.Classes
 {
     public class TimedBehaviour : MonoBehaviour
     {
