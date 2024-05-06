@@ -14,11 +14,11 @@ namespace StupidTemplate.Mods
             GameObject signPosition = GameObject.Find("Environment Objects/LocalObjects_Prefab/City/CosmeticsRoomAnchor/outerstores/Bottom Floor/OutsideBuildings/InfoAnchor/infosign");
 
             GameObject textObject = new GameObject("TextObject");
-            textObject.transform.position = signPosition.transform.position + Vector3.up * 0.1f;
-            textObject.transform.rotation = signPosition.transform.rotation;
-            textObject.transform.localScale = new Vector3(0.10f, 0.10f, 0.10f);
+            textObject.transform.position = signPosition.transform.position + Vector3.up * 0.1f; 
+            textObject.transform.rotation = signPosition.transform.rotation * Quaternion.Euler(0f, 90f, 0f); 
+            textObject.transform.localScale = new Vector3(0.02f, 0.20f, 0.02f);
 
-            textObject.transform.Rotate(Vector3.up, 90f);
+            textObject.transform.Rotate(Vector3.up, 180f);
 
             TextMeshPro textComponent = textObject.AddComponent<TextMeshPro>();
             textComponent.text = "Pink Menu Info Hut";
