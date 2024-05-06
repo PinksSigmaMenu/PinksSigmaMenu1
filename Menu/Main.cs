@@ -138,7 +138,7 @@ namespace StupidTemplate.Menu
             colorChanger.colorInfo = backgroundColor;
             colorChanger.Start();
 
-            // Menu Background 2 
+            //Outline Background
             menuBackground = GameObject.CreatePrimitive(PrimitiveType.Cube);
             UnityEngine.Object.Destroy(menuBackground.GetComponent<Rigidbody>());
             UnityEngine.Object.Destroy(menuBackground.GetComponent<BoxCollider>());

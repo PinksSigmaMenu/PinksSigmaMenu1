@@ -6,5 +6,7 @@ namespace StupidTemplate.Menu
 {
     internal class Themes
     {
+
+
     }
 }

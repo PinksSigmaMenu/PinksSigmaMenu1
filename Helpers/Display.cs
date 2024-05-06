@@ -9,6 +9,19 @@ namespace StupidTemplate.Helpers
 {
     internal class Display22
     {
+
+        
+        public static void MOTDTXT()
+        {
+            
+            GameObject motdObject = GameObject.Find("motdtext");
+            Text motdText = motdObject.GetComponent<Text>();
+            float lerp = Mathf.PingPong(Time.time, 1) / 1;
+            Color color = Color.Lerp(SigmaColors.deepPink, SigmaColors.hotPink, lerp);
+            motdText.color = color;
+            motdText.text = "HELLO EVERYONE WELCOME TO THE PINK MENU THIS MENU IS CURRENTLY IN IN BETA SO BARE WITH ME ON WHATS IN THE MENU LOL YOU CAN JOIN MY DISCORD AT <color=#FFB6F9><b>https://discord.gg/MNjwNcvUgu</b></color> IF YOU'D LIKE THIS MENU CURRENTLY HAS <color=#FFB6F9><b>78</b></color> MODS IN THE MENU";
+        }
+
         public static void ConductIDS()
         {
             GameObject codeOfConductObject = GameObject.Find("CodeOfConduct");
@@ -29,29 +42,6 @@ namespace StupidTemplate.Helpers
             }
         }
 
-
-
-        public static void UpdateConductName()
-        {
-            GameObject conductObject = GameObject.Find("CodeOfConduct");
-            Text motdText = conductObject.GetComponent<Text>();
-            float lerp = Mathf.PingPong(Time.time, 1) / 1;
-            Color color = Color.Lerp(SigmaColors.deepPink, SigmaColors.hotPink, lerp);
-            motdText.color = color;
-            motdText.text = "Pinks Conduct IDS";
-        }
-
-        public static void MOTDTXT()
-        {
-
-            GameObject motdObject = GameObject.Find("motdtext");
-            Text motdText = motdObject.GetComponent<Text>();
-            float lerp = Mathf.PingPong(Time.time, 1) / 1;
-            Color color = Color.Lerp(SigmaColors.deepPink, SigmaColors.hotPink, lerp);
-            motdText.color = color;
-            motdText.text = "HELLO EVERYONE WELCOME TO THE PINK MENU THIS MENU IS CURRENTLY IN IN BETA SO BARE WITH ME ON WHATS IN THE MENU LOL YOU CAN JOIN MY DISCORD AT <color=#FFB6F9><b>https://discord.gg/MNjwNcvUgu</b></color> IF YOU'D LIKE THIS MENU CURRENTLY HAS <color=#FFB6F9><b>78</b></color> MODS IN THE MENU";
-        }
-
         public static void UpdateColors()
         {
             Text codeOfConductText = GameObject.Find("CodeOfConduct").GetComponent<Text>();
@@ -60,36 +50,25 @@ namespace StupidTemplate.Helpers
             Text motdText = GameObject.Find("motd").GetComponent<Text>();
             motdText.text = "<color=#FF69B4><b>Pink</b></color> <color=#FF6BF3><b>Menu</b></color> <color=#FF2CEE><b>MOTD</b></color>";
 
-           
-            UpdateObjectColor("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/Wall Monitors Screens/wallmonitorforest");
-            UpdateObjectColor("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/Wall Monitors Screens/wallmonitorcave");
-            UpdateObjectColor("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/Wall Monitors Screens/wallmonitorskyjungle");
-            UpdateObjectColor("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/Wall Monitors Screens/wallmonitorcosmetics");
-            UpdateObjectColor("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/Wall Monitors Screens/wallmonitorcanyon");
+            GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/StaticUnlit/motdscreen").GetComponent<Renderer>().material.color = SigmaColors.lightPink;
+            GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/StaticUnlit/screen").GetComponent<Renderer>().material.color = SigmaColors.lightPink;
+            GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/Wall Monitors Screens/wallmonitorcanyon").GetComponent<Renderer>().material.color = SigmaColors.lightPink;
+            GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/Wall Monitors Screens/wallmonitorcosmetics").GetComponent<Renderer>().material.color = SigmaColors.lightPink;
+            GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/Wall Monitors Screens/wallmonitorcave").GetComponent<Renderer>().material.color = SigmaColors.lightPink;
+            GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/Wall Monitors Screens/wallmonitorforest").GetComponent<Renderer>().material.color = SigmaColors.lightPink;
+            GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/Wall Monitors Screens/wallmonitorskyjungle").GetComponent<Renderer>().material.color = SigmaColors.lightPink;
+            GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/campgroundstructure/scoreboard/REMOVE board").GetComponent<Renderer>().material.color = SigmaColors.lightPink;
         }
 
-        static void UpdateObjectColor(string objectName)
+
+        public class GameManager : MonoBehaviour
         {
-            GameObject obj = GameObject.Find(objectName);
-            if (obj)
+            void Start()
             {
-                Renderer renderer = obj.GetComponent<Renderer>();
-                if (renderer)
-                {
-                    renderer.material.color = SigmaColors.deepPink;
-                }
+                StupidTemplate.Helpers.Display22.MOTDTXT();
+                StupidTemplate.Helpers.Display22.ConductIDS();
+                StupidTemplate.Helpers.Display22.UpdateColors();
             }
-        }
-    }
-
-    public class GameManager : MonoBehaviour
-    {
-        void Start()
-        {
-            StupidTemplate.Helpers.Display22.ConductIDS();
-            StupidTemplate.Helpers.Display22.UpdateConductName();
-            StupidTemplate.Helpers.Display22.MOTDTXT();
-            StupidTemplate.Helpers.Display22.UpdateColors();
         }
     }
 }

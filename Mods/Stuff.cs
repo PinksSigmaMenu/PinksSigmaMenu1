@@ -19,6 +19,8 @@ using BoingKit;
 using Oculus.Interaction;
 using PinkMenu.Helpers;
 using StupidTemplate.Classes;
+using System.Threading;
+using Fusion;
 
 class Stuff
 {
@@ -204,37 +206,35 @@ class Stuff
         Color color = UnityEngine.Random.ColorHSV();
         return ColorUtility.ToHtmlStringRGB(color);
     }
+
+
+    IEnumerator ChangeNamesCoroutine()
+    {
+        while (true)
+        {
+            SpazzyNames();
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
     public static void SpazzyNames()
     {
-        {
-            string randomColorCode = GenerateRandomColorCode();
+        string randomColorCode = GenerateRandomColorCode();
 
-            ColorUtility.TryParseHtmlString(randomColorCode, out Color color);
-            int randomR = Mathf.RoundToInt(color.r * 255);
-            int randomG = Mathf.RoundToInt(color.g * 0);
-            int randomB = Mathf.RoundToInt(color.b * 234);
+        ColorUtility.TryParseHtmlString(randomColorCode, out Color color);
+        int randomR = Mathf.RoundToInt(color.r * 255);
+        int randomG = Mathf.RoundToInt(color.g * 0);
+        int randomB = Mathf.RoundToInt(color.b * 234);
 
-            GorillaTagger.Instance.UpdateColor(randomR, randomG, randomB);
+        GorillaTagger.Instance.UpdateColor(randomR, randomG, randomB);
 
-            string[] randomNames = {
-    "Pinkie", "Strawberry", "Bubblegum", "Raspberry", "CottonCandy",
-    "Cherry", "Rose", "Magenta", "Fuchsia", "Blush",
-    "Coral", "Salmon", "Mauve", "Lavender", "Plum",
-    "Peach", "Apricot", "Taffy", "Cranberry", "Mulberry",
-    "Watermelon", "Grape", "Pomegranate", "Amethyst", "Lilac",
-    "Carnation", "Sangria", "Orchid", "Maroon", "Ruby", "Sigma", "Skibidi",
-    "PinkMenuOnTop",
-    "PinkFlamingo", "Candyfloss", "PinkPetal", "SugarPlum", "CherryBlossom",
-    "BubblegumBlast", "RaspberryRipple", "PinkLemonade", "FlamingoFrost", "StrawberrySwirl",
-    "CottonCandyCrush", "PinkFairyDust", "BerryBlast", "PeonyPink", "RosyCheeks", "PinkLush",
-    "SweetheartPink", "PinkParadise", "BerryBerryPink", "TickledPink", "PinkDazzle", "CottonCandyCloud",
-    "PinkChampagne", "PinkCupcake", "PetalPink", "BubblegumBliss", "PinkBouquet", "PinkVelvet",
-    "PinkPassion", "PinkDream", "PinkSparkle", "PinkSorbet", "PinkWhisper", "PinkGlaze"
-};
-            string randomName = randomNames[UnityEngine.Random.Range(0, randomNames.Length)];
+        string[] randomNames = {
+        };
 
-            PhotonNetwork.NickName = randomName;
-        }
+
+        string randomName = randomNames[UnityEngine.Random.Range(0, randomNames.Length)];
+
+        PhotonNetwork.NickName = randomName;
     }
 }
 

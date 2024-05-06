@@ -35,8 +35,8 @@ namespace PinkMenu.Mods
                     {
                         GameObject Penis = new GameObject("Line");
                         LineRenderer lineRenderer = Penis.AddComponent<LineRenderer>();
-                        lineRenderer.startWidth = 0.1f;
-                        lineRenderer.endWidth = 0.1f;
+                        lineRenderer.startWidth = 0.03f;
+                        lineRenderer.endWidth = 0.03f;
                         lineRenderer.positionCount = 2;
                         lineRenderer.SetPosition(0, POS.transform.position + new Vector3(0f, 9999f, 0f));
                         lineRenderer.SetPosition(1, POS.transform.position - new Vector3(0f, 9999f, 0f));
@@ -47,7 +47,7 @@ namespace PinkMenu.Mods
                         Material sphereMaterial = new Material(ESPShader);
                         Penis.GetComponent<Renderer>().material = sphereMaterial;
                         float pingPongValue = Mathf.PingPong(Time.time / 2f, 1f);
-                        sphereMaterial.color = Color.Lerp(Color.magenta, Color.black, pingPongValue);
+                        sphereMaterial.color = Color.Lerp(SigmaColors.hotPink, SigmaColors.deepPink, pingPongValue);
                         UnityEngine.Object.Destroy(Penis, Time.deltaTime);
                     }
                 }
@@ -76,7 +76,7 @@ namespace PinkMenu.Mods
                         Material sphereMaterial = new Material(ESPShader);
                         PinksOBJ.GetComponent<Renderer>().material = sphereMaterial;
                         float pingPongValue = Mathf.PingPong(Time.time / 2f, 1f);
-                        sphereMaterial.color = Color.Lerp(Color.magenta, Color.black, pingPongValue);
+                        sphereMaterial.color = Color.Lerp(SigmaColors.hotPink, SigmaColors.deepPink, pingPongValue);
                         UnityEngine.Object.Destroy(PinksOBJ, 0.50f);
                     }
                 }
@@ -98,8 +98,8 @@ namespace PinkMenu.Mods
                         Material sphereMaterial = new Material(ESPShader);
                         PinksPen.GetComponent<Renderer>().material = sphereMaterial;
                         float pingPongValue = Mathf.PingPong(Time.time / 2f, 1f);
-                        Color transparentMagenta = new Color(Color.magenta.r, Color.magenta.g, Color.magenta.b, 0.5f);
-                        Color transparentBlack = new Color(Color.black.r, Color.black.g, Color.black.b, 0.5f);
+                        Color transparentMagenta = new Color(SigmaColors.hotPink.r, SigmaColors.hotPink.g, SigmaColors.hotPink.b, 0.5f);
+                        Color transparentBlack = new Color(SigmaColors.deepPink.r, SigmaColors.deepPink.g, SigmaColors.deepPink.b, 0.5f);
                         Color lerpedColor = Color.Lerp(transparentMagenta, transparentBlack, pingPongValue);
                         sphereMaterial.color = lerpedColor;
                         UnityEngine.Object.Destroy(PinksPen, Time.deltaTime);
@@ -128,8 +128,8 @@ namespace PinkMenu.Mods
                 Material sphereMaterial1 = new Material(ESPShader3);
                 Obj.GetComponent<Renderer>().material = sphereMaterial1;
                 float pingPongValue = Mathf.PingPong(Time.time / 2f, 1f);
-                Color transparentMagenta = new Color(Color.magenta.r, Color.magenta.g, Color.magenta.b, 0.5f);
-                Color transparentBlack = new Color(Color.black.r, Color.black.g, Color.black.b, 0.5f);
+                Color transparentMagenta = new Color(SigmaColors.hotPink.r, SigmaColors.hotPink.g, SigmaColors.hotPink.b, 0.5f);
+                Color transparentBlack = new Color(SigmaColors.deepPink.r, SigmaColors.deepPink.g, SigmaColors.deepPink.b, 0.5f);
                 Color lerpedColor = Color.Lerp(transparentMagenta, transparentBlack, pingPongValue);
                 sphereMaterial1.color = lerpedColor;
                 Obj.transform.SetParent(FloatingBugHoldable.transform);
@@ -159,7 +159,7 @@ namespace PinkMenu.Mods
                         Material sphereMaterial = new Material(ESPShader);
                         LeftNut.GetComponent<Renderer>().material = sphereMaterial;
                         float pingPongValue = Mathf.PingPong(Time.time / 2f, 1f);
-                        sphereMaterial.color = Color.Lerp(Color.magenta, Color.black, pingPongValue);
+                        sphereMaterial.color = Color.Lerp(SigmaColors.hotPink, SigmaColors.deepPink, pingPongValue);
                         UnityEngine.Object.Destroy(LeftNut, 0.50f);
                         GameObject rightnut = GameObject.CreatePrimitive(PrimitiveType.Capsule);
                         rightnut.transform.localScale = new Vector3(0.50f, 0.100f, 0.100f);
@@ -169,7 +169,7 @@ namespace PinkMenu.Mods
                         Material sphereMaterialr = new Material(ESPShader);
                         rightnut.GetComponent<Renderer>().material = sphereMaterial;
                         float pingPongValuer = Mathf.PingPong(Time.time / 2f, 1f);
-                        sphereMaterial.color = Color.Lerp(Color.magenta, Color.black, pingPongValue);
+                        sphereMaterial.color = Color.Lerp(SigmaColors.hotPink, SigmaColors.deepPink, pingPongValue);
                         UnityEngine.Object.Destroy(rightnut, 0.100f);
                         GameObject Peanit = GameObject.CreatePrimitive(PrimitiveType.Capsule);
                         Peanit.transform.localScale = new Vector3(0.100f, 0.50f, 0.0100f);
@@ -179,7 +179,7 @@ namespace PinkMenu.Mods
                         Material sphereMaterial1 = new Material(ESPShader);
                         Peanit.GetComponent<Renderer>().material = sphereMaterial;
                         float pingPongValue1 = Mathf.PingPong(Time.time / 2f, 1f);
-                        sphereMaterial.color = Color.Lerp(Color.magenta, Color.black, pingPongValue);
+                        sphereMaterial.color = Color.Lerp(SigmaColors.hotPink, SigmaColors.deepPink, pingPongValue1);
                         UnityEngine.Object.Destroy(Peanit, 0.50f);
                         Collider collider = Peanit.GetComponent<Collider>();
                         if (collider != null)
@@ -209,7 +209,7 @@ namespace PinkMenu.Mods
                         Material SphereMats = new Material(ShaderShit);
                         Sigma.GetComponent<Renderer>().material = SphereMats;
                         float pingPongValue1 = Mathf.PingPong(Time.time / 1f, 0.90f);
-                        SphereMats.color = Color.Lerp(Color.black, Color.yellow, pingPongValue1);
+                        SphereMats.color = Color.Lerp(SigmaColors.hotPink, SigmaColors.deepPink, pingPongValue1);
                         UnityEngine.Object.Destroy(Sigma, Time.deltaTime);
                     }
                 }
@@ -225,14 +225,19 @@ namespace PinkMenu.Mods
                     {
                         GameObject Lines = new GameObject("Line");
                         LineRenderer lineRenderer = Lines.AddComponent<LineRenderer>();
-                        lineRenderer.startWidth = 0.05f;
-                        lineRenderer.endWidth = 0.05f;
-                        lineRenderer.transform.position = GorillaTagger.Instance.offlineVRRig.transform.position;
-                        Shader ShaderShit = Shader.Find("GUI/Text Shader");
-                        Material SphereMats = new Material(ShaderShit);
-                        Lines.GetComponent<Renderer>().material = SphereMats;
+                        lineRenderer.SetPosition(0, GorillaTagger.Instance.offlineVRRig.transform.position);
+                        lineRenderer.startWidth = 0.02f;
+                        lineRenderer.endWidth = 0.02f;
+                        lineRenderer.SetPositions(new Vector3[]
+                         {
+                         Player.Instance.bodyCollider.transform.position,
+                        Trace.transform.position,
+                        });
+                        Shader LineShader = Shader.Find("GUI/Text Shader");
+                        Material LineMat = new Material(LineShader);
+                        Lines.GetComponent<Renderer>().material = LineMat;
                         float pingPongValue1 = Mathf.PingPong(Time.time / 2f, 1f);
-                        SphereMats.color = Color.Lerp(Color.magenta, Color.black, pingPongValue1);
+                        LineMat.color = Color.Lerp(SigmaColors.hotPink, SigmaColors.deepPink, pingPongValue1);
 
                         UnityEngine.Object.Destroy(Lines, Time.deltaTime);
                     }
@@ -250,18 +255,18 @@ namespace PinkMenu.Mods
                         GameObject Lines = new GameObject("Line");
                         LineRenderer lineRenderer = Lines.AddComponent<LineRenderer>();
                         lineRenderer.SetPosition(0, GorillaTagger.Instance.leftHandTransform.transform.position);
-                        lineRenderer.startWidth = 0.05f;
-                        lineRenderer.endWidth = 0.05f;
+                        lineRenderer.startWidth = 0.02f;
+                        lineRenderer.endWidth = 0.02f;
                         lineRenderer.SetPositions(new Vector3[]
                         {
                          Player.Instance.rightControllerTransform.position,
                         Trace.transform.position,
                     });
-                        Shader ShaderShit = Shader.Find("GUI/Text Shader");
-                        Material SphereMats = new Material(ShaderShit);
-                        Lines.GetComponent<Renderer>().material = SphereMats;
+                        Shader LineShader2 = Shader.Find("GUI/Text Shader");
+                        Material LineMat2 = new Material(LineShader2);
+                        Lines.GetComponent<Renderer>().material = LineMat2;
                         float pingPongValue1 = Mathf.PingPong(Time.time / 2f, 1f);
-                        SphereMats.color = Color.Lerp(Color.magenta, Color.black, pingPongValue1);
+                        LineMat2.color = Color.Lerp(SigmaColors.hotPink, SigmaColors.deepPink, pingPongValue1);
 
                         UnityEngine.Object.Destroy(Lines, Time.deltaTime);
                     }

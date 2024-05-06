@@ -138,21 +138,7 @@ namespace StupidTemplate.Mods
             GorillaTagger.Instance.handTapVolume = 0;
         }
 
-        public static void RightTriggerDisconnect()
-        {
-            if (ControllerInputPoller.instance.rightGrab)
-            {
-                PhotonNetwork.Disconnect();
-            }
-        }
 
-        public static void LeftTriggerDisconnect()
-        {
-            if (ControllerInputPoller.instance.leftGrab)
-            {
-                PhotonNetwork.Disconnect();
-            }
-        }
 
         public static void Fly()
         {

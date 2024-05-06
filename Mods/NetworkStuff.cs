@@ -63,6 +63,66 @@ namespace PinkMenu.Mods
             BetterDayNightManager.instance.SetTimeOfDay(3);
         }
 
+        public static void RightTriggerDisconnect()
+        {
+            if (ControllerInputPoller.instance.rightGrab)
+            {
+                PhotonNetwork.Disconnect();
+            }
+        }
+
+        public static void LeftTriggerDisconnect()
+        {
+            if (ControllerInputPoller.instance.leftGrab)
+            {
+                PhotonNetwork.Disconnect();
+            }
+        }
+
+        public static void ConnectToUS()
+        {
+            PhotonNetwork.ConnectToRegion("us");
+        }
+
+        public static void ConnectToUSW()
+        {
+            PhotonNetwork.ConnectToRegion("usw");
+        }
+
+        public static void ConnectToEU()
+        {
+            PhotonNetwork.ConnectToRegion("eu");
+        }
+
+        public static void DisableNetworkTriggers()
+        {
+            GameObject Triggers = GameObject.Find("Environment Objects/TriggerZones_Prefab/JoinRoomTriggers_Prefab");
+            if (Triggers)
+            {
+                Triggers.SetActive(false);
+            }
+            else
+            {
+                Triggers.SetActive(true);
+            }
+        }
+        public static void ControllerDisableNetworkTriggers()
+        {
+            if (ControllerInputPoller.instance.rightControllerPrimaryButton)
+            {
+                GameObject Triggers = GameObject.Find("Environment Objects/TriggerZones_Prefab/JoinRoomTriggers_Prefab");
+
+                Triggers.active = false;
+            }
+            if (ControllerInputPoller.instance.rightControllerSecondaryButton)
+            {
+                GameObject Triggers = GameObject.Find("Environment Objects/TriggerZones_Prefab/JoinRoomTriggers_Prefab");
+
+                Triggers.active = true;
+            }
+        }
+
+
 
     }
 }

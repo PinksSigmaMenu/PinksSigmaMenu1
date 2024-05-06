@@ -42,6 +42,11 @@ namespace StupidTemplate.Mods
             buttonsType = 7;
         }
 
+        public static void NetWorkingStuff()
+        {
+            buttonsType = 8;
+        }
+
         public static void RightHand()
         {
             rightHanded = true;
