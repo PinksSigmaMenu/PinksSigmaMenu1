@@ -1,51 +1,84 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using PinkMenu.Managers;
 using UnityEngine;
 
-namespace PinkMenu.Classes
+namespace PinkMenu.Helpers
 {
-    public class TimedBehaviour : MonoBehaviour
+    internal class ScoreboardHelper
     {
-        public virtual void Start()
+        public static bool disableBoardColor = false;
+
+        public static void UpdateBoardColor(Material pinkMaterial)
         {
-            startTime = Time.time;
+            bool hasFoundAllBoards = false;
+
+            try
+            {
+                Debug.Log("Looking for boards");
+
+                GameObject treeRoom = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom");
+                if (treeRoom != null)
+                {
+                    SearchAndChangeBoardColor(treeRoom, pinkMaterial);
+                }
+
+                // Search for boards in the Forest
+                GameObject forest = GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest");
+                if (forest != null)
+                {
+                    SearchAndChangeBoardColor(forest, pinkMaterial);
+                }
+
+                hasFoundAllBoards = true;
+                Debug.Log("Found all boards");
+            }
+            catch (System.Exception exception)
+            {
+                Debug.LogError($"PinkMenu <b>COLOR ERROR</b>: {exception.Message}\n{exception.StackTrace}");
+                hasFoundAllBoards = false;
+            }
+
+            try
+            {
+                if (!disableBoardColor)
+                {
+                    pinkMaterial.color = ThemeManager.GetSolidGradient(true);
+                }
+                else
+                {
+                    pinkMaterial.color = new Color32(0, 53, 2, 255);
+                }
+            }
+            catch { }
         }
 
-        public virtual void Update()
+        private static void SearchAndChangeBoardColor(GameObject parentObject, Material pinkMaterial)
         {
-            if (!complete)
+            foreach (Transform child in parentObject.transform)
             {
-                progress = Mathf.Clamp((Time.time - startTime) / duration, 0f, 1f);
-                if (Time.time - startTime > duration)
+                if (child.name.Contains("forestatlas"))
                 {
-                    if (loop)
+                    Renderer renderer = child.GetComponent<Renderer>();
+                    if (renderer != null)
                     {
-                        OnLoop();
+                        Material[] materials = renderer.materials;
+                        for (int i = 0; i < materials.Length; i++)
+                        {
+                            materials[i] = pinkMaterial;
+                        }
+                        renderer.materials = materials;
                     }
-                    else
+                    try
                     {
-                        complete = true;
+                        GorillaLevelScreen levelScreen = child.GetComponent<GorillaLevelScreen>();
+                        if (levelScreen != null)
+                        {
+                            levelScreen.goodMaterial = pinkMaterial;
+                            levelScreen.badMaterial = pinkMaterial;
+                        }
                     }
+                    catch { }
                 }
             }
         }
-
-        public virtual void OnLoop()
-        {
-            startTime = Time.time;
-        }
-
-        public bool complete = false;
-
-        public bool loop = true;
-
-        public float progress = 0f;
-
-        protected bool paused = false;
-
-        protected float startTime;
-
-        protected float duration = 2f;
     }
 }

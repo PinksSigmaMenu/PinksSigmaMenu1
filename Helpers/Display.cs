@@ -11,13 +11,15 @@ namespace PinkMenu.Helpers
     {
         public static void MOTDTXT()
         {
-            
-            GameObject motdObject = GameObject.Find("motdtext");
-            Text motdText = motdObject.GetComponent<Text>();
-            float lerp = Mathf.PingPong(Time.time, 1) / 1;
-            Color color = Color.Lerp(SigmaColors.deepPink, SigmaColors.hotPink, lerp);
-            motdText.color = color;
-            motdText.text = "HELLO EVERYONE WELCOME TO THE PINK MENU THIS MENU IS CURRENTLY IN IN BETA SO BARE WITH ME ON WHATS IN THE MENU LOL YOU CAN JOIN MY DISCORD AT <color=#FFB6F9><b>https://discord.gg/MNjwNcvUgu</b></color> IF YOU'D LIKE THIS MENU CURRENTLY HAS <color=#FFB6F9><b>78</b></color> MODS IN THE MENU";
+
+            {
+                GameObject motdObject = GameObject.Find("motdtext");
+                Text motdText = motdObject.GetComponent<Text>();
+                float lerp = Mathf.PingPong(Time.time, 1) / 1;
+                Color color = Color.Lerp(SigmaColors.deepPink, SigmaColors.hotPink, lerp);
+                motdText.color = color;
+                motdText.text = "Hello everyone,\r\n\r\nWelcome to the Pink Menu! 🎉\r\n\r\nThis menu is currently in beta, so please bear with me on what's available. 😊\r\n\r\nJoin our Discord community at:\r\n<color=#FFB6F9><b>https://discord.gg/MNjwNcvUgu</b></color>\r\n\r\nCurrently, the menu includes <color=#FFB6F9><b>78</b></color> mods.";
+            }
         }
 
         public static void ConductIDS()
@@ -40,32 +42,27 @@ namespace PinkMenu.Helpers
             }
         }
 
-        public static void UpdateColors()
+        private static void ApplyMaterialRecursively(Transform parent, Material material)
         {
-            Text codeOfConductText = GameObject.Find("CodeOfConduct").GetComponent<Text>();
-            codeOfConductText.text = "<color=#FF69B4><b>Pink</b></color> <color=#FF6BF3><b>Conduct</b></color> <color=#FF2CEE><b>IDS</b></color>";
-
-            Text motdText = GameObject.Find("motd").GetComponent<Text>();
-            motdText.text = "<color=#FF69B4><b>Pink</b></color> <color=#FF6BF3><b>Menu</b></color> <color=#FF2CEE><b>MOTD</b></color>";
-
-            GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/StaticUnlit/motdscreen").GetComponent<Renderer>().material.color = SigmaColors.lightPink;
-            GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/StaticUnlit/screen").GetComponent<Renderer>().material.color = SigmaColors.lightPink;
-            GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/Wall Monitors Screens/wallmonitorcanyon").GetComponent<Renderer>().material.color = SigmaColors.lightPink;
-            GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/Wall Monitors Screens/wallmonitorcosmetics").GetComponent<Renderer>().material.color = SigmaColors.lightPink;
-            GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/Wall Monitors Screens/wallmonitorcave").GetComponent<Renderer>().material.color = SigmaColors.lightPink;
-            GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/Wall Monitors Screens/wallmonitorforest").GetComponent<Renderer>().material.color = SigmaColors.lightPink;
-            GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/Wall Monitors Screens/wallmonitorskyjungle").GetComponent<Renderer>().material.color = SigmaColors.lightPink;
-            GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/campgroundstructure/scoreboard/REMOVE board").GetComponent<Renderer>().material.color = SigmaColors.lightPink;
+            foreach (Transform child in parent)
+            {
+                Renderer renderer = child.GetComponent<Renderer>();
+                if (renderer != null)
+                {
+                    renderer.material = material;
+                }
+                ApplyMaterialRecursively(child, material); // Recursively apply to children
+            }
         }
-    }
 
-    public class GameManager : MonoBehaviour
-    {
-        void Start()
+
+        public class GameManager : MonoBehaviour
         {
-            PinkMenu.Helpers.Display22.MOTDTXT();
-            PinkMenu.Helpers.Display22.ConductIDS();
-            PinkMenu.Helpers.Display22.UpdateColors();
+            void Start()
+            {
+                PinkMenu.Helpers.Display22.MOTDTXT();
+                PinkMenu.Helpers.Display22.ConductIDS();
+            }
         }
     }
 }

@@ -199,19 +199,19 @@ namespace PinkMenu.Managers
             new Theme {
     MenuColors = new ExtGradient[] {
         new ExtGradient {
-            colors = GetSolidGradient(new Color(0.945f, 0.769f, 0.059f)) 
+            colors = GetSolidGradient(new Color(0.945f, 0.769f, 0.059f))
         },
         new ExtGradient {
-            colors = GetSolidGradient(new Color(0.118f, 0.565f, 1.0f)) 
+            colors = GetSolidGradient(new Color(0.118f, 0.565f, 1.0f))
         }
     },
     TextColors = new Color[] {
-        new Color(0.0f, 0.0f, 0.545f), 
-        new Color(0.0f, 0.0f, 0.545f)  
+        new Color(0.0f, 0.0f, 0.545f),
+        new Color(0.0f, 0.0f, 0.545f)
     },
     ButtonColors = new ExtGradient[] {
         new ExtGradient {
-            colors = GetSolidGradient(new Color(1.0f, 1.0f, 0.0f)) 
+            colors = GetSolidGradient(new Color(1.0f, 1.0f, 0.0f))
         },
         new ExtGradient {
             colors = GetSolidGradient(new Color(0.945f, 0.769f, 0.059f))
@@ -221,15 +221,15 @@ namespace PinkMenu.Managers
 new Theme {
     MenuColors = new ExtGradient[] {
         new ExtGradient {
-            colors = GetSolidGradient(new Color(0.678f, 0.847f, 0.902f)) 
+            colors = GetSolidGradient(new Color(0.678f, 0.847f, 0.902f))
         },
         new ExtGradient {
-            colors = GetSolidGradient(new Color(1.0f, 1.0f, 1.0f)) 
+            colors = GetSolidGradient(new Color(1.0f, 1.0f, 1.0f))
         }
     },
     TextColors = new Color[] {
-        new Color(0.0f, 0.0f, 0.545f), 
-        new Color(0.0f, 0.0f, 0.545f)  
+        new Color(0.0f, 0.0f, 0.545f),
+        new Color(0.0f, 0.0f, 0.545f)
     },
     ButtonColors = new ExtGradient[] {
         new ExtGradient {
@@ -245,8 +245,8 @@ new Theme {
     MenuColors = new ExtGradient[] {
         new ExtGradient {
             colors = new GradientColorKey[] {
-                new GradientColorKey(new Color(1.0f, 0.0f, 1.0f), 0f), 
-                new GradientColorKey(new Color(0.0f, 0.0f, 1.0f), 0.5f), 
+                new GradientColorKey(new Color(1.0f, 0.0f, 1.0f), 0f),
+                new GradientColorKey(new Color(0.0f, 0.0f, 1.0f), 0.5f),
                 new GradientColorKey(new Color(1.0f, 0.0f, 1.0f), 1f),
             }
         },
@@ -254,13 +254,13 @@ new Theme {
             colors = new GradientColorKey[] {
                 new GradientColorKey(new Color(0.0f, 0.0f, 1.0f), 0f),
                 new GradientColorKey(new Color(1.0f, 0.0f, 1.0f), 0.5f),
-                new GradientColorKey(new Color(0.0f, 0.0f, 1.0f), 1f) 
+                new GradientColorKey(new Color(0.0f, 0.0f, 1.0f), 1f)
             }
         }
     },
     TextColors = new Color[] {
-        new Color(1.0f, 1.0f, 1.0f), 
-        new Color(1.0f, 1.0f, 1.0f)  
+        new Color(1.0f, 1.0f, 1.0f),
+        new Color(1.0f, 1.0f, 1.0f)
     },
     ButtonColors = new ExtGradient[] {
         new ExtGradient {
@@ -281,27 +281,27 @@ new Theme {
     MenuColors = new ExtGradient[] {
         new ExtGradient {
             colors = new GradientColorKey[] {
-                new GradientColorKey(new Color(0.678f, 1.0f, 0.847f), 0f), 
-                new GradientColorKey(new Color(0.678f, 1.0f, 0.933f), 1f) 
+                new GradientColorKey(new Color(0.678f, 1.0f, 0.847f), 0f),
+                new GradientColorKey(new Color(0.678f, 1.0f, 0.933f), 1f)
             }
         },
         new ExtGradient {
             colors = new GradientColorKey[] {
-                new GradientColorKey(new Color(0.678f, 1.0f, 0.933f), 0f), 
-                new GradientColorKey(new Color(0.678f, 1.0f, 0.847f), 1f) 
+                new GradientColorKey(new Color(0.678f, 1.0f, 0.933f), 0f),
+                new GradientColorKey(new Color(0.678f, 1.0f, 0.847f), 1f)
             }
         }
     },
     TextColors = new Color[] {
-        new Color(0.0f, 0.0f, 0.0f), 
+        new Color(0.0f, 0.0f, 0.0f),
         new Color(0.0f, 0.0f, 0.0f)
     },
     ButtonColors = new ExtGradient[] {
         new ExtGradient {
-            colors = GetSolidGradient(new Color(0.678f, 1.0f, 0.847f)) 
+            colors = GetSolidGradient(new Color(0.678f, 1.0f, 0.847f))
         },
         new ExtGradient {
-            colors = GetSolidGradient(new Color(0.4f, 0.8f, 0.6f)) 
+            colors = GetSolidGradient(new Color(0.4f, 0.8f, 0.6f))
         }
     }
 },
@@ -312,16 +312,16 @@ new Theme {
             colors = GetSolidGradient(new Color(0.679f, 0.867f, 0.902f))
         },
         new ExtGradient {
-            colors = GetSolidGradient(new Color(0.678f, 0.678f, 1.0f)) 
+            colors = GetSolidGradient(new Color(0.678f, 0.678f, 1.0f))
         }
     },
     TextColors = new Color[] {
-        new Color(1.0f, 0.0f, 1.0f), 
-        new Color(1.0f, 0.0f, 0.0f) 
+        new Color(1.0f, 0.0f, 1.0f),
+        new Color(1.0f, 0.0f, 0.0f)
     },
     ButtonColors = new ExtGradient[] {
         new ExtGradient {
-            colors = GetSolidGradient(new Color(1.0f, 0.753f, 0.796f)) 
+            colors = GetSolidGradient(new Color(1.0f, 0.753f, 0.796f))
         },
         new ExtGradient {
             colors = GetSolidGradient(new Color(1.0f, 0.0f, 0.0f))
@@ -330,7 +330,143 @@ new Theme {
     //theme suggested by "Simply Meepo ✞"
 },
 
+new Theme {
+    MenuColors = new ExtGradient[] {
+        new ExtGradient {
+            colors = GetSolidGradient(new Color(0.0f, 0.749f, 1.0f))
+        },
+        new ExtGradient {
+            colors = GetSolidGradient(new Color(0.0f, 0.498f, 1.0f))
+        }
+    },
+    TextColors = new Color[] {
+        new Color(1.0f, 1.0f, 1.0f),
+        new Color(0.0f, 0.0f, 0.0f)
+    },
+    ButtonColors = new ExtGradient[] {
+        new ExtGradient {
+            colors = GetSolidGradient(new Color(0.0f, 0.498f, 1.0f))
+        },
+        new ExtGradient {
+            colors = GetSolidGradient(new Color(0.0f, 0.0f, 1.0f))
+        }
+    }
+ },
 
+new Theme {
+    MenuColors = new ExtGradient[] {
+        new ExtGradient {
+            colors = GetSolidGradient(new Color(1.0f, 0.843f, 0.0f))
+        },
+        new ExtGradient {
+            colors = GetSolidGradient(new Color(1.0f, 0.647f, 0.0f))
+        }
+    },
+    TextColors = new Color[] {
+        new Color(1.0f, 1.0f, 1.0f),
+        new Color(0.0f, 0.0f, 0.0f)
+    },
+    ButtonColors = new ExtGradient[] {
+        new ExtGradient {
+            colors = GetSolidGradient(new Color(1.0f, 0.647f, 0.0f))
+        },
+        new ExtGradient {
+            colors = GetSolidGradient(new Color(1.0f, 0.843f, 0.0f))
+        }
+    }
+},
+
+new Theme {
+    MenuColors = new ExtGradient[] {
+        new ExtGradient {
+            colors = GetSolidGradient(new Color(0.0f, 1.0f, 0.498f))
+        },
+        new ExtGradient {
+            colors = GetSolidGradient(new Color(0.0f, 0.749f, 0.498f))
+        }
+    },
+    TextColors = new Color[] {
+        new Color(1.0f, 1.0f, 1.0f),
+        new Color(0.0f, 0.0f, 0.0f)
+    },
+    ButtonColors = new ExtGradient[] {
+        new ExtGradient {
+            colors = GetSolidGradient(new Color(0.0f, 0.749f, 0.498f))
+        },
+        new ExtGradient {
+            colors = GetSolidGradient(new Color(0.0f, 1.0f, 0.498f))
+        }
+    }
+},
+
+new Theme {
+    MenuColors = new ExtGradient[] {
+        new ExtGradient {
+            colors = GetSolidGradient(new Color(1.0f, 0.686f, 0.686f))
+        },
+        new ExtGradient {
+            colors = GetSolidGradient(new Color(1.0f, 0.878f, 0.686f))
+        }
+    },
+    TextColors = new Color[] {
+        new Color(1.0f, 1.0f, 1.0f),
+        new Color(0.0f, 0.0f, 0.0f)
+    },
+    ButtonColors = new ExtGradient[] {
+        new ExtGradient {
+            colors = GetSolidGradient(new Color(1.0f, 0.878f, 0.686f))
+        },
+        new ExtGradient {
+            colors = GetSolidGradient(new Color(1.0f, 0.949f, 0.686f))
+        }
+    }
+},
+
+new Theme {
+    MenuColors = new ExtGradient[] {
+        new ExtGradient {
+            colors = GetSolidGradient(new Color(0.478f, 0.0f, 0.921f))
+        },
+        new ExtGradient {
+            colors = GetSolidGradient(new Color(0.0f, 0.819f, 1.0f))
+        }
+    },
+    TextColors = new Color[] {
+        new Color(1.0f, 1.0f, 1.0f),
+        new Color(0.0f, 0.0f, 0.0f)
+    },
+    ButtonColors = new ExtGradient[] {
+        new ExtGradient {
+            colors = GetSolidGradient(new Color(0.0f, 0.819f, 1.0f))
+        },
+        new ExtGradient {
+            colors = GetSolidGradient(new Color(0.0f, 1.0f, 0.439f))
+        }
+    }
+},
+
+new Theme {
+    MenuColors = new ExtGradient[] {
+        new ExtGradient {
+            colors = GetSolidGradient(new Color(1.0f, 0.686f, 0.478f))
+        },
+        new ExtGradient {
+            colors = GetSolidGradient(new Color(1.0f, 0.819f, 0.478f))
+        }
+    },
+    TextColors = new Color[] {
+        new Color(1.0f, 1.0f, 1.0f),
+        new Color(0.0f, 0.0f, 0.0f)
+    },
+    ButtonColors = new ExtGradient[] {
+        new ExtGradient {
+            colors = GetSolidGradient(new Color(1.0f, 0.819f, 0.478f))
+        },
+        new ExtGradient {
+            colors = GetSolidGradient(new Color(1.0f, 0.905f, 0.478f))
+        }
+    }
+},
  };
 
 

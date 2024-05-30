@@ -625,6 +625,7 @@ namespace PinkMenu.Menu
         public static float flyingSpeed = 15f;
         public static float noCollisionRadius = 5f;
 
+
         // Important
 
         /*public static string[] fullProjectileNames = new string[]

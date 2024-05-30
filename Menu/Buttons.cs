@@ -41,7 +41,7 @@ namespace PinkMenu.Menu
                 new ButtonInfo { buttonText = "MOTD", method =() => Display22.MOTDTXT(), enabled = true, toolTip = "Changes motd"},
                 new ButtonInfo { buttonText = "Notifications", enableMethod =() => SettingsMods.EnableNotifications(), disableMethod =() => SettingsMods.DisableNotifications(), enabled = !disableNotifications, toolTip = "Toggles the notifications."},
                 new ButtonInfo { buttonText = "Right Hand", enableMethod =() => SettingsMods.RightHand(), disableMethod =() => SettingsMods.LeftHand(), toolTip = "Puts the menu on your right hand."},
-                new ButtonInfo { buttonText = "ScoreBoard Changer", method =() => Display22.UpdateColors(), enabled = true, toolTip = "Changes sky color"},
+                new ButtonInfo { buttonText = "ScoreBoard Changer", method =() => ScoreboardHelper.UpdateBoardColor(), enabled = true, toolTip = "changes scoreboards"},
                 new ButtonInfo { buttonText = "Wrist menu", method =() => WristMenuThing.WristMenu(), enabled = false, toolTip = "Its a menu for your wrist"},
                  new ButtonInfo { buttonText = "Wrist menu", method =() => Display22.ConductIDS(), enabled = false, toolTip = "Its a menu for your wrist"},
 
