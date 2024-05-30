@@ -26,6 +26,19 @@ namespace PinkMenu.Mods
                 InternalTag(vrrig);
             }
         }
+        public static GliderHoldable[] GliderThing = null;
 
+        public static void GliderGun(VRRig WeHit)
+        {
+            if (WeHit.setMatIndex != 2 && GorillaTagger.Instance.offlineVRRig.setMatIndex == 2)
+            {
+                GliderThing = UnityEngine.Object.FindObjectsOfType<GliderHoldable>();
+
+                foreach (GliderHoldable glider in GliderThing)
+                {
+                    glider.transform.position = WeHit.transform.position;
+                }
+            }
+        }
     }
 }

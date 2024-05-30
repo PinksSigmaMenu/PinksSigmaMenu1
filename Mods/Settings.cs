@@ -40,7 +40,6 @@ namespace PinkMenu.Mods
         {
             buttonsType = 7;
         }
-
         public static void NetWorkingStuff()
         {
             buttonsType = 8;

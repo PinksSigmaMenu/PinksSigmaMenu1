@@ -242,6 +242,7 @@ namespace PinkMenu.Mods
 
         public static void ghostmonkeywithballs()
         {
+
             if (ControllerInputPoller.instance.rightGrab && !wasRightGrabToggled)
             {
                 isGrabbing = !isGrabbing;
@@ -270,58 +271,78 @@ namespace PinkMenu.Mods
                 GorillaTagger.Instance.offlineVRRig.headBodyOffset = Vector3.zero;
             }
         }
+
+   
+      private static GameObject RPlat;
+        private static GameObject LPlat;
+        private static System.Action<UnityEngine.Object> Destroy = UnityEngine.Object.Destroy;
+        public static void Plats() 
+        { 
+            if (ControllerInputPoller.instance.leftGrab && !wasRightGrabToggled)
+            {
+                isGrabbing = !isGrabbing;
+                wasRightGrabToggled = true;
+                if (isGrabbing)
+                {
+                    LPlat = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    LPlat.transform.localScale = new Vector3(0.25f, 0.05f, 0.5f);
+                    Shader ESPShader = Shader.Find("GorillaTag/UberShader");
+                    Material sphereMaterial = new Material(ESPShader);
+                    RPlat.GetComponent<Renderer>().material = sphereMaterial;
+
+                    LPlat.transform.position = GorillaTagger.Instance.rightHandTransform.transform.position;
+                    LPlat.transform.rotation = GorillaTagger.Instance.rightHandTransform.transform.rotation;
+
+
+                    float pingPongValue = Mathf.PingPong(Time.time / 2f, 1f);
+                    LPlat.GetComponent<Renderer>().material.color = Color.Lerp(Color.magenta, Color.black, pingPongValue);
+
+                    Destroy(LPlat);
+                }
+
+            if (ControllerInputPoller.instance.rightGrab && !wasRightGrabToggled)
+                {
+                    isGrabbing = !isGrabbing;
+                    wasRightGrabToggled = true;
+                    if (isGrabbing)
+                    {
+                        RPlat = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        RPlat.transform.localScale = new Vector3(0.25f, 0.05f, 0.5f);
+                        Shader ESPShader = Shader.Find("GorillaTag/UberShader");
+                        Material sphereMaterial = new Material(ESPShader);
+                        RPlat.GetComponent<Renderer>().material = sphereMaterial;
+
+                        RPlat.transform.position = GorillaTagger.Instance.offlineVRRig.rightHand.trackingPositionOffset;
+                       // RPlat.transform.rotation = GorillaTagger.Instance.offlineVRRig.rightHand.trackingRotationOffset;
+
+
+                        float pingPongValue = Mathf.PingPong(Time.time / 2f, 1f);
+                        RPlat.GetComponent<Renderer>().material.color = Color.Lerp(Color.magenta, Color.black, pingPongValue);
+
+                        Destroy(RPlat);
+                    }
+                }
+            }
+            else if (!ControllerInputPoller.instance.rightGrab && wasRightGrabToggled)
+            {
+                wasRightGrabToggled = false;
+            }
+
+            if (ControllerInputPoller.instance.leftGrab)
+            {
+                isGrabbing = false;
+                GorillaTagger.Instance.offlineVRRig.headBodyOffset = Vector3.zero;
+            }
+        }
     }
 }
+        
+
+          
 
 
 
 
-
-
-
-// <summary>
-// 
-// private static GameObject RPlat;
-// private static GameObject LPlat;
-// private static System.Action<UnityEngine.Object> Destroy = UnityEngine.Object.Destroy;
-// public static void Plats()
-// {
-//     if (ControllerInputPoller.instance.rightGrab)
-//     {
-//         RPlat = GameObject.CreatePrimitive(PrimitiveType.Cube);
-//         RPlat.transform.localScale = new Vector3(0.25f, 0.05f, 0.5f);
-//         Shader ESPShader = Shader.Find("GorillaTag/UberShader");
-//         Material sphereMaterial = new Material(ESPShader);
-//         RPlat.GetComponent<Renderer>().material = sphereMaterial;
-//         RPlat.transform.position = new Vector3(0f, 2f, 0f);
-//         RPlat.transform.rotation = Quaternion.identity;
-//
-//         float pingPongValue = Mathf.PingPong(Time.time / 2f, 1f);
-//         RPlat.GetComponent<Renderer>().material.color = Color.Lerp(Color.magenta, Color.black, pingPongValue);
-//         Destroy(RPlat);
-//     }
-//
-//     if (ControllerInputPoller.instance.leftGrab)
-//     {
-//         LPlat = GameObject.CreatePrimitive(PrimitiveType.Cube);
-//         LPlat.transform.localScale = new Vector3(0.25f, 0.05f, 0.5f);
-//         Shader ESPShader = Shader.Find("GorillaTag/UberShader");
-//         Material sphereMaterial = new Material(ESPShader);
-//         LPlat.GetComponent<Renderer>().material = sphereMaterial;
-//
-//         LPlat.transform.position = new Vector3(0f, 2f, 0f);
-//         LPlat.transform.rotation = Quaternion.identity;
-//
-//         float pingPongValue = Mathf.PingPong(Time.time / 2f, 1f);
-//         LPlat.GetComponent<Renderer>().material.color = Color.Lerp(Color.magenta, Color.black, pingPongValue);
-//
-//         Destroy(LPlat);
-//     }
-// }
-// }
-// </summary>
-
-//Scratched Idea
 
 
 

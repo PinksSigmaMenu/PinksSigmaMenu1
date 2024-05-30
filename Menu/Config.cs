@@ -16,8 +16,8 @@ namespace PinkMenu
 
         public static KeyCode keyboardButton = KeyCode.Q;
 
-        public static Vector3 menuSize = new Vector3(0.2f, 0.95f, 1.05f); // Depth, Width, Height
-        public static Vector3 menuSize2 = new Vector3(0.1f, 1f, 1.10f);// Depth, Width, Height
+        public static Vector3 menuSize = new Vector3(0.2f, 0.93f, 1.05f); // Depth, Width, Height
+        public static Vector3 menuSize2 = new Vector3(0.1f, 0.98f, 1.10f);// Depth, Width, Height
         public static Vector3 menuSize3 = new Vector3(0.1f, 0.75f, 0.60f);// Depth, Width, Height
         public static int buttonsPerPage = 8;
     }

@@ -114,9 +114,8 @@ namespace PinkMenu.Menu
                 UnityEngine.Debug.LogError(string.Format("{0} // Error with executing mods at {1}: {2}", PluginInfo.Name, exc.StackTrace, exc.Message));
             }
         }
-
-        // Functions
-        public static void CreateMenu()
+    // Functions
+    public static void CreateMenu()
         {
             // Menu Holder
             menu = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -158,6 +157,8 @@ namespace PinkMenu.Menu
             canvas.renderMode = RenderMode.WorldSpace;
             canvasScaler.dynamicPixelsPerUnit = 1000f;
 
+            
+
             // Title and FPS
             Text text = new GameObject
             {
@@ -178,7 +179,7 @@ namespace PinkMenu.Menu
             RectTransform component = text.GetComponent<RectTransform>();
             component.localPosition = Vector3.zero;
             component.sizeDelta = new Vector2(0.28f, 0.05f);
-            component.position = new Vector3(0.06f, 0f, 0.165f);
+            component.position = new Vector3(0.07f, 0f, 0.165f);
             component.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
 
             if (fpsCounter)
@@ -203,7 +204,7 @@ namespace PinkMenu.Menu
                 RectTransform component2 = fpsObject.GetComponent<RectTransform>();
                 component2.localPosition = Vector3.zero;
                 component2.sizeDelta = new Vector2(0.28f, 0.02f);
-                component2.position = new Vector3(0.06f, 0f, 0.135f);
+                component2.position = new Vector3(0.07f, 0f, 0.135f);
                 component2.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
             }
 
@@ -663,8 +664,8 @@ namespace PinkMenu.Menu
                     public static GameObject reference;
                     public static GameObject canvasObject;
                     public static GameObject pointer;
-                    
-                  
+
+        
 
         public static bool rightPlatTrig = false;
         public static bool leftPlatTrig = false;

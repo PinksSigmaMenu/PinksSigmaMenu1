@@ -28,7 +28,7 @@ namespace PinkMenu.Mods
 
             }
         }
-        public static void WaterBalloonSpammer()
+       public static void WaterBalloonSpammer()
         {
             if (ControllerInputPoller.instance.rightGrab)
             {
@@ -38,7 +38,7 @@ namespace PinkMenu.Mods
 
                 Color snowballColor = new Color(1f, 0f, 1f);
 
-                Projectiles.SysFireProjectile("WaterBalloonSpammer", "none", POS, velocity, snowballColor, 1f, 0f, 1f, false, false, false);
+                Projectiles.SysFireProjectile("WaterBalloonProjectile", "none", POS, velocity, snowballColor, 1f, 0f, 1f, false, false, false);
 
             }
         }

@@ -24,6 +24,10 @@ namespace PinkMenu.Helpers
         public static Color mediumVioletRed = new Color(0.78f, 0.08f, 0.52f);
         public static Color deepPink = new Color(1f, 0.08f, 0.58f);
         public static Color pink = new Color(1f, 0.75f, 0.8f);
+        public static Color lightpurple = new Color(153, 83, 255);
+        public static Color darkpurple = new Color(81, 0, 198);
+        public static Color Purpyagain = new Color(75, 35, 132);
+        public static Color ThemeColorPurp = new Color(123, 51, 225);
         public static Color Darkerpink = new Color(0.8f, 0.6f, 0.64f);
         public static Color lightPink = new Color(1f, 0.71f, 0.76f);
         public static Color orchid = new Color(0.85f, 0.44f, 0.84f);

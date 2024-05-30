@@ -10,5 +10,6 @@ namespace PinkMenu.Classes
 
         public bool isRainbow = false;
         public bool copyRigColors = false;
+        internal Texture2D texture;
     }
 }

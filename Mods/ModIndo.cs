@@ -5,7 +5,7 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 
-namespace PinkMenu.Mods
+namespace StupidTemplate.Mods
 {
     internal class ModIndo
     {
@@ -14,7 +14,7 @@ namespace PinkMenu.Mods
             GameObject signPosition = GameObject.Find("Environment Objects/LocalObjects_Prefab/City/CosmeticsRoomAnchor/outerstores/Bottom Floor/OutsideBuildings/InfoAnchor/infosign");
 
             GameObject textObject = new GameObject("TextObject");
-            textObject.transform.position = signPosition.transform.position + Vector3.up * 0.10f; 
+            textObject.transform.position = signPosition.transform.position + Vector3.up * 0.1f; 
             textObject.transform.rotation = signPosition.transform.rotation * Quaternion.Euler(0f, 90f, 0f); 
             textObject.transform.localScale = new Vector3(0.20f, 0.20f, 0.20f);
 

@@ -17,6 +17,7 @@ using static PinkMenu.Menu.Main;
 using UnityEngine.InputSystem;
 using UnityEngine.Animations.Rigging;
 using PinkMenu.Managers;
+using PinkMenu.Helpers;
 
 namespace PinkMenu.Mods
 {
@@ -313,11 +314,6 @@ namespace PinkMenu.Mods
                 return !(__instance == GorillaTagger.Instance.offlineVRRig);
             }
         }
-
-
-
-
-
         // public static void BoneESP()
         //   {
         //      if (PhotonNetwork.InRoom || PhotonNetwork.InLobby)
@@ -383,19 +379,122 @@ namespace PinkMenu.Mods
                 }
             }
         }
+        public static void GorillaChams()
+        {
+            if (PhotonNetwork.InRoom || PhotonNetwork.InLobby)
+            {
+                foreach (VRRig FullPlayers in GorillaParent.instance.vrrigs)
+                {
+                    if (FullPlayers != GorillaTagger.Instance.offlineVRRig)
+                    {
+                        Shader ChamsShader = Shader.Find("GUI/Text Shader");
+                        Material ChamMaterial = new Material(ChamsShader);
+                        FullPlayers.GetComponent<Renderer>().material = ChamMaterial;
+                        float pingPongValue1 = Mathf.PingPong(Time.time / 2f, 1f);
+                        ChamMaterial.color = Color.Lerp(SigmaColors.hotPink, SigmaColors.deepPink, pingPongValue1);
+
+
+                    }
+                }
+            }
+        }
+        public static void BoneESP()
+        {
+            if (PhotonNetwork.InRoom || PhotonNetwork.InLobby)
+            {
+                foreach (VRRig FullPlayers in GorillaParent.instance.vrrigs)
+                {
+                    if (FullPlayers != GorillaTagger.Instance.offlineVRRig)
+                    {
+                        Transform[] allBoneTransforms = FullPlayers.transform.GetComponentsInChildren<Transform>();
+
+                        foreach (Transform boneTransform in allBoneTransforms)
+                        {
+                            if (boneTransform != FullPlayers.transform && boneTransform.parent)
+                            {
+                                GameObject BoneLine = new GameObject("Line");
+                                BoneLine.transform.SetParent(boneTransform);
+                                LineRenderer lineRenderer = BoneLine.AddComponent<LineRenderer>();
+
+                                List<Vector3> positions = new List<Vector3>();
+                                positions.Add(boneTransform.position);
+                                positions.Add(boneTransform.parent.position);
+
+                                lineRenderer.startWidth = 0.03f;
+                                lineRenderer.endWidth = 0.03f;
+                                lineRenderer.positionCount = positions.Count;
+                                lineRenderer.SetPositions(positions.ToArray());
+
+                                Shader LineShader = Shader.Find("GUI/Text Shader");
+                                Material LineMaterial = new Material(LineShader);
+                                lineRenderer.material = LineMaterial;
+
+                                float pingPongValue1 = Mathf.PingPong(Time.time / 2f, 1f);
+                                LineMaterial.color = Color.Lerp(SigmaColors.hotPink, SigmaColors.deepPink, pingPongValue1);
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        public static void HoldableTracers()
+        {
+            if (PhotonNetwork.InRoom || PhotonNetwork.InLobby)
+            {
+                foreach (VRRig Trace in GorillaParent.instance.vrrigs)
+                {
+                    if (Trace != GorillaTagger.Instance.offlineVRRig)
+                    {
+                        GameObject SphereObject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                        SphereObject.transform.position = GorillaTagger.Instance.offlineVRRig.rightHandTransform.position;
+                        SphereObject.transform.rotation = GorillaTagger.Instance.offlineVRRig.rightHandTransform.rotation;
+
+                        Shader SphereShader = Shader.Find("GUI/Text Shader");
+                        Material SphereMat = new Material(SphereShader);
+                        SphereObject.GetComponent<Renderer>().material = SphereMat;
+                        float pingPongValue2 = Mathf.PingPong(Time.time / 2f, 1f);
+                        SphereMat.color = Color.Lerp(SigmaColors.hotPink, SigmaColors.deepPink, pingPongValue2);
+
+                        UnityEngine.Object.Destroy(SphereObject, Time.deltaTime);
+
+                        Vector3 spherePosition = SphereObject.transform.position;
+
+                        GameObject Lines = new GameObject("Line");
+                        LineRenderer lineRenderer = Lines.AddComponent<LineRenderer>();
+                        lineRenderer.startWidth = 0.02f;
+                        lineRenderer.endWidth = 0.02f;
+                        lineRenderer.SetPositions(new Vector3[]
+                        {
+                    Player.Instance.bodyCollider.transform.position,
+                    spherePosition 
+                        });
+
+                        Shader LineShader = Shader.Find("GUI/Text Shader");
+                        Material LineMat = new Material(LineShader);
+                        Lines.GetComponent<Renderer>().material = LineMat;
+                        float pingPongValue1 = Mathf.PingPong(Time.time / 2f, 1f);
+                        LineMat.color = Color.Lerp(SigmaColors.hotPink, SigmaColors.deepPink, pingPongValue1);
+
+                        UnityEngine.Object.Destroy(Lines, Time.deltaTime);
+                    }
+                }
+            }
+        }
     }
 }
-     
-
-  
-        
-
-        
 
 
 
 
 
 
-                        
+
+
+
+
+
+
+
+
   
