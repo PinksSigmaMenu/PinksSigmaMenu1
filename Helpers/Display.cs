@@ -16,9 +16,9 @@ namespace PinkMenu.Helpers
                 GameObject motdObject = GameObject.Find("motdtext");
                 Text motdText = motdObject.GetComponent<Text>();
                 float lerp = Mathf.PingPong(Time.time, 1) / 1;
-                Color color = Color.Lerp(SigmaColors.deepPink, SigmaColors.hotPink, lerp);
+                Color color = Color.Lerp(SigmaColors.deepPink, SigmaColors.Darkerpink, lerp);
                 motdText.color = color;
-                motdText.text = "Hello everyone,\r\n\r\nWelcome to the Pink Menu! 🎉\r\n\r\nThis menu is currently in beta, so please bear with me on what's available. 😊\r\n\r\nJoin our Discord community at:\r\n<color=#FFB6F9><b>https://discord.gg/MNjwNcvUgu</b></color>\r\n\r\nCurrently, the menu includes <color=#FFB6F9><b>78</b></color> mods.";
+                motdText.text = "Hello everyone,Welcome to the Pink Menu! 🎉This menu is currently in beta, so please bear with me on what's available. 😊Join our Discord community at: <color=#FFB6F9><b>https://discord.gg/MNjwNcvUgu</b></color>Currently, the menu includes <color=#FFB6F9><b>78</b></color> mods.";
             }
         }
 
@@ -51,7 +51,7 @@ namespace PinkMenu.Helpers
                 {
                     renderer.material = material;
                 }
-                ApplyMaterialRecursively(child, material); // Recursively apply to children
+                ApplyMaterialRecursively(child, material); 
             }
         }
 

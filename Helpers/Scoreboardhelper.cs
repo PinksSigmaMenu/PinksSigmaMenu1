@@ -1,14 +1,25 @@
-﻿using UnityEngine;
+﻿using PinkMenu.Classes;
+using PinkMenu.Managers;
+using UnityEngine;
 
 namespace PinkMenu.Helpers
 {
     internal class ScoreboardHelper
     {
+        public static bool disableBoardColor = false;
 
-        public static void UpdateBoardColor()
+        public static void UpdateBoardColor(Theme theme = null)
         {
-            Material pinkMaterial = new Material(Shader.Find("Standard"));
-            pinkMaterial.color = SigmaColors.hotPink;
+            if (theme == null)
+            {
+                theme = ThemeManager.GetTheme();
+            }
+
+            ExtGradient boardGradient = theme.GetBoard(true);
+            Material pinkMaterial = new Material(Shader.Find("GorillaTag/UberShader"))
+            {
+                color = boardGradient.colors[0].color 
+            };
 
             bool hasFoundAllBoards = false;
 
@@ -17,9 +28,11 @@ namespace PinkMenu.Helpers
                 Debug.Log("Looking for boards");
                 bool found1 = false;
                 int index1 = 0;
-                for (int i = 0; i < GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom").transform.childCount; i++)
+                Transform treeRoomTransform = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom").transform;
+
+                for (int i = 0; i < treeRoomTransform.childCount; i++)
                 {
-                    GameObject childObject = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom").transform.GetChild(i).gameObject;
+                    GameObject childObject = treeRoomTransform.GetChild(i).gameObject;
                     if (childObject.name.Contains("forestatlas"))
                     {
                         index1++;
@@ -33,9 +46,11 @@ namespace PinkMenu.Helpers
 
                 bool found2 = false;
                 int index2 = 0;
-                for (int i = 0; i < GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest").transform.childCount; i++)
+                Transform forestTransform = GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest").transform;
+
+                for (int i = 0; i < forestTransform.childCount; i++)
                 {
-                    GameObject childObject = GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest").transform.GetChild(i).gameObject;
+                    GameObject childObject = forestTransform.GetChild(i).gameObject;
                     if (childObject.name.Contains("forestatlas"))
                     {
                         index2++;
@@ -59,14 +74,14 @@ namespace PinkMenu.Helpers
                     };
                     foreach (string name in boards)
                     {
-                        GameObject board = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/Wall Monitors Screens/wallmonitor" + name);
-                        if (board != null)
+                        GameObject board = GameObject.Find($"Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/Wall Monitors Screens/wallmonitor{name}");
+                        if (board)
                         {
                             board.GetComponent<Renderer>().material = pinkMaterial;
                             try
                             {
                                 GorillaLevelScreen levelScreen = board.GetComponent<GorillaLevelScreen>();
-                                if (levelScreen != null)
+                                if (levelScreen)
                                 {
                                     levelScreen.goodMaterial = pinkMaterial;
                                     levelScreen.badMaterial = pinkMaterial;
@@ -88,7 +103,7 @@ namespace PinkMenu.Helpers
             try
             {
                 GameObject computerMonitor = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/GorillaComputerObject/ComputerUI/monitor/monitorScreen");
-                if (computerMonitor != null)
+                if (computerMonitor)
                 {
                     computerMonitor.GetComponent<Renderer>().material = pinkMaterial;
                 }
@@ -99,7 +114,7 @@ namespace PinkMenu.Helpers
             {
                 if (!disableBoardColor)
                 {
-                    pinkMaterial.color = GetBGColor(0f);
+                    pinkMaterial.color = GetBGColor(boardGradient);
                 }
                 else
                 {
@@ -109,9 +124,13 @@ namespace PinkMenu.Helpers
             catch { }
         }
 
-        private static Color GetBGColor(float value)
+        private static Color GetBGColor(ExtGradient boardGradient)
         {
-            return Color.white;
+            return boardGradient.colors[0].color;
         }
     }
 }
+
+//MOST CREDITS GOTO IIDK FOR MAKING THIS 
+//SOME GOTO ME FOR BUSTING MY ASS TRYING TO MAKE THIS WORK
+

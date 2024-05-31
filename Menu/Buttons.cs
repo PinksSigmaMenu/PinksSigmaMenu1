@@ -1,5 +1,4 @@
-﻿//using DiscordRPC; // i dont have this so i cant compile, so please uncomment if u still need it
-using PinkMenu.Mods;
+﻿using PinkMenu.Mods;
 using PinkMenu.Classes;
 using PinkMenu.Helpers;
 using PinkMenu.Mods;

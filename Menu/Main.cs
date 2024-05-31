@@ -114,8 +114,8 @@ namespace PinkMenu.Menu
                 UnityEngine.Debug.LogError(string.Format("{0} // Error with executing mods at {1}: {2}", PluginInfo.Name, exc.StackTrace, exc.Message));
             }
         }
-    // Functions
-    public static void CreateMenu()
+        // Functions
+        public static void CreateMenu()
         {
             // Menu Holder
             menu = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -157,7 +157,7 @@ namespace PinkMenu.Menu
             canvas.renderMode = RenderMode.WorldSpace;
             canvasScaler.dynamicPixelsPerUnit = 1000f;
 
-            
+
 
             // Title and FPS
             Text text = new GameObject
@@ -586,19 +586,19 @@ namespace PinkMenu.Menu
                 target.enabled = !target.enabled;
 
                 if (target.enableMethod != null && target.enabled)
-                try {target.enableMethod.Invoke();} catch { }
+                    try { target.enableMethod.Invoke(); } catch { }
 
                 if (target.disableMethod != null && !target.enabled)
-                    try {target.disableMethod.Invoke();} catch { }
+                    try { target.disableMethod.Invoke(); } catch { }
             }
 
             if (target.method != null)
-                try {target.method.Invoke();} catch { }
+                try { target.method.Invoke(); } catch { }
 
             RecreateMenu();
         }
 
-        
+
 
         public static ButtonInfo GetIndex(string buttonText)
         {
@@ -624,7 +624,6 @@ namespace PinkMenu.Menu
         public static bool hasRemovedThisFrame = false;
         public static float flyingSpeed = 15f;
         public static float noCollisionRadius = 5f;
-
 
         // Important
 
@@ -660,13 +659,13 @@ namespace PinkMenu.Menu
        };
 
         // Objects
-                    public static GameObject menu;
-                    public static GameObject menuBackground;   
-                    public static GameObject reference;
-                    public static GameObject canvasObject;
-                    public static GameObject pointer;
+        public static GameObject menu;
+        public static GameObject menuBackground;
+        public static GameObject reference;
+        public static GameObject canvasObject;
+        public static GameObject pointer;
 
-        
+
 
         public static bool rightPlatTrig = false;
         public static bool leftPlatTrig = false;
@@ -678,34 +677,33 @@ namespace PinkMenu.Menu
         public string displayText = "Your Text Here";
 
 
-        public GameObject menu1; 
-        public Vector3 FadingPart; 
+        public GameObject menu1;
+        public Vector3 FadingPart;
         public Material fadeMaterial;
         public Material fadeMaterial2;
 
 
 
         public static SphereCollider buttonCollider;
-                    public static Camera TPC;
-                    public static Text fpsObject;
-                    public static Range range;
+        public static Camera TPC;
+        public static Text fpsObject;
+        public static Range range;
 
-                    public static bool Invisible = true;
-                    public static bool AllowedToInvis = true;
-                    private static bool rigPositionSet = false;
+        public static bool Invisible = true;
+        public static bool AllowedToInvis = true;
+        private static bool rigPositionSet = false;
         public static bool spin;
         public static bool roll;
         public static bool back;
         public static bool upside;
         public static float flysped;
-                    public static float colorchanger;
+        public static float colorchanger;
 
         // Data
         public static int pageNumber = 0;
-            public static int buttonsType = 0;
+        public static int buttonsType = 0;
 
     }
 
 }
-
 
