@@ -12,7 +12,7 @@ namespace PinkMenu.Mods
 
         public static Color pink = new Color(1f, 0.75f, 0.8f);
         public static Color deepPink = new Color(0.976f, 0.725f, 0.945f);
-       
+
         public static void CustomSky()
         {
             Material mat = new Material(Shader.Find("GorillaTag/UberShader"));

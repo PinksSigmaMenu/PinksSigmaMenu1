@@ -57,20 +57,6 @@ namespace PinkMenu.Mods
             UnityEngine.Application.Quit();
         }
 
-        public static void SetNight()
-        {
-            BetterDayNightManager.instance.SetTimeOfDay(0);
-        }
-
-        public static void SetAfternoon()
-        {
-            BetterDayNightManager.instance.SetTimeOfDay(1);
-        }
-
-        public static void SetDay()
-        {
-            BetterDayNightManager.instance.SetTimeOfDay(3);
-        }
 
         public static void RightTriggerDisconnect()
         {
@@ -136,76 +122,15 @@ namespace PinkMenu.Mods
                 NotifiLib.SendNotification("Network triggers enabled");
             }
         }
-        public static void SetMaster()
-        {
-            if (PhotonNetwork.IsConnected && PhotonNetwork.InRoom)
-            {
-                PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
-            }
-            else
-            {
-                NotifiLib.SendNotification("Master Client Set");
-
-                Main.RPCProtection();
-
-            }
-        }
+ 
         public static void ExtraDisconnect()
         {
             PhotonNetwork.Disconnect();
         }
-
-        public static void Rain()
-        {
-            var rainingArray = Enumerable.Repeat(BetterDayNightManager.WeatherType.Raining, BetterDayNightManager.instance.weatherCycle.Length - 1).ToArray();
-
-            Enumerable.Range(1, BetterDayNightManager.instance.weatherCycle.Length - 1)
-                      .Zip(rainingArray, (index, weatherType) => new { index, weatherType })
-                      .ToList()
-                      .ForEach(pair =>
-                      {
-                          BetterDayNightManager.instance.weatherCycle[pair.index] = pair.weatherType;
-                      });
-        }
-
-        public static void RainButtons()
-        {
-            if (ControllerInputPoller.instance.rightControllerPrimaryButton)
-            {
-                var rainingArray = Enumerable.Repeat(BetterDayNightManager.WeatherType.Raining, BetterDayNightManager.instance.weatherCycle.Length - 1).ToArray();
-
-                Enumerable.Range(1, BetterDayNightManager.instance.weatherCycle.Length - 1)
-                          .Zip(rainingArray, (index, weatherType) => new { index, weatherType })
-                          .ToList()
-                          .ForEach(pair =>
-                          {
-                              BetterDayNightManager.instance.weatherCycle[pair.index] = pair.weatherType;
-                          });
-            }
-
-            if (ControllerInputPoller.instance.rightControllerSecondaryButton)
-            {
-                bool isRainActive = false;
-                for (int i = 1; i < BetterDayNightManager.instance.weatherCycle.Length; i++)
-                {
-                    if (BetterDayNightManager.instance.weatherCycle[i] == BetterDayNightManager.WeatherType.Raining)
-                    {
-                        isRainActive = true;
-                        break;
-                    }
-                }
-                if (isRainActive)
-                {
-                    for (int i = 1; i < BetterDayNightManager.instance.weatherCycle.Length; i++)
-                    {
-                        BetterDayNightManager.instance.weatherCycle[i] = BetterDayNightManager.WeatherType.None;
-                    }
-                }
-            }
-        }
     }
 }
-         
+
+       
   
 
 

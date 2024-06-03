@@ -503,36 +503,8 @@ new Theme {
     }
 },
 
-new Theme {
-    MenuColors = new ExtGradient[] {
-        new ExtGradient {
-            colors = GetSolidGradient(new Color(1.0f, 1.0f, 0.0f))
-        },
-        new ExtGradient {
-            colors = GetSolidGradient(new Color(1.0f, 0.843f, 0.0f))
-        }
-    },
-    TextColors = new Color[] {
-        new Color(1.0f, 1.0f, 1.0f),
-        new Color(0.0f, 0.0f, 0.0f)
-    },
-    ButtonColors = new ExtGradient[] {
-        new ExtGradient {
-            colors = GetSolidGradient(new Color(1.0f, 0.843f, 0.0f))
-        },
-        new ExtGradient {
-            colors = GetSolidGradient(new Color(1.0f, 1.0f, 0.0f))
-        }
-    },
-    BoardColors = new ExtGradient[] {
-        new ExtGradient {
-            colors = GetSolidGradient(new Color(1.0f, 1.0f, 0.0f))
-        },
-        new ExtGradient {
-            colors = GetSolidGradient(new Color(1.0f, 0.843f, 0.0f))
-        }
-    }
-}
+
+
 
 
 };
@@ -597,6 +569,7 @@ new Theme {
         internal Color[] TextColors;
         internal ExtGradient[] ButtonColors;
         internal ExtGradient[] BoardColors;
+        internal ExtGradient[] SkyColors;
 
         public ExtGradient GetBackground()
         {
@@ -636,6 +609,16 @@ new Theme {
             }
 
             return BoardColors[0];
+        }
+
+        public ExtGradient GetSky(bool enabled)
+        {
+            if (enabled)
+            {
+                return SkyColors[1];
+            }
+
+            return SkyColors[0];
         }
     }
 }

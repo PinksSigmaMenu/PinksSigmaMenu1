@@ -34,7 +34,6 @@ namespace PinkMenu.Mods
         {
             buttonsType = 6;
 
-         
         }
         public static void GunSettings()
         {
@@ -43,6 +42,11 @@ namespace PinkMenu.Mods
         public static void NetWorkingStuff()
         {
             buttonsType = 8;
+        }
+
+        public static void GameSettings()
+        {
+            buttonsType = 9;
         }
 
         public static void RightHand()

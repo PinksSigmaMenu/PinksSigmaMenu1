@@ -398,6 +398,12 @@ namespace PinkMenu.Mods
                 }
             }
         }
+
+
+
+
+
+
         public static void BoneESP()
         {
             if (PhotonNetwork.InRoom || PhotonNetwork.InLobby)
@@ -477,6 +483,35 @@ namespace PinkMenu.Mods
                         LineMat.color = Color.Lerp(SigmaColors.hotPink, SigmaColors.deepPink, pingPongValue1);
 
                         UnityEngine.Object.Destroy(Lines, Time.deltaTime);
+                    }
+                }
+            }
+        }
+        public static void SnakeESP2()
+        {
+            if (PhotonNetwork.InRoom || PhotonNetwork.InLobby)
+            {
+                foreach (VRRig FullPlayers in GorillaParent.instance.vrrigs)
+                {
+                    if (FullPlayers != GorillaTagger.Instance.offlineVRRig)
+                    {
+
+                        GameObject PinksOBJ = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                        PinksOBJ.transform.localScale = new Vector3(0.095f, 0.095f, 0.095f);
+                        PinksOBJ.transform.position = FullPlayers.transform.position = GorillaTagger.Instance.rightHandTransform.position;
+                        PinksOBJ.transform.rotation = FullPlayers.transform.rotation;
+
+                        Collider collider = PinksOBJ.GetComponent<Collider>();
+                        if (collider)
+                        {
+                            UnityEngine.Object.Destroy(collider);
+                        }
+                        Shader ESPShader = Shader.Find("GUI/Text Shader");
+                        Material sphereMaterial = new Material(ESPShader);
+                        PinksOBJ.GetComponent<Renderer>().material = sphereMaterial;
+                        float pingPongValue = Mathf.PingPong(Time.time / 2f, 1f);
+                        sphereMaterial.color = Color.Lerp(SigmaColors.hotPink, SigmaColors.deepPink, pingPongValue);
+                        UnityEngine.Object.Destroy(PinksOBJ, 0.50f);
                     }
                 }
             }

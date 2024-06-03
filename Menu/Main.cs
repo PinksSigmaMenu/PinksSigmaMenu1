@@ -337,7 +337,6 @@ namespace PinkMenu.Menu
             }
         }
 
-        //timer for fading object
         public class FadeOut : MonoBehaviour
         {
             public float fadeDuration = 6f;

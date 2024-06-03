@@ -7,6 +7,8 @@ using UnityEngine;
 using static PinkMenu.Config;
 using PinkMenu.Managers;
 using StupidTemplate.Mods;
+using static PinkMenu.Mods.Movement;
+
 
 namespace PinkMenu.Menu
 {
@@ -29,7 +31,12 @@ namespace PinkMenu.Menu
                 new ButtonInfo { buttonText = "Return", method =() => Global.ReturnHome(), isTogglable = false, toolTip = "Returns to the main page of the menu."},
                 new ButtonInfo { buttonText = "Menu", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
                 new ButtonInfo { buttonText = "Change Theme", method =() => ThemeManager.NextTheme(), isTogglable = false, toolTip = "Changes theme"},
+                new ButtonInfo { buttonText = "Game Settings", method =() => SettingsMods.GameSettings(), isTogglable = false, toolTip = "its games settings"},
+                new ButtonInfo { buttonText = "Join Discords", method =() => StartDiscord.JoinDiscord(), isTogglable = false, toolTip = "Joins Discord"},
+
+
             },
+
 
             new ButtonInfo[] { // Menu Settings
                 new ButtonInfo { buttonText = "Return", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Returns to the main settings page for the menu."},
@@ -49,9 +56,11 @@ namespace PinkMenu.Menu
             new ButtonInfo[] { // Movement Settings
                 new ButtonInfo { buttonText = "Return", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Returns to the main settings page for the menu."},
                 new ButtonInfo { buttonText = "Bat orbit", method =() => Movement.BatHalo(), isTogglable = true, toolTip = "Makes the bat fly around you"},
-               // new ButtonInfo { buttonText = "Platforms", method =() => Movement.Plats(), isTogglable = true, toolTip = "Its platforms"},
+                new ButtonInfo { buttonText = "Platforms", method =() => Movement.NormalPlats(), isTogglable = true, toolTip = "Its platforms"},
+                new ButtonInfo { buttonText = "Trigger Platforms", method =() => Movement.TriggerPlats(), isTogglable = true, toolTip = "Its platforms"},
                 new ButtonInfo { buttonText = "Beach Ball orbit", method =() => Movement.BeachBallHalo(), isTogglable = true, toolTip = "Makes Beach ball fly arounf you"},
                 new ButtonInfo { buttonText = "Bug orbit", method =() => Movement.BugHalo(), isTogglable = true, toolTip = "Makes doug fly around you"},
+                new ButtonInfo { buttonText = "NoClip Fly", method =() => FlyingController.NoClipFly(), isTogglable = true, toolTip = "Enables no clip when you fly"},
                 new ButtonInfo { buttonText = "Fly", method =() => Movement.Fly(), isTogglable = true, toolTip = "Makes you fly"},
                 new ButtonInfo { buttonText = "Invis Monke", method =() => Movement.ghostmonkeywithballs(), isTogglable = true, toolTip = "makes you invisable bitch"},
                 new ButtonInfo { buttonText = "Loud Hand Taps", method =() => Movement.loudhandtaps(), isTogglable = true, toolTip = "Makes your hand taps loud!"},
@@ -60,12 +69,24 @@ namespace PinkMenu.Menu
                 new ButtonInfo { buttonText = "Spazzy Monkey", method =() => Movement.InsaneMonkey(), isTogglable = true, toolTip = "Makes you go insane"},
                 new ButtonInfo { buttonText = "Spazzy Hands", method =() => Movement.SpazzyHands(), isTogglable = true, toolTip = "Spazzes hands"},
                 new ButtonInfo { buttonText = "Trigger Fly", method =() => Movement.TriggerFly(), isTogglable = true, toolTip = "Makes you fly with Trigger"},
+                new ButtonInfo { buttonText = "Speed Boost", method =() => Movement.SpeedBoost(), isTogglable = true, toolTip = "Gives Speed and jump Bost"},
+                new ButtonInfo { buttonText = "Controller Boost", method =() => CustomBoost.GripSpeedBoost(), isTogglable = true, toolTip = "Makes your boost increase with r grab and decease with l grab"},
                 new ButtonInfo { buttonText = "UpAndDown", method =() => Movement.UpAndDownsyndrome(), isTogglable = true, toolTip = "Makes you go up and down with right and left grip"},
                 new ButtonInfo { buttonText = "Rotate Head Y", method =() => TrollStuff.RotateHeadY(), isTogglable = true, toolTip = "Rotates Head in the Y axis"},
                 new ButtonInfo { buttonText = "Rotate Head Z", method =() => TrollStuff.RotateHeadZ(), isTogglable = true, toolTip = "Rotates Head in the Z axis"},
                 new ButtonInfo { buttonText = "Rotate Head X", method =() => TrollStuff.RotateHeadX(), isTogglable = true, toolTip = "Rotates Head in the X axis"},
                 new ButtonInfo { buttonText = "Fix Head Position", method =() => TrollStuff.FixHeadRotation(), isTogglable = true, toolTip = "Fixes Head Rotaion"},
                 new ButtonInfo { buttonText = "Fast Hand Taps", method =() => TrollStuff.FastHandTaps(), isTogglable = true, toolTip = "Makes your hand taps fast"},
+                new ButtonInfo { buttonText = "Grab Rig", method =() => TrollStuff.FastHandTaps(), isTogglable = true, toolTip = "Grabs Rig"},
+                new ButtonInfo { buttonText = "grab monsters", method =() => MonsterGrabber.GrabMonsters(), isTogglable = true, toolTip = "Grabs Monsters"},
+                new ButtonInfo { buttonText = "Orbit Monsters", method =() => MonsterOrbit.OrbitMonkeys(), isTogglable = true, toolTip = "Orbits Monsters around you"},
+
+
+
+
+
+                
+
 
 
             },
@@ -93,8 +114,8 @@ namespace PinkMenu.Menu
                 new ButtonInfo { buttonText = "Snake ESP", method =() => Visuals.SnakeESP(), isTogglable = true, toolTip = "puts esp on players head and follows it"},
                 new ButtonInfo { buttonText = "Tracers", method =() => Visuals.Tracers(), isTogglable = true, toolTip = "Puts tracers on your body"},
                 new ButtonInfo { buttonText = "Hand Tracers", method =() => Visuals.HandTracers(), isTogglable = true, toolTip = "Puts tracers on your hands"},
-                new ButtonInfo { buttonText = "BoneESP", method =() => Visuals.BoneESP(), isTogglable = true, toolTip = "Its bone esp"},
                 new ButtonInfo { buttonText = "TracersV2", method =() => Visuals.HoldableTracers(), isTogglable = true, toolTip = "Cool Tracers"},
+
 
             },
 
@@ -113,9 +134,13 @@ namespace PinkMenu.Menu
             new ButtonInfo[] { // Guns
                 new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
                 new ButtonInfo { buttonText = "Tag Gun", method =() => Gun.UpdateGun((WeHit) => Guns.InternalTag(WeHit)), isTogglable = true, toolTip = "Tag Gun"},
-                new ButtonInfo { buttonText = "Glider Gun", method =() => Gun.UpdateGun((WeHit) => Guns.GliderGun(WeHit)), isTogglable = true, toolTip = "Puts gliders on guns"},
+                new ButtonInfo { buttonText = "Look at player gun", method =() => Gun.UpdateGun((WeHit) => Guns.LookAtPlayerGun(WeHit)), isTogglable = true, toolTip = "Makes you look at a player"},
+                new ButtonInfo { buttonText = "Bug Gun", method =() => Gun.UpdateGun((WeHit) => Guns.BugGun(WeHit)), isTogglable = true, toolTip = "Puts bug on gun pointer"},
+                new ButtonInfo { buttonText = "Rig Gun", method =() => Gun.UpdateGun((WeHit) => Guns.RigGun(WeHit)), isTogglable = true, toolTip = "Rig gun bro"},
+
 
             },
+
 
             new ButtonInfo[] { // NetWorking Stuff
                 new ButtonInfo { buttonText = "Return", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
@@ -125,16 +150,25 @@ namespace PinkMenu.Menu
                 new ButtonInfo { buttonText = "Connect to USW", method =() => NetworkStuff.ConnectToUSW(), isTogglable = false, toolTip = "Connects you to usw servers"},
                 new ButtonInfo { buttonText = "Left grab Disconnect", method =() => NetworkStuff.LeftTriggerDisconnect(), isTogglable = true, toolTip = "disconnects you when you press left grab"},
                 new ButtonInfo { buttonText = "Right grab Disconnect", method =() => NetworkStuff.RightTriggerDisconnect(), isTogglable = true, toolTip = "disconnects you when you press right grab"},
-                new ButtonInfo { buttonText = "Set Master", method =() => NetworkStuff.SetMaster(), isTogglable = false, toolTip = "Sets Master"},
                 new ButtonInfo { buttonText = "Disable network triggers", method =() => NetworkStuff.DisableNetworkTriggers(), isTogglable = false, toolTip = "Disables network triggers"},
                 new ButtonInfo { buttonText = "Right Button Network triggers", method =() => NetworkStuff.ControllerDisableNetworkTriggers(), isTogglable = true, toolTip = "Enables and Disables"},
                 new ButtonInfo { buttonText = "Right Button Network triggers", method =() => NetworkStuff.ControllerDisableNetworkTriggers(), isTogglable = true, toolTip = "Enables and Disables"},
-                new ButtonInfo { buttonText = "Make Rain", method =() => NetworkStuff.Rain(), isTogglable = false, toolTip = "Makes it rain"},
-                new ButtonInfo { buttonText = "Button Rain", method =() => NetworkStuff.RainButtons(), isTogglable = true, toolTip = "Use Right Primary to enable and right secondary to disable"},
-
              // new ButtonInfo { buttonText = "Thing", method =() => OpCrashAll.ProcessButtonAction(), isTogglable = false, toolTip = "Its a thing"},
             },
 
+
+             new ButtonInfo[] { //game settings
+               new ButtonInfo { buttonText = "Return", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+               new ButtonInfo { buttonText = "Disable Trees", method =() => GameSettings.DisablePrefabsUnderPath(), isTogglable = false, toolTip = "Disables trees"},
+               new ButtonInfo { buttonText = "Disable CampFire", method =() => GameSettings.DisableCampfire(), isTogglable = false, toolTip = "Disables Campfire"},
+               new ButtonInfo { buttonText = "Make Rain", method =() => GameSettings.Rain(), isTogglable = false, toolTip = "Makes it rain"},
+               new ButtonInfo { buttonText = "Stop Rain", method =() => GameSettings.DisableRain(), isTogglable = false, toolTip = "Stops rain"},
+               new ButtonInfo { buttonText = "Button Rain", method =() => GameSettings.RainButtons(), isTogglable = true, toolTip = "Use Right Primary to enable and right secondary to disable"},
+               new ButtonInfo { buttonText = "Make Day", method =() => GameSettings.SetDay(), isTogglable = false, toolTip = "Makes Daytime"},
+               new ButtonInfo { buttonText = "Make Afternoon", method =() => GameSettings.SetAfternoon(), isTogglable = false, toolTip = "Makes Afternoon"},
+               new ButtonInfo { buttonText = "Make Night", method =() => GameSettings.SetNight(), isTogglable = false, toolTip = "Makes Night"},
+
+            },
         };
     }
 }
